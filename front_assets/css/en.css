@@ -1,0 +1,45 @@
+/*@import url('https://fonts.googleapis.com/css?family=Tajawal|El+Messiri|Reem+Kufi|Baloo+Bhaijaan|Lateef|Mada');*/
+/*@import url(https://fonts.googleapis.com/earlyaccess/notosanskannada.css);*/
+@import url(//fonts.googleapis.com/earlyaccess/notonaskharabic.css);
+
+body, .section, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, div, .ui-input, input {
+    /*font-family: 'Tajawal', sans-serif !important;*/
+    /*font-family: 'Noto Naskh Arabic UI', serif !important;*/
+    font-family: 'Noto Naskh Arabic', serif !important;
+}
+
+.direction {
+    direction: ltr !important;
+}
+
+.header .navigation ul li a:after {
+    right: 0;
+}
+
+.header .details li i {
+    margin: 0;
+    margin-left: -20px;
+    margin-right: 12px
+}
+
+.section .section-content.has-text-centered .section-title {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+#contact .contact-details li .content {
+    padding-left: 0;
+    padding-right: 60px;
+}
+
+#services-features .feature-item .feature-content {
+    padding-left: 0;
+    padding-right: 100px;
+}
+
+#services-features .feature-item .feature-step {
+    left: auto;
+    right: 20px;
+    top: -5px;
+}

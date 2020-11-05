@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+    font-family: Ubuntu, sans-serif;
+}
+
+.direction {
+    direction: ltr;
+}
+
+.animated-background {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholder;
+    animation-timing-function: linear;
+    background: #eeeeee;
+    background: linear-gradient(to right, #eeeeee6b 8%, #dddddda1 18%, #eeeeee7d 33%);
+    background-size: 1200px 100px;
+    width: 100%;
+    margin: 5px 0 5px 0;
+    border-radius: 3px
+}
+
+@keyframes placeholder {
+    0% {
+        background-position: -600px 0
+    }
+    100% {
+        background-position: 600px 0
+    }
+}
+
+.red-alarm {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #F44336;
+    position: absolute;
+    left: 20px;
+    animation: pulse 2s infinite;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+        box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+}
+
+.header-toggle {
+    position: absolute;
+    top: -10px;
+    left: 8px;
+    z-index: 9999;
+    height: 35px;
+    width: 35px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hamburger-container {
+    height: 14px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+.hamburger-icon {
+    width: 20px;
+    height: 2px;
+    position: relative;
+    background-color: black;
+}
+
+.cancel .hamburger-icon {
+    background-color: #fff;
+}
+
+.search-aside {
+    position: fixed;
+    width: 640px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 99999;
+    transition: all 0.2s ease-in-out;
+    margin-left: -640px;
+}
+
+.search-aside.toggled {
+    margin-left: 0;
+    box-shadow: 0 1px 10px #c1c1c1;
+    /*box-shadow: none;*/
+}
+
+.search-aside-icon {
+    text-align: center;
+    text-decoration: none;
+    top: 4px;
+    position: relative;
+    left: -8px;
+    color: #2684ff;
+    z-index: 999;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.search-input {
+    position: sticky;
+    outline: 0;
+    background-color: rgb(255, 255, 255);
+    color: rgb(66, 82, 110);
+    height: 36px;
+    width: 100%;
+    padding-bottom: 2px;
+    z-index: 10;
+    border: 0;
+    border-bottom: 2px solid rgb(38, 132, 255);
+    font-size: 18px;
+}
+
+/* Landscape phones and down */
+@media screen and (max-width: 980px) {
+
+    .search-aside {
+        box-shadow: none;
+        width: 100%;
+        margin-left: -100%;
+    }
+
+    .header-toggle {
+        display: flex;
+    }
+}
+
+.bg-main {
+    background-color: #01539d !important;
+}
+
+/*appends*/
+
+#data_table_length {
+    text-align: left;
+    display: flex;
+}
+
+#data_table_filter {
+    text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#data_table_wrapper .row {
+    width: 100%;
+}
+
+.menu-toggle {
+
+    position: fixed;
+    left: 340px;
+    top: 15px;
+    border: 1px solid #000;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 1.6;
+    border-radius: 50%;
+    background: #1447a5;
+    color: #FFF;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 999999;
+    opacity: 0;
+    transition: all 0.4s ease-in-out !important;
+}
+
+.skeleton-nav--right:hover > .menu-toggle {
+    opacity: 1;
+}
+
+.toggled-desktop .menu-toggle {
+    opacity: 1;
+    left: 60px;
+    border-radius: 0;
+}
+.right-15{
+    right: 15px;
+}
+.styled-checkbox:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 11px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border: 1px solid #ccc;
+}

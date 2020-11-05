@@ -1,0 +1,187 @@
+.slider-menu {
+    background-color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase
+}
+
+.slider-menu li {
+    border-bottom: 1px solid rgba(37, 37, 37, .1)
+}
+
+.slider-menu li:last-child {
+    border-bottom: 0
+}
+
+.slider-menu a {
+    color: #252525;
+    display: block;
+    padding: 11px 15px;
+    text-decoration: none;
+    -webkit-transition: all .2s;
+    transition: all .2s
+}
+
+.slider-menu a span {
+    /*color: #05367f;*/
+    display: inline-block;
+    /*font-size: .8em;*/
+    margin-left: 5px;
+    text-transform: none;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+    vertical-align: super;
+}
+
+.slider-menu a small {
+    color: #3d74c1;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    margin-left: 5px;
+    text-transform: none;
+    -webkit-transition: color .2s;
+    transition: color .2s;
+    vertical-align: top;
+}
+
+.slider-menu a span::before {
+    content: ''
+}
+
+.slider-menu a:active, .slider-menu a:hover {
+    color: #fff
+}
+
+.slider-menu a:active span, .slider-menu a:hover span {
+    color: #fff
+}
+
+.slider-menu a:active span, .slider-menu a:hover small {
+    color: #fff
+}
+
+.slider-menu a:hover {
+    background-color: #05367f
+}
+
+.slider-menu a:active {
+    background-color: #252525
+}
+
+.slider-menu-back {
+    background-color: #1536581a;
+    color: #252525;
+    font-weight: 300;
+    padding-bottom: 13px;
+    padding-top: 12px;
+    -webkit-transition: color .2s;
+    transition: color .2s
+}
+
+.slider-menu-back span {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    background-color: rgba(37, 37, 37, .3);
+    color: transparent;
+    display: block;
+    height: 18px;
+    /*-moz-mask-image: url(../images/arrow.png);*/
+    /*-webkit-mask-image: url(../images/arrow.png);*/
+    /*mask-image: url(../images/arrow.png);*/
+    /*-moz-mask-size: cover;*/
+    /*-webkit-mask-size: cover;*/
+    /*mask-size: cover;*/
+    background: url(../images/arrow.png) center center no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    text-indent: -9999px;
+    width: 18px;
+}
+
+.slider-menu-back:hover span {
+    background-color: #fff
+}
+
+.slider-menu-children > a::before {
+    /*background-color: #252525;*/
+    content: '';
+    float: right;
+    height: 18px;
+    margin-top: 2px;
+    /*-moz-mask-image: url(../images/arrow.png);*/
+    /*-webkit-mask-image: url(../images/arrow.png);*/
+    /*mask-image: url(../images/arrow.png);*/
+    background: url(../images/arrow.png) center center no-repeat;
+    background-size: cover;
+    background-color: transparent;
+    /*-moz-mask-size: cover;*/
+    /*-webkit-mask-size: cover;*/
+    /*mask-size: cover;*/
+    -webkit-transition: margin-top .2s, -webkit-transform .2s;
+    transition: margin-top .2s, -webkit-transform .2s;
+    transition: all .2s, margin-top .2s;
+    transition: all .2s, margin-top .2s, -webkit-transform .2s;
+    width: 18px;
+    /*display: none;*/
+}
+
+.slider-menu-children > a:hover::before {
+    /*display: block;*/
+    animation: fadeInRight 0.3s 1;
+}
+
+.slider-menu-children > a:hover::before {
+    background-color: #fff
+}
+
+[data-vertical=true] ul {
+    background-color: rgba(0, 165, 43, .05)
+}
+
+[data-vertical=true] ul a {
+    color: #05367f;
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: none;
+    background-color: #09337124;
+}
+
+[data-vertical=true] ul a:hover {
+    color: #fff
+}
+
+[data-vertical=true] li {
+    border-color: rgba(0, 0, 0, .1)
+}
+
+[data-vertical=true].slider-menu-children > a::before {
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    margin-top: 0
+}
+
+[data-vertical=true].slider-menu-children > a.slider-menu-open {
+    background-color: #05367f;
+    color: #fff
+}
+
+[data-vertical=true].slider-menu-children > a.slider-menu-open::before {
+    -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+    background-color: #fff;
+    margin-top: 4px
+}
+
+@-moz-document url-prefix() {
+    .slider-menu-back span, .slider-menu-back:hover span, .slider-menu-children > a::before, .slider-menu-children > a:hover::before, [data-vertical=true].slider-menu-children > a.slider-menu-open::before {
+        background-color: transparent;
+        background-repeat: no-repeat
+    }
+    .slider-menu-back span, .slider-menu-children > a::before {
+        background-image: url(../images/arrow.png)
+    }
+}

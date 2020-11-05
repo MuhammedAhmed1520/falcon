@@ -1,0 +1,28 @@
+@extends('layouts.master')
+
+@section('styles')
+@endsection
+
+@section('content')
+    <div class="skeleton-nav--center">
+        <div class="container-fluid">
+            <div class="row">
+                @include('pages.tenders.company.get-transactions.templates.header')
+                @include('pages.tenders.company.get-transactions.templates.content')
+            </div>
+        </div>
+    </div>
+@endsection
+@section('scripts')
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('#_2').trigger("click");
+                $('#_22').trigger("click");
+
+            }, 60);
+        });
+    </script>
+
+@endsection

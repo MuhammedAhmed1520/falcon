@@ -1,0 +1,16 @@
+{
+    "LARAVEL_CAPATCHA" : true,
+    "_GOOGLE_RECAPTCHA_KEY" :"6LdWQj0UAAAAAIK0lw1Vt_e2kk_uUzKWe56gUHMU" ,
+    "_GOOGLE_RECAPTCHA_SECRET" : "6LdWQj0UAAAAADQ43fyIQ7NIQi2zcGjF1XKIvsr-",
+    
+    "ViolationTransportalId" : "252401",
+    "ViolationTransportalPassword" : "ZBtzMzv9",
+    "ViolationTermResourceKey" : "9091490520609091",
+    
+    "TenderTransportalId" : "251801",
+    "TenderTransportalPassword" : "9HrgJat8",
+    "TenderTermResourceKey" : "9212378554669212",
+    
+    "SmsUserName":"mppacl",
+    "SmsPassword": "testapisms1"
+}

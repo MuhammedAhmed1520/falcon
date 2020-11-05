@@ -1,0 +1,1834 @@
+
+.row, .row.reverse {
+    -webkit-box-orient: horizontal
+}
+
+.row.reverse {
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse
+}
+
+.col.reverse, .row.reverse {
+    -webkit-box-direction: reverse
+}
+
+.col.reverse {
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse
+}
+
+.slideOutUp {
+    -webkit-animation-name: xb;
+    animation-name: xb
+}
+
+.is-animated {
+    opacity: 0
+}
+
+.strategy2021 h1, .strategy2021 h2, .strategy2021 h3, .strategy2021 h4, .strategy2021 h5, .strategy2021 h6, .strategy2021 p, .strategy2021 span {
+    font-family: MetaNormalRegular;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important
+}
+
+.strategy2021 h3 {
+    font-size: 2.5rem;
+    font-family: MetaBoldRegular
+}
+
+.strategy2021 h4 {
+    font-size: 2.2rem
+}
+
+.strategy2021 .subtitle {
+    font-size: 1.4rem
+}
+
+.strategy2021 .caption p {
+    font-size: 1.2rem;
+    color: #fff
+}
+
+.strategy2021 .callout h1, .strategy2021 .callout h2, .strategy2021 .callout h3, .strategy2021 .callout h4, .strategy2021 .callout h5, .strategy2021 .callout h6, .strategy2021 .callout p {
+    color: #000;
+    font-size: 1.55rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .callout h1, .strategy2021 .callout h2, .strategy2021 .callout h3, .strategy2021 .callout h4, .strategy2021 .callout h5, .strategy2021 .callout h6, .strategy2021 .callout p {
+        font-size: 2.25rem
+    }
+}
+
+.strategy2021 .text-style-3 h1, .strategy2021 .text-style-3 h2, .strategy2021 .text-style-3 h3, .strategy2021 .text-style-3 h4, .strategy2021 .text-style-3 h5, .strategy2021 .text-style-3 h6, .strategy2021 .text-style-3 p {
+    font-size: 2.2rem;
+    color: #fff
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .text-style-3 h1, .strategy2021 .text-style-3 h2, .strategy2021 .text-style-3 h3, .strategy2021 .text-style-3 h4, .strategy2021 .text-style-3 h5, .strategy2021 .text-style-3 h6, .strategy2021 .text-style-3 p {
+        font-size: 1.8rem
+    }
+}
+
+@media only screen and (min-width: 64rem) {
+    .strategy2021 .text-style-3 h1, .strategy2021 .text-style-3 h2, .strategy2021 .text-style-3 h3, .strategy2021 .text-style-3 h4, .strategy2021 .text-style-3 h5, .strategy2021 .text-style-3 h6, .strategy2021 .text-style-3 p {
+        font-size: 2.2rem
+    }
+}
+
+.strategy2021 .text-style-5 h1, .strategy2021 .text-style-5 h2, .strategy2021 .text-style-5 h3, .strategy2021 .text-style-5 h4, .strategy2021 .text-style-5 h5, .strategy2021 .text-style-5 h6, .strategy2021 .text-style-5 p {
+    font-size: 2.1rem;
+    font-family: MetaBoldRegular;
+    color: #003f72
+}
+
+.strategy2021 .text-style-6 {
+    margin-top: 1rem;
+    margin-bottom: 1rem
+}
+
+.strategy2021 .text-style-6 h1, .strategy2021 .text-style-6 h2, .strategy2021 .text-style-6 h3, .strategy2021 .text-style-6 h4, .strategy2021 .text-style-6 h5, .strategy2021 .text-style-6 h6, .strategy2021 .text-style-6 p {
+    font-size: 1.5rem;
+    color: #000;
+    font-family: MetaBoldRegular
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .text-style-6 {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+
+    .strategy2021 .text-style-6 h1, .strategy2021 .text-style-6 h2, .strategy2021 .text-style-6 h3, .strategy2021 .text-style-6 h4, .strategy2021 .text-style-6 h5, .strategy2021 .text-style-6 h6, .strategy2021 .text-style-6 p {
+        margin-bottom: 0;
+        margin-top: 0;
+        font-size: 2.5rem
+    }
+}
+
+.strategy2021 .text-style-7 h1, .strategy2021 .text-style-7 h2, .strategy2021 .text-style-7 h3, .strategy2021 .text-style-7 h4, .strategy2021 .text-style-7 h5, .strategy2021 .text-style-7 h6, .strategy2021 .text-style-7 p {
+    font-size: 1.1rem;
+    color: #000;
+    font-weight: 500
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .text-style-7 h1, .strategy2021 .text-style-7 h2, .strategy2021 .text-style-7 h3, .strategy2021 .text-style-7 h4, .strategy2021 .text-style-7 h5, .strategy2021 .text-style-7 h6, .strategy2021 .text-style-7 p {
+        font-size: 1.5rem
+    }
+}
+
+.strategy2021 .text-style-8 {
+    text-align: center;
+    margin-bottom: 2rem
+}
+
+.strategy2021 .text-style-8 h1, .strategy2021 .text-style-8 h2, .strategy2021 .text-style-8 h3, .strategy2021 .text-style-8 h4, .strategy2021 .text-style-8 h5, .strategy2021 .text-style-8 h6, .strategy2021 .text-style-8 p {
+    font-size: 2.2rem;
+    color: #003f72;
+    font-family: MetaBoldRegular
+}
+
+.strategy2021 .text-style-9 h1, .strategy2021 .text-style-9 h2, .strategy2021 .text-style-9 h3, .strategy2021 .text-style-9 h4, .strategy2021 .text-style-9 h5, .strategy2021 .text-style-9 h6, .strategy2021 .text-style-9 p {
+    font-size: 5rem;
+    color: #0083be;
+    font-family: MetaBoldRegular
+}
+
+.strategy2021 .text-style-10 h1, .strategy2021 .text-style-10 h2, .strategy2021 .text-style-10 h3, .strategy2021 .text-style-10 h4, .strategy2021 .text-style-10 h5, .strategy2021 .text-style-10 h6, .strategy2021 .text-style-10 p {
+    color: #003f72;
+    font-size: 1.55rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .text-style-10 h1, .strategy2021 .text-style-10 h2, .strategy2021 .text-style-10 h3, .strategy2021 .text-style-10 h4, .strategy2021 .text-style-10 h5, .strategy2021 .text-style-10 h6, .strategy2021 .text-style-10 p {
+        font-size: 2.25rem
+    }
+}
+
+.strategy2021 .text-style-11 {
+    color: #fff;
+    font-size: 1.55rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .text-style-11 {
+        font-size: 2.25rem
+    }
+}
+
+.strategy2021 .text-style-11 h1, .strategy2021 .text-style-11 h2, .strategy2021 .text-style-11 h3, .strategy2021 .text-style-11 h4, .strategy2021 .text-style-11 h5, .strategy2021 .text-style-11 h6, .strategy2021 .text-style-11 p {
+    color: #fff;
+    font-size: 1.55rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .text-style-11 h1, .strategy2021 .text-style-11 h2, .strategy2021 .text-style-11 h3, .strategy2021 .text-style-11 h4, .strategy2021 .text-style-11 h5, .strategy2021 .text-style-11 h6, .strategy2021 .text-style-11 p {
+        font-size: 2.25rem
+    }
+}
+
+.strategy2021 .text-style-12, .strategy2021 .text-style-12 h1, .strategy2021 .text-style-12 h2, .strategy2021 .text-style-12 h3, .strategy2021 .text-style-12 h4, .strategy2021 .text-style-12 h5, .strategy2021 .text-style-12 h6, .strategy2021 .text-style-12 p {
+    color: #fff;
+    font-size: 1.15rem
+}
+
+.strategy2021 .para {
+    font-size: 1.2rem
+}
+
+.content_wrapper, .strategy2021.content_wrapper {
+    overflow: hidden
+}
+
+.strategy2021 #content {
+    width: 100%
+}
+
+.strategy2021 .block-content {
+    padding: 1rem
+}
+
+.strategy2021 .row {
+    margin-left: 0;
+    margin-right: 0
+}
+
+.strategy2021 .hidden {
+    opacity: 0
+}
+
+.strategy2021 .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0
+}
+
+.strategy2021 .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.strategy2021 .fl-button {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1;
+    transition: all .3s;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    margin: 0 0 .5rem;
+    vertical-align: middle;
+    text-shadow: none;
+    padding: .4rem 1rem;
+    transition: all .2s
+}
+
+.strategy2021 .fl-button:active, .strategy2021 .fl-button:focus, .strategy2021 .fl-button:hover {
+    background: #0075aa;
+    color: #fff
+}
+
+.strategy2021 .fl-button {
+    width: 230px;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 30px;
+    border: 2px solid #0083be;
+    color: #0083be;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all .5s
+}
+
+.strategy2021 .fl-button:hover {
+    transition: all .5s;
+    background-color: #0083be;
+    color: #fff
+}
+
+.strategy2021 .center {
+    text-align: center
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .sm-center {
+        text-align: center
+    }
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .sm-left {
+        text-align: left
+    }
+}
+
+.strategy2021 .align-left {
+    text-align: left
+}
+
+.strategy2021 .align-right {
+    text-align: right
+}
+
+.strategy2021 .nopaddingall {
+    padding: 0
+}
+
+.strategy2021 .extendedPaddingTop {
+    padding-top: 3rem
+}
+
+.strategy2021 .hide-sm {
+    display: none
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .hide-sm {
+        display: inherit
+    }
+}
+
+.strategy2021 .accessibility-hide {
+    position: fixed;
+    left: 2000px
+}
+
+.strategy2021 .ongrey {
+    background-color: #f2f2f2
+}
+
+.strategy2021 .fl-showcase {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem
+}
+
+.strategy2021 .fl-showcase .title h3 {
+    font-size: 2.3rem;
+    font-family: MetaBoldRegular;
+    color: #003f72;
+    max-width: 550px;
+    margin: 2rem auto
+}
+
+.strategy2021 .fl-showcase.ongrey {
+    margin-bottom: 1.5rem
+}
+
+.strategy2021 .fl-section-header {
+    position: relative;
+    height: 35rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-section-header {
+        height: 26rem
+    }
+}
+
+.strategy2021 .fl-section-header .parallaxParent {
+    height: 35rem;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    display: block;
+    z-index: 1
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-section-header .parallaxParent {
+        height: 26rem
+    }
+}
+
+.strategy2021 .fl-section-header .parallaxParent .parralax {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 130%
+}
+
+.strategy2021 .fl-section-header.fl-hero, .strategy2021 .fl-section-header.fl-hero .parallaxParent {
+    height: 35rem
+}
+
+.strategy2021 .fl-section-header.fl-hero .parallaxParent .parralax {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat
+}
+
+.strategy2021 .fl-section-header .block-content {
+    padding: 0;
+    position: relative;
+    z-index: 3
+}
+
+.strategy2021 .fl-section-header .block-content .title h3 {
+    max-width: 25rem;
+    color: #fff;
+    margin: 1.5rem;
+    font-size: 2rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-section-header .block-content .title h3 {
+        font-size: 4rem;
+        line-height: 5rem;
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+        margin-bottom: 2rem
+    }
+}
+
+.strategy2021 .fl-section-header .block-content .subtitle {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    margin-left: 1.5rem
+}
+
+.strategy2021 .fl-section-header .block-content .subtitle2 {
+    margin-top: .5rem
+}
+
+.strategy2021 .fl-section-header .block-content .caption {
+    position: relative;
+    background-color: #0083be;
+    padding: 1rem 1.5rem;
+    width: calc(100% + 20px);
+    left: -10px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-section-header .block-content .caption {
+        left: calc(-3rem - 10px);
+        padding: 2rem 4rem 2rem 5rem;
+        width: 72%
+    }
+}
+
+.strategy2021 .fl-section-header .block-content .caption-alternate {
+    background-color: rgba(0, 165, 81, .8);
+    padding: 1rem;
+    border-radius: 6px;
+    width: 80%;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin-top: 2rem;
+    margin-bottom: 1rem
+}
+
+.strategy2021 .fl-section-header .block-content .caption-alternate h4, .strategy2021 .fl-section-header .block-content .caption-alternate p {
+    color: #fff
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-section-header .block-content .caption-alternate p {
+        max-width: 225px
+    }
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-section-header .block-content .caption-alternate {
+        position: absolute;
+        padding: 1.5rem 2rem;
+        width: 300px;
+        border-radius: 6px 0 0 6px;
+        left: auto;
+        right: -33px;
+        top: 3rem;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+.strategy2021 .fl-section-header.fl-hero .block-content .title h3 {
+    max-width: 30rem
+}
+
+.strategy2021 .fl-section-header.fl-hero .block-content .subtitle {
+    max-width: 22rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 #low-profile-left {
+        padding-top: 5rem
+    }
+}
+
+.strategy2021 .section-header-lp {
+    z-index: 11;
+    position: relative;
+    padding-top: 1.5rem;
+    margin-bottom: 2.5rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-header-lp {
+        padding-top: 0;
+        height: 3rem
+    }
+}
+
+.strategy2021 .section-header-lp .block-content {
+    padding: 0
+}
+
+.strategy2021 .section-header-lp .pill {
+    background-color: #003f72;
+    display: inline-block;
+    border-radius: 60px;
+    text-align: center;
+    padding-top: .5rem;
+    padding-bottom: .5rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-header-lp .pill {
+        position: absolute
+    }
+}
+
+.strategy2021 .section-header-lp .pill h1, .strategy2021 .section-header-lp .pill h2, .strategy2021 .section-header-lp .pill h3, .strategy2021 .section-header-lp .pill h4, .strategy2021 .section-header-lp .pill h5, .strategy2021 .section-header-lp .pill h6, .strategy2021 .section-header-lp .pill p {
+    font-size: 1.4rem;
+    color: #fff;
+    padding: 0 1.5rem;
+    margin: 0
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-header-lp .pill h1, .strategy2021 .section-header-lp .pill h2, .strategy2021 .section-header-lp .pill h3, .strategy2021 .section-header-lp .pill h4, .strategy2021 .section-header-lp .pill h5, .strategy2021 .section-header-lp .pill h6, .strategy2021 .section-header-lp .pill p {
+        font-size: 1.8rem
+    }
+}
+
+.strategy2021 .section-header-lp .pill.offset-left-top {
+    top: 1rem
+}
+
+.strategy2021 .section-header-lp .pill.offset-right {
+    right: 1rem;
+    top: 1rem
+}
+
+.strategy2021 .fl-section-timeline {
+    background-color: #003f72
+}
+
+.strategy2021 .fl-section-timeline #map-label {
+    color: #fff;
+    font-size: 1.2rem;
+    position: relative;
+    top: 0
+}
+
+.strategy2021 .fl-section-timeline #timeline-range {
+    margin-top: 1rem
+}
+
+.strategy2021 .fl-section-timeline .fl-map-content-block {
+    margin-top: 5rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-section-timeline .fl-map-content-block {
+        padding: 0
+    }
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper, .strategy2021 .fl-section-timeline .fl-map-wrapper .img-wrapper {
+    position: relative
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper .fl-map-vic {
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 2rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-section-timeline .fl-map-wrapper {
+        z-index: 3;
+        left: auto;
+        top: auto;
+        transform: translateY(-45%);
+        padding-top: 0
+    }
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper .range-wrapper {
+    padding-top: 2rem
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper .map-detail {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 500;
+    position: absolute;
+    width: 100%;
+    margin-left: 2rem;
+    top: 50%;
+    left: 0
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 3.8px 0;
+    border-radius: 1rem
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]:focus {
+    outline: none
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 1rem;
+    cursor: pointer;
+    background: #fff
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]::-webkit-slider-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #00a551;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -8px
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #fff;
+    border-radius: 1rem
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 1rem
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]::-moz-range-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #00a551;
+    cursor: pointer
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]::-ms-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    border-radius: 1rem;
+    border-width: 10px 0
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]::-ms-fill-lower, .strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]::-ms-fill-upper {
+    background: #fff;
+    border-radius: 10px
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]::-ms-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: #00a551;
+    cursor: pointer
+}
+
+.strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]:focus::-ms-fill-lower, .strategy2021 .fl-section-timeline .fl-map-wrapper input[type=range]:focus::-ms-fill-upper {
+    background: #fff
+}
+
+.strategy2021 .icon-wrapper {
+    padding: .5rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .icon-wrapper.positioned .icon-img-wrapper {
+        height: 180px;
+        position: relative
+    }
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .icon-wrapper.positioned .icon-img-wrapper img {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+}
+
+.strategy2021 .icon-wrapper.positioned .icon-text-wrapper {
+    padding-bottom: 1rem
+}
+
+.strategy2021 .icon-wrapper.positioned .icon-text-wrapper p {
+    font-size: 1.2rem;
+    font-family: MetaNormalRegular
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .icon-wrapper.positioned .icon-text-wrapper p {
+        font-size: 1.5rem
+    }
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .shorter-image .icon-wrapper .icon-img-wrapper {
+        height: 130px !important
+    }
+}
+
+.strategy2021 .section-callout {
+    text-align: center
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-callout {
+        text-align: left
+    }
+
+    .strategy2021 .section-callout .callout {
+        padding: 4rem 5rem
+    }
+}
+
+.strategy2021 .section-callout.fl-icon-callout {
+    padding-bottom: 0
+}
+
+.strategy2021 .section-callout.fl-icon-callout .callout p {
+    position: relative;
+    top: 2rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-callout.inblue .callout {
+        padding: 4rem 5rem 1rem
+    }
+}
+
+.strategy2021 .section-callout.inblue .title {
+    text-align: center
+}
+
+.strategy2021 .section-callout.inblue .title .callout p {
+    color: #0083be
+}
+
+.strategy2021 .section-callout .subtitle p {
+    color: #000;
+    font-size: 3rem;
+    font-family: MetaBoldRegular
+}
+
+.strategy2021 .section-callout .subtitle .callout {
+    padding: 2rem
+}
+
+.strategy2021 .section-callout.ongrey {
+    margin-bottom: 2rem;
+    background-color: #f2f2f2
+}
+
+.strategy2021 .section-callout.ongrey .callout h1, .strategy2021 .section-callout.ongrey .callout h2, .strategy2021 .section-callout.ongrey .callout h3, .strategy2021 .section-callout.ongrey .callout h4, .strategy2021 .section-callout.ongrey .callout h5, .strategy2021 .section-callout.ongrey .callout h6, .strategy2021 .section-callout.ongrey .callout p {
+    color: #003f72
+}
+
+.strategy2021 .section-goals {
+    padding-bottom: 3rem;
+    padding-top: 3rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-goals {
+        padding-top: 0;
+        padding-bottom: 0
+    }
+}
+
+.strategy2021 .section-goals .section-goals-nav {
+    display: none
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-goals .section-goals-nav {
+        display: block
+    }
+}
+
+.strategy2021 .section-goals .section-goals-nav ul {
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 11
+}
+
+.strategy2021 .section-goals .section-goals-nav ul li {
+    display: inline-block;
+    width: 16.66%;
+    float: left
+}
+
+.strategy2021 .section-goals .section-goals-nav ul li a {
+    display: inline-block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #003f72;
+    color: #fff;
+    text-decoration: none;
+    transition: all .5s;
+    font-size: 1.1rem;
+    text-align: center;
+    width: 100%
+}
+
+.strategy2021 .section-goals .section-goals-nav ul li a:hover {
+    background-color: #005ba5
+}
+
+.strategy2021 .section-goals .section-goals-nav ul li.active a {
+    background-color: #00a551
+}
+
+.strategy2021 .section-goals .row-goals {
+    position: relative;
+    transition: all .5s
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-goals .row-goals {
+        height: 350px
+    }
+
+    .strategy2021 .section-goals .row-goals.extended, .strategy2021 .section-goals .row-goals.extended .row-goal {
+        height: 500px
+    }
+}
+
+.strategy2021 .section-goals .row-goals .row-goal .title h3 {
+    margin-bottom: 0
+}
+
+.strategy2021 .section-goals .row-goals .row-goal .title-underline-svg {
+    display: none
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-goals .row-goals .row-goal .title-underline-svg {
+        display: initial
+    }
+}
+
+.strategy2021 .section-goals .row-goals .row-goal .goal-icon {
+    padding-top: 3.5rem;
+    padding-bottom: 0
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-goals .row-goals .row-goal .goal-icon {
+        padding-top: 4rem
+    }
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-goals .row-goals .row-goal {
+        display: none;
+        height: 300px;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        margin-top: 1.5rem;
+        left: 0
+    }
+
+    .strategy2021 .section-goals .row-goals .row-goal .goal-icon {
+        padding-top: 0
+    }
+}
+
+.strategy2021 .section-goals .row-goals .row-goal.active, .strategy2021 .section-goals .row-goals .row-goal.animating {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.strategy2021 .section-goals .row-goals .row-goal.animating {
+    -webkit-animation-timing-function: linear !important;
+    animation-timing-function: linear !important;
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s
+}
+
+.strategy2021 .section-goals .row-goals .row-goal .summary-icon {
+    z-index: 4
+}
+
+.strategy2021 .section-goals .row-goals #nav-goal-0 .section-animated-line, .strategy2021 .section-goals .row-goals #nav-goal-0 .summary-icons {
+    display: none
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-goals .row-goals #nav-goal-0 .summary-icons {
+        margin: 0 auto;
+        margin-bottom: 2rem;
+        display: block;
+        position: relative
+    }
+
+    .strategy2021 .section-goals .row-goals #nav-goal-0 .section-animated-line {
+        display: block
+    }
+}
+
+.strategy2021 .section-circles {
+    padding-top: 3rem
+}
+
+.strategy2021 .section-circles #static-circle-row .epa-circle {
+    position: relative;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    left: 50%
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper {
+    position: relative
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper {
+        height: 350px;
+        width: 934px;
+        left: 50%;
+        transform: translate(-50%)
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .semicircle-blue {
+    position: absolute;
+    z-index: 1;
+    top: -1rem;
+    left: .5rem;
+    display: none
+}
+
+@media only screen and (min-width: 64rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .semicircle-blue {
+        display: block
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .semicircle-green {
+    position: absolute;
+    z-index: 1;
+    top: -1rem;
+    right: .5rem;
+    display: none
+}
+
+@media only screen and (min-width: 64rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .semicircle-green {
+        display: block
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle {
+    background: linear-gradient(#02517c, #023e63);
+    overflow: hidden;
+    border-radius: 50%;
+    width: 327px;
+    height: 327px;
+    display: block;
+    transition: all 1s;
+    margin: 0 auto;
+    width: 280px;
+    height: 280px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+}
+
+@media only screen and (min-width: 48rem) and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle {
+        width: 275px;
+        height: 275px
+    }
+}
+
+@media only screen and (min-width: 48rem) and (min-width: 64rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle {
+        width: 327px;
+        height: 327px
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    transition: all .5s
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner {
+        width: 275px;
+        height: 275px
+    }
+}
+
+@media only screen and (min-width: 64rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner {
+        width: 327px;
+        height: 327px
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .mask-circle {
+    position: absolute;
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+    background-color: #001532;
+    transition: all 1s
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .mask-circle {
+        width: 275px;
+        height: 275px
+    }
+}
+
+@media only screen and (min-width: 64rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .mask-circle {
+        width: 327px;
+        height: 327px
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .icon-addition {
+    position: absolute;
+    display: block;
+    color: #fff;
+    font-size: 3rem;
+    left: 50%;
+    top: -.5rem;
+    -webkit-transform: translateY(0) translateX(-50%);
+    transform: translateY(0) translateX(-50%);
+    z-index: 8;
+    opacity: 0;
+    transition: all .5s
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .icon-addition {
+        left: .8rem;
+        top: 50%;
+        -webkit-transform: translateY(-50%) translateX(0);
+        transform: translateY(-50%) translateX(0)
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .icon-addition.delayed {
+    -webkit-animation-delay: .25s;
+    animation-delay: .25s
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .icon-addition.activated {
+    opacity: 1
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .row {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 1s
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .circle-content {
+    color: #fff
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .list-row {
+    opacity: 0;
+    transition: all .5s
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .list-row li {
+    margin-bottom: .5rem
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .list-row p {
+    font-size: 1rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .list-row p {
+        font-size: 1.1rem
+    }
+}
+
+@media only screen and (min-width: 64rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .list-row p {
+        font-size: 1.2rem
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner:hover .title-row {
+    opacity: 0
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner:hover .list-row {
+    opacity: 1
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle.left {
+    z-index: 4
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle.left.activated {
+        -webkit-transform: translateX(-135%);
+        transform: translateX(-135%)
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle.center {
+    z-index: 5;
+    -webkit-transform: translateY(-15%);
+    transform: translateY(-15%)
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle.center {
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%)
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle.right {
+    z-index: 6
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle.right.activated {
+    -webkit-transform: translateY(-30%);
+    transform: translateY(-30%)
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle.right.activated {
+        -webkit-transform: translateX(35%);
+        transform: translateX(35%)
+    }
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle.center.activated .mask-circle, .strategy2021 .section-circles .epa-circle-wrapper .epa-circle.right.activated .mask-circle {
+    z-index: 7;
+    -webkit-transform: translateY(-85%);
+    transform: translateY(-85%)
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles .epa-circle-wrapper .epa-circle.center.activated .mask-circle, .strategy2021 .section-circles .epa-circle-wrapper .epa-circle.right.activated .mask-circle {
+        -webkit-transform: translateX(-85%);
+        transform: translateX(-85%)
+    }
+}
+
+.strategy2021 .section-animated-line {
+    position: relative
+}
+
+.strategy2021 .section-animated-line .animated-line-wrapper {
+    width: 100%;
+    height: 100%;
+    display: none
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-animated-line .animated-line-wrapper {
+        display: inline
+    }
+}
+
+.strategy2021 .section-animated-line .animated-line {
+    position: absolute;
+    right: 7rem;
+    bottom: -6rem;
+    z-index: 9
+}
+
+.strategy2021 .section-animated-line #animated-line-2 {
+    position: absolute;
+    right: 7rem;
+    bottom: -43rem;
+    z-index: 9
+}
+
+.strategy2021 .section-animated-line #animated-line-3 {
+    position: absolute;
+    left: 1rem;
+    top: 2.4rem;
+    z-index: 9
+}
+
+.strategy2021 .section-animated-line #animated-line-4 {
+    position: absolute;
+    right: 4.2rem;
+    top: -8rem;
+    z-index: 9
+}
+
+.strategy2021 .section-animated-line #animated-line-5 {
+    position: absolute;
+    top: -18.4rem;
+    left: 4rem
+}
+
+.strategy2021 .section-break {
+    height: 2rem
+}
+
+.strategy2021 .fl-epa-equals {
+    position: relative;
+    top: -2rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-epa-equals {
+        position: static
+    }
+}
+
+.strategy2021 .chevron-goal-icons .icon-text {
+    font-size: 1.3rem;
+    color: #00a551
+}
+
+.strategy2021 .chevron-goal-icons .icon-text p {
+    font-family: MetaBoldRegular
+}
+
+.strategy2021 .section-text {
+    margin-top: 20px
+}
+
+.strategy2021 .section-text p {
+    margin-top: 10px
+}
+
+@-webkit-keyframes yb {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-300px, -50px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(-300px, -50px) rotate(-1turn)
+    }
+}
+
+@keyframes yb {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-300px, -50px) rotate(0deg);
+        transform: rotate(0deg) translate(-300px, -50px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(-300px, -50px) rotate(-1turn);
+        transform: rotate(1turn) translate(-300px, -50px) rotate(-1turn)
+    }
+}
+
+@-webkit-keyframes zb {
+    0% {
+        -webkit-transform: rotate(0deg) translate(200px, -200px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(200px, -200px) rotate(-1turn)
+    }
+}
+
+@keyframes zb {
+    0% {
+        -webkit-transform: rotate(0deg) translate(200px, -200px) rotate(0deg);
+        transform: rotate(0deg) translate(200px, -200px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(200px, -200px) rotate(-1turn);
+        transform: rotate(1turn) translate(200px, -200px) rotate(-1turn)
+    }
+}
+
+@-webkit-keyframes Ab {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-200px, -230px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(-200px, -230px) rotate(-1turn)
+    }
+}
+
+@keyframes Ab {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-200px, -230px) rotate(0deg);
+        transform: rotate(0deg) translate(-200px, -230px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(-200px, -230px) rotate(-1turn);
+        transform: rotate(1turn) translate(-200px, -230px) rotate(-1turn)
+    }
+}
+
+@-webkit-keyframes Bb {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-250px, 200px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(-250px, 200px) rotate(-1turn)
+    }
+}
+
+@keyframes Bb {
+    0% {
+        -webkit-transform: rotate(0deg) translate(-250px, 200px) rotate(0deg);
+        transform: rotate(0deg) translate(-250px, 200px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(-250px, 200px) rotate(-1turn);
+        transform: rotate(1turn) translate(-250px, 200px) rotate(-1turn)
+    }
+}
+
+@-webkit-keyframes Cb {
+    0% {
+        -webkit-transform: rotate(0deg) translate(300px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(300px) rotate(-1turn)
+    }
+}
+
+@keyframes Cb {
+    0% {
+        -webkit-transform: rotate(0deg) translate(300px) rotate(0deg);
+        transform: rotate(0deg) translate(300px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(300px) rotate(-1turn);
+        transform: rotate(1turn) translate(300px) rotate(-1turn)
+    }
+}
+
+@-webkit-keyframes Db {
+    0% {
+        -webkit-transform: rotate(0deg) translate(230px, 180px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(230px, 180px) rotate(-1turn)
+    }
+}
+
+@keyframes Db {
+    0% {
+        -webkit-transform: rotate(0deg) translate(230px, 180px) rotate(0deg);
+        transform: rotate(0deg) translate(230px, 180px) rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(1turn) translate(230px, 180px) rotate(-1turn);
+        transform: rotate(1turn) translate(230px, 180px) rotate(-1turn)
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper {
+    position: relative;
+    z-index: 10
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper {
+        height: 860px
+    }
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .circle-row {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle {
+    border-radius: 50%;
+    color: #fff;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle .epa-circle-inner {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #003f72
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-lg {
+    width: 225px;
+    height: 225px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-lg {
+        width: 300px;
+        height: 300px
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-md {
+    width: 150px;
+    height: 150px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-md {
+        width: 200px;
+        height: 200px
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-md .title-row p {
+    font-size: 1.2rem
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-md .list-row p {
+    font-size: 1rem
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-sm {
+    width: 180px;
+    height: 180px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-sm {
+        width: 150px;
+        height: 150px
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-sm .title-row p {
+    font-size: 1.2rem
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.size-sm .list-row p {
+    font-size: .7rem
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-animation-duration: 300s;
+    animation-duration: 300s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    position: relative
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-1 {
+    top: -10px;
+    left: auto;
+    right: -80px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-1 {
+        -webkit-animation-name: yb;
+        animation-name: yb
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-2 {
+    top: -50px;
+    left: -60px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-2 {
+        -webkit-animation-name: zb;
+        animation-name: zb
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-3 {
+    top: -80px;
+    left: auto;
+    right: -80px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-3 {
+        -webkit-animation-name: Ab;
+        animation-name: Ab
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-4 {
+    top: -120px;
+    left: -50px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-4 {
+        -webkit-animation-name: Bb;
+        animation-name: Bb
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-5 {
+    top: -130px;
+    left: auto;
+    right: -80px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-5 {
+        -webkit-animation-name: Cb;
+        animation-name: Cb
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-6 {
+    top: -150px;
+    left: -50px
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle-6 {
+        -webkit-animation-name: Db;
+        animation-name: Db
+    }
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-circles-float .all-circles-wrapper .epa-circle.floating-circle {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0
+    }
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle .circle-content {
+    color: #fff;
+    position: relative
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle .title-row {
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%)
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle .list-row {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-70%);
+    transform: translateX(-50%) translateY(-70%);
+    opacity: 0;
+    transition: all .5s
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle .list-row p {
+    font-size: 1.2rem
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle:hover {
+    -webkit-transform-origin: center;
+    transform-origin: center
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle:hover .title-row {
+    opacity: 0
+}
+
+.strategy2021 .section-circles-float .all-circles-wrapper .epa-circle:hover .list-row {
+    opacity: 1
+}
+
+.strategy2021 .section-carousel {
+    padding-top: 2rem;
+    padding-bottom: 2rem
+}
+
+.strategy2021 .section-carousel .title-underline-svg {
+    height: 50px;
+    width: 800px;
+    display: none;
+    margin-left: auto;
+    margin-right: auto
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-carousel .title-underline-svg {
+        display: block
+    }
+}
+
+.strategy2021 .fl-carousel {
+    position: relative
+}
+
+.strategy2021 .fl-carousel .fl-btn {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    top: 40%
+}
+
+.strategy2021 .fl-carousel .fl-btn.fl-prev {
+    left: 0
+}
+
+.strategy2021 .fl-carousel .fl-btn.fl-next {
+    right: 0
+}
+
+.strategy2021 .fl-carousel .fl-btn svg {
+    width: 30px;
+    height: 16px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-carousel .fl-btn svg {
+        width: 44px;
+        height: 24px
+    }
+}
+
+.strategy2021 .fl-carousel .fl-btn img {
+    width: 16px;
+    height: auto
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-carousel .fl-btn img {
+        width: 23px;
+        height: auto
+    }
+}
+
+.strategy2021 .fl-carousel .fl-carousel-buttons svg {
+    cursor: pointer
+}
+
+.strategy2021 .fl-carousel .fl-carousel-buttons svg path {
+    transition: all .5s
+}
+
+.strategy2021 .fl-carousel .fl-carousel-buttons svg:hover path {
+    stroke: #0083be
+}
+
+.strategy2021 .fl-carousel .fl-slide {
+    padding-top: 1rem;
+    padding-bottom: 1rem
+}
+
+.strategy2021 .fl-carousel .fl-slide p {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .fl-carousel .fl-slide {
+        max-width: auto
+    }
+}
+
+.strategy2021 .fl-carousel .fl-carousel-nav {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    display: inline
+}
+
+.strategy2021 .fl-carousel .fl-carousel-nav .fl-carousel-dot {
+    cursor: pointer;
+    border-radius: 50%;
+    width: .75rem;
+    height: .75rem;
+    background-color: #d3d2d3;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+    transition: all .5s
+}
+
+.strategy2021 .fl-carousel .fl-carousel-nav .fl-carousel-dot.active {
+    background-color: #0083be
+}
+
+.strategy2021 .fl-carousel .fl-carousel-nav .fl-carousel-dot:hover {
+    background-color: #a19ea1
+}
+
+.strategy2021 .section-accordion .accordion-header {
+    background-color: #f90;
+    margin-top: 1rem;
+    margin-bottom: 1rem
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-accordion .accordion-header {
+        height: 10rem
+    }
+}
+
+.strategy2021 .section-accordion .accordion-header .col {
+    padding: 2rem
+}
+
+.strategy2021 .section-accordion .accordion-header .accordion-toggle {
+    background-color: transparent;
+    border: 0;
+    width: 44px;
+    height: 24px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer
+}
+
+@media only screen and (min-width: 48rem) {
+    .strategy2021 .section-accordion .accordion-header .accordion-toggle {
+        left: 50%;
+        width: 44px;
+        height: 24px
+    }
+}
+
+.strategy2021 .section-accordion .accordion-header .accordion-toggle.rotate {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+.strategy2021 .section-accordion .accordion-header .accordion-toggle path {
+    transition: all .5s
+}
+
+.strategy2021 .section-accordion .accordion-header .accordion-toggle:hover path {
+    stroke: #ccc
+}
+
+.strategy2021 .section-accordion .accordion-content {
+    transition: all .5s;
+    overflow: hidden
+}
+
+.strategy2021 .section-accordion .accordion-content.open {
+    height: auto;
+    max-height: 5000px;
+    padding-bottom: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem
+}
+
+.strategy2021 .section-accordion .accordion-content.closed {
+    max-height: 0
+}
+
+.strategy2021 .section-goals .section-goals-nav ul li {
+    padding-left: 0
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .list-row p {
+    line-height: 1em
+}
+
+.strategy2021 .section-circles .epa-circle-wrapper .epa-circle .epa-circle-inner .list-row li {
+    padding-left: 0;
+    background: none;
+    line-height: 1.5
+}
+
+.strategy2021 .section-callout.inblue .title .callout p {
+    margin-bottom: 0
+}
+
+.strategy2021 .text-style-8 p {
+    font-family: MetaBoldRegular
+}
+
+.strategy2021.content_wrapper {
+    padding-top: 0
+}
+
+.strategy2021 .fl-section-header.fl-hero .block-content .title h3 {
+    max-width: 31rem
+}
+
+.module_content p {
+    margin-bottom: 0
+}
+
+.is_mobile .strategy2021 {
+    overflow: hidden !important
+}
