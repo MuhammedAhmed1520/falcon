@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -30,5 +29,26 @@ class Falcon extends Model
     public function type()
     {
         return $this->belongsTo(Option::class,'P_REQUEST_TYP');
+    }
+    public function fal_type()
+    {
+        return $this->belongsTo(Option::class,'P_FAL_TYPE');
+    }
+    public function origin_country()
+    {
+        return $this->belongsTo(Option::class,'P_FAL_ORIGIN_COUNTRY');
+    }
+    public function fal_city()
+    {
+        return $this->belongsTo(Option::class,'P_FAL_CITES_NO');
+    }
+    public function hospital()
+    {
+        return $this->belongsTo(Option::class,'P_FAL_INJ_HOSPITAL');
+    }
+
+    public function file_details()
+    {
+        return $this->hasMany(FalconFileDetail::class,'falcon_id');
     }
 }

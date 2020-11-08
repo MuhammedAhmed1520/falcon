@@ -11,7 +11,6 @@ class AuthHospitalController extends Controller
 {
 
     /**
-     * @var Authentication $authentication
      */
     private $authentication;
 
@@ -85,6 +84,7 @@ class AuthHospitalController extends Controller
             'password' => 'required|min:6|confirmed',
             'mobile' => 'nullable|digits:8',
             'email' => 'nullable|email',
+            'hospital_id' => 'required|numeric',
         ]);
     }
 

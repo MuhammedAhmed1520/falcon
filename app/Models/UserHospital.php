@@ -28,6 +28,11 @@ class UserHospital extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function hospital()
+    {
+        return $this->belongsTo(Option::class,'hospital_id');
+    }
+
 
 
 }

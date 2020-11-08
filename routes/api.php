@@ -36,6 +36,11 @@ Route::group(['prefix' => 'falcon','namespace' => 'Api'], function () {
     Route::post('/update','FalconController@update');
     Route::get('/find/{id}','FalconController@show');
     Route::get('/all','FalconController@all');
+    Route::post('/deleteFile','FalconController@deleteFileDetail');
+});
+Route::group(['prefix' => 'utility','namespace' => 'Api'], function () {
+
+    Route::get('/allOptions/{type?}','UtilityController@allOptions');
 });
 
 

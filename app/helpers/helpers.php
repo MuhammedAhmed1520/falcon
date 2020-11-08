@@ -67,18 +67,18 @@ function uploadFile($file, $path)
     $data['extension'] = $file->getClientOriginalExtension();
     $data['size'] = $file->getClientSize();
 
-    Storage::disk('azure')->put("files/$path/" . $data['name'], file_get_contents($file));
+//    Storage::disk('azure')->put("files/$path/" . $data['name'], file_get_contents($file));
 
-//    $file->move(storage_path('files/' . $path), $data['name']);
+    $file->move(storage_path('files/' . $path), $data['name']);
     return $data;
 }
 
 function getFullPath($file, $path)
 {
     if (isset($file['name'])) {
-        $file['name'] = Storage::disk('azure')->url("files/$path/" . $file['name']);
+//        $file['name'] = Storage::disk('azure')->url("files/$path/" . $file['name']);
 
-//        $file['name'] = asset('storage/files/') . '/' . $path . '/' . $file['name'];
+        $file['name'] = asset('storage/files/') . '/' . $path . '/' . $file['name'];
     }
     return $file;
 }
@@ -86,9 +86,9 @@ function getFullPath($file, $path)
 function getFullPathEdit($file_name, $path)
 {
     if ($file_name) {
-        return Storage::disk('azure')->url("files/$path/" . $file_name);
+//        return Storage::disk('azure')->url("files/$path/" . $file_name);
 
-//        return asset('storage/files/') . '/' . $path . '/' . $file_name;
+        return asset('storage/files/') . '/' . $path . '/' . $file_name;
     }
     return null;
 }

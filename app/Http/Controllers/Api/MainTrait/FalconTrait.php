@@ -9,7 +9,7 @@ trait FalconTrait
     public function validateFalconRequest(array $request_data)
     {
         return validator($request_data, [
-            'P_REQUEST_TYP' => 'required|in:1,2,3,4,5,6',
+            'P_REQUEST_TYP' => 'required',
             'P_O_CIVIL_ID' => 'required_if:P_REQUEST_TYP,1|numeric|digits:12',
             'P_O_A_NAME' => 'required_if:P_REQUEST_TYP,1',
             'P_O_ADDRESS' => 'required_if:P_REQUEST_TYP,1',
@@ -27,14 +27,17 @@ trait FalconTrait
             'P_CUR_PASS_FAL' => 'required_if:P_REQUEST_TYP,4',
             'P_FAL_SEX' => 'required_if:P_REQUEST_TYP,1|in:M,F',
             'P_FAL_SPECIES' => 'required_if:P_REQUEST_TYP,1',
-            'P_FAL_TYPE' => 'required_if:P_REQUEST_TYP,1|in:1,2,3',
+            'P_FAL_TYPE' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_OTHER_TYPE' => 'required_if:P_REQUEST_TYP,1',
-            'P_FAL_ORIGIN_COUNTRY' => 'required_if:P_REQUEST_TYP,1|in:1,2,3,4,5,6,7,8,9,10,11,12,13,14,15',
-            'P_FAL_CITES_NO' => 'required_if:P_REQUEST_TYP,1|in:1,2,3',
+            'P_FAL_ORIGIN_COUNTRY' => 'required_if:P_REQUEST_TYP,1',
+            'P_FAL_CITES_NO' => 'required_if:P_REQUEST_TYP,1',
 //            'P_FAL_PIT_NO' => 'required',
             'P_FAL_RING_NO' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_INJ_DATE' => 'required_if:P_REQUEST_TYP,1',
-            'P_FAL_INJ_HOSPITAL' => 'required_if:P_REQUEST_TYP,1|in:1,2,3,4,5',
+            'P_FAL_INJ_HOSPITAL' => 'required_if:P_REQUEST_TYP,1',
+            'files' => 'required|array',
+            'files.*.file_type_id' => 'required|numeric',
+            'files.*.file' => 'required|file',
 
 //            'P_PAYMENT_ID' => '',
 //            'P_AMOUNT' => '',
@@ -45,7 +48,7 @@ trait FalconTrait
     public function validateFalconUpdateRequest(array $request_data)
     {
         return validator($request_data, [
-            'P_REQUEST_TYP' => 'required|in:1,2,3,4,5,6',
+            'P_REQUEST_TYP' => 'required',
             'P_O_CIVIL_ID' => 'required_if:P_REQUEST_TYP,1|numeric|digits:12',
             'P_O_A_NAME' => 'required_if:P_REQUEST_TYP,1',
             'P_O_ADDRESS' => 'required_if:P_REQUEST_TYP,1',
@@ -63,14 +66,14 @@ trait FalconTrait
             'P_CUR_PASS_FAL' => 'required_if:P_REQUEST_TYP,4',
             'P_FAL_SEX' => 'required_if:P_REQUEST_TYP,1|in:M,F',
             'P_FAL_SPECIES' => 'required_if:P_REQUEST_TYP,1',
-            'P_FAL_TYPE' => 'required_if:P_REQUEST_TYP,1|in:1,2,3',
+            'P_FAL_TYPE' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_OTHER_TYPE' => 'required_if:P_REQUEST_TYP,1',
-            'P_FAL_ORIGIN_COUNTRY' => 'required_if:P_REQUEST_TYP,1|in:1,2,3,4,5,6,7,8,9,10,11,12,13,14,15',
-            'P_FAL_CITES_NO' => 'required_if:P_REQUEST_TYP,1|in:1,2,3',
+            'P_FAL_ORIGIN_COUNTRY' => 'required_if:P_REQUEST_TYP,1',
+            'P_FAL_CITES_NO' => 'required_if:P_REQUEST_TYP,1',
 //            'P_FAL_PIT_NO' => 'required',
             'P_FAL_RING_NO' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_INJ_DATE' => 'required_if:P_REQUEST_TYP,1',
-            'P_FAL_INJ_HOSPITAL' => 'required_if:P_REQUEST_TYP,1|in:1,2,3,4,5',
+            'P_FAL_INJ_HOSPITAL' => 'required_if:P_REQUEST_TYP,1',
             'id' => 'required',
         ]);
     }
