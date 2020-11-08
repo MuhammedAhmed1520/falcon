@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Modules\Option\OptionRepo;
 use App\Soap\Request\GetConversionAmount;
+use App\Soap\Request\SubmitFalconRequest;
 use App\Soap\Response\GetConversionAmountResponse;
+use App\Soap\Response\SubmitFalconRequestResponse;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -65,8 +67,8 @@ class UtilityController extends Controller
                 ->trace(true)
                 ->options(['user_agent' => 'PHPSoapClient'])
                 ->classmap([
-                    GetConversionAmount::class,
-                    GetConversionAmountResponse::class,
+                    SubmitFalconRequest::class,
+                    SubmitFalconRequestResponse::class,
                 ]);
         });
         // Without classmap
@@ -79,10 +81,28 @@ class UtilityController extends Controller
 
 
         // With classmap
-        $response = $this->soapWrapper->call('Currency.GetConversionAmount', [
-            new GetConversionAmount('USD', 'EG', '2020-11-08', '1000')
+        $response = $this->soapWrapper->call('Falcon.submitFalconRequest', [
+            new SubmitFalconRequest('1', '123456789632',
+                'محمد', 'تجريبى',
+                '12345678', '12589632',
+                '2022-01-01', 'muhammedahmed1520@gmail.com',
+                null, null,
+                null, null,
+                null, null,
+                null, null,
+                'M', 'test',
+                '1', 'test',
+                '1', '1',
+                '157654', '4361',
+                '2020-11-01', '1',
+                null, null,
+                null, null
+            )
         ]);
-
+//        $e = simplexml_load_string($response);
+        $json = json_encode($response);
+        $array = json_decode($json,TRUE);
+        $response = collect($array);
         dd($response);
         var_dump($response);
         exit;

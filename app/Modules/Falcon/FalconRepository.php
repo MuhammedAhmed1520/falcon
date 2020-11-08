@@ -57,6 +57,7 @@ class FalconRepository
             'origin_country',
             'fal_city',
             'hospital',
+            'file_details',
         ]);
         return return_msg(true,'Success',compact('falcon'));
     }
