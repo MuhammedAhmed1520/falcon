@@ -80,11 +80,15 @@ class AuthController extends Controller
     {
 
         return validator($request->all(), [
-            'name' => 'required|string',
+            'P_O_A_NAME' => 'required|string',
             'username' => 'required|unique:users,username',
             'password' => 'required|min:6|confirmed',
-            'mobile' => 'nullable|digits:8',
+            'P_O_MOBILE' => 'required|numeric|digits:8',
             'email' => 'required|email',
+            'P_O_CIVIL_ID' => 'required|numeric|digits:12',
+            'P_O_ADDRESS' => 'required',
+            'P_O_PASSPORT_NO' => 'required',
+            'P_CIVIL_EXPIRY_DT' => 'required|date',
         ]);
     }
 
