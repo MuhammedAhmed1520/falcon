@@ -82,9 +82,9 @@ class UtilityController extends Controller
 
         // With classmap
         $response = $this->soapWrapper->call('Falcon.submitFalconRequest', [
-            new SubmitFalconRequest('1', '123456789632',
+            new SubmitFalconRequest(1, 123456789632,
                 'محمد', 'تجريبى',
-                '12345678', '12589632',
+                12345678, '12589632',
                 '2022-01-01', 'muhammedahmed1520@gmail.com',
                 null, null,
                 null, null,
@@ -95,14 +95,14 @@ class UtilityController extends Controller
                 '1', '1',
                 '157654', '4361',
                 '2020-11-01', '1',
-                null, null,
-                null, null
+                '46347643', '5',
+                '46347643', '46347643'
             )
         ]);
 //        $e = simplexml_load_string($response);
         $json = json_encode($response);
-        $array = json_decode($json,TRUE);
-        $response = collect($array);
+        $response = json_decode($json,TRUE);
+//        $response = collect($array);
         dd($response);
         var_dump($response);
         exit;
