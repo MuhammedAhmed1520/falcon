@@ -21,6 +21,11 @@ trait FalconRepoHelper
             ;
 
         }
+        if ($data['user_id'] ?? null)
+        {
+            $model->where('user_id',$data['user_id']);
+
+        }
 
     }
 
