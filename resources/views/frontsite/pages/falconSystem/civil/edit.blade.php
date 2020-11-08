@@ -360,8 +360,9 @@
                                                     </label>
                                                     <select name="P_FAL_ORIGIN_COUNTRY" class="ui-input">
                                                         @foreach($helper_utilities['P_FAL_ORIGIN_COUNTRY'] ?? [] as $item)
-                                                            <option @if($falcon->P_FAL_ORIGIN_COUNTRY == $item['id']) selected
-                                                                    @endif value="{{$item['id']}}">{{$item['label']}}</option>
+                                                            <option
+                                                                @if($falcon->P_FAL_ORIGIN_COUNTRY == $item['id']) selected
+                                                                @endif value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('P_FAL_ORIGIN_COUNTRY'))
@@ -379,8 +380,8 @@
                                                     <select name="P_FAL_CITES_NO" class="ui-input">
                                                         @foreach($helper_utilities['P_FAL_CITES_NO'] ?? [] as $item)
                                                             <option @if($falcon->P_FAL_CITES_NO == $item['id']) selected
-                                                                @endif
-                                                                value="{{$item['id']}}">{{$item['label']}}</option>
+                                                                    @endif
+                                                                    value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('P_FAL_CITES_NO'))
@@ -407,8 +408,9 @@
                                                     <select name="P_FAL_INJ_HOSPITAL" class="ui-input"
                                                             value="{{old('P_FAL_INJ_HOSPITAL')}}">
                                                         @foreach($helper_utilities['P_FAL_INJ_HOSPITAL'] ?? [] as $item)
-                                                            <option @if($falcon->P_FAL_INJ_HOSPITAL == $item['id']) selected
-                                                                    @endif
+                                                            <option
+                                                                @if($falcon->P_FAL_INJ_HOSPITAL == $item['id']) selected
+                                                                @endif
                                                                 value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
@@ -441,35 +443,42 @@
                                             </button>
 
                                             <div id="row_files">
+                                                @foreach($falcon->file_details ?? [] as $file)
+                                                    <div class="columns centered">
+                                                        <div class="column is-12 is-4-desktop">
+                                                            <label for="file_type_id">
+                                                                نوع الملف
+                                                            </label>
+                                                            <select name="files[][file_type_id]" class="ui-input">
+                                                                @foreach($helper_utilities['documents_type'] ?? [] as $item)
+                                                                    <option
+                                                                        @if($file->file_type_id == $item['id']) selected
+                                                                        @endif
+                                                                        value="{{$item['id']}}">{{$item['label']}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @if($errors->has('P_FAL_TYPE'))
+                                                                <span
+                                                                    class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
+                                                            @endif
+                                                        </div>
 
-                                                <div class="columns centered">
-                                                    <div class="column is-12 is-4-desktop">
-                                                        <label for="file_type_id">
-                                                            نوع الملف
-                                                        </label>
-                                                        <select name="files[][file_type_id]" class="ui-input">
-                                                            @foreach($helper_utilities['documents_type'] ?? [] as $item)
-                                                                <option
-                                                                    value="{{$item['id']}}">{{$item['label']}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @if($errors->has('P_FAL_TYPE'))
-                                                            <span
-                                                                class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
-                                                        @endif
+                                                        <div class="column is-12 is-4-desktop">
+                                                            <label for="P_FAL_PIT_NO">
+                                                                الملف
+                                                            </label>
+                                                            <input type="file" name="files[][file]" class="ui-input">
+                                                            @if($errors->has('files'))
+                                                                <span
+                                                                    class="tag color-red">{{$errors->first('files')}}</span>
+                                                            @endif
+                                                            @if($file['file'] ?? null)
+                                                                <a href="{{$file['file']}}" target="_blank">عرض
+                                                                    الملف</a>
+                                                            @endif
+                                                        </div>
                                                     </div>
-
-                                                    <div class="column is-12 is-4-desktop">
-                                                        <label for="P_FAL_PIT_NO">
-                                                            الملف
-                                                        </label>
-                                                        <input type="file" name="files[][file]" class="ui-input">
-                                                        @if($errors->has('files'))
-                                                            <span
-                                                                class="tag color-red">{{$errors->first('files')}}</span>
-                                                        @endif
-                                                    </div>
-                                                </div>
+                                                @endforeach
 
 
                                             </div>

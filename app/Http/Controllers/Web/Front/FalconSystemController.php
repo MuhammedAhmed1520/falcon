@@ -107,13 +107,20 @@ class FalconSystemController extends Controller
         if (!$falcon) {
             return back()->with('error', 'غير موجود');
         }
+//        return $falcon;
         return view('frontsite.pages.falconSystem.civil.edit', compact('is_active', 'falcon', 'helper_utilities'));
     }
 
     public function handleEditCivilFalcon(Request $request, $id)
     {
 
-        return $request->all();
+        $request->request->add(['id' => $id]);
+        $response = $this->falcon_ctrl->update($request);
+//        return $response;
+        if (!$response['status']) {
+            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+        }
+        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
     }
 
     public function hospitalLogin()
