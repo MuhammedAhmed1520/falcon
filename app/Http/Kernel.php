@@ -61,6 +61,7 @@ class Kernel extends HttpKernel
         'ForceHttpProtocol' => \App\Http\Middleware\ForceHttpProtocol::class,
         'userAuth' => \App\Http\Middleware\userAuth::class,
         'agentOfficeAuth' => \App\Http\Middleware\agentOfficeAuth::class,
+        'hospitalAuth' => \App\Http\Middleware\hospitalAuth::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,

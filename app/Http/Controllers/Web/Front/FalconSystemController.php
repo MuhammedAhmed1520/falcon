@@ -11,6 +11,8 @@ use App\Http\Controllers\Controller;
 class FalconSystemController extends Controller
 {
 
+    private $auth;
+
     public function __construct()
     {
     }

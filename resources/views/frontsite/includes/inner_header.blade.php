@@ -4,7 +4,7 @@
             <div class="column is-12">
                 <nav class="navbar is-dark navbar-is-dark" role="navigation" aria-label="main navigation">
                     <div class="navbar-brand">
-                        <a href="{{$shared_main_settings['front_site']->where('key','front_home')->first()->value ?? null}}" class="navbar-item" href="">
+                        <a href="" class="navbar-item" href="">
                             <img src="{{asset('assets/images/logo.png')}}" style="width: 120px;max-height: 120px">
                         </a>
 
@@ -18,37 +18,37 @@
 
                     <div id="navbarBasicExample" class="navbar-menu">
                         <div class="navbar-end" dir="rtl">
-                            <a href="{{$shared_main_settings['front_site']->where('key','front_about_epa')->first()->value ?? null}}" class="navbar-item">
+                            <a href="" class="navbar-item">
                                 <span class="item_text">
                                     عن الهيئة
                                 </span>
                             </a>
-                            <a href="{{$shared_main_settings['front_site']->where('key','front_eservices')->first()->value ?? null}}" class="navbar-item">
+                            <a href="{" class="navbar-item">
                                 <span class="item_text">
                                     الخدمات الالكترونية
                                 </span>
                             </a>
-                            <a href="{{$shared_main_settings['front_site']->where('key','front_manages')->first()->value ?? null}}" class="navbar-item">
+                            <a href="" class="navbar-item">
                                 <span class="item_text">
                                     الادارات
                                 </span>
                             </a>
-                            <a href="{{$shared_main_settings['front_site']->where('key','front_projects')->first()->value ?? null}}" class="navbar-item">
+                            <a href="" class="navbar-item">
                                 <span class="item_text">
                                     المشاريع
                                 </span>
                             </a>
-                            <a href="{{$shared_main_settings['front_site']->where('key','front_news')->first()->value ?? null}}" class="navbar-item">
+                            <a href="" class="navbar-item">
                                 <span class="item_text">
                                     الاخبار والفعاليات
                                 </span>
                             </a>
-                            <a href="{{$shared_main_settings['front_site']->where('key','front_liberary')->first()->value ?? null}}" class="navbar-item">
+                            <a href="" class="navbar-item">
                                 <span class="item_text">
                                     مكتبة الهيئة
                                 </span>
                             </a>
-                            <a href="{{$shared_main_settings['front_site']->where('key','front_contact')->first()->value ?? null}}" class="navbar-item">
+                            <a href="" class="navbar-item">
                                     <span class="item_text">
                                         تواصل معنا
                                     </span>
@@ -70,19 +70,19 @@
                     </div>
                     <div class="navbar-contents">
 
-                        <a href="{{$shared_main_settings['front_site']->where('key','front_youtube')->first()->value ?? null}}"  class="navbar-item">
+                        <a href=""  class="navbar-item">
                             <img class="item_image" src="{{asset('front_assets/images/youtube.png')}}" alt="">
                         </a>
-                        <a href="{{$shared_main_settings['front_site']->where('key','front_facebook')->first()->value ?? null}}"  class="navbar-item">
+                        <a href=""  class="navbar-item">
                             <img class="item_image" src="{{asset('front_assets/images/facebook.png')}}" alt="">
                         </a>
-                        <a href="{{$shared_main_settings['front_site']->where('key','front_twitter')->first()->value ?? null}}"  class="navbar-item">
+                        <a href=""  class="navbar-item">
                             <img class="item_image" src="{{asset('front_assets/images/twitter.png')}}" alt="">
                         </a>
-                        <a href="{{$shared_main_settings['front_site']->where('key','front_instagram')->first()->value ?? null}}"  class="navbar-item">
+                        <a href=""  class="navbar-item">
                             <img class="item_image" src="{{asset('front_assets/images/instagram.png')}}" alt="">
                         </a>
-                        <a href="{{$shared_main_settings['front_site']->where('key','front_home')->first()->value ?? null}}"  class="navbar-item">
+                        <a href=""  class="navbar-item">
                             <img class="item_image" src="{{asset('front_assets/images/Home.png')}}" alt="">
                         </a>
                     </div>
