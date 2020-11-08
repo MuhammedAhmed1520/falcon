@@ -22,10 +22,7 @@ class Falcon extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
-    public function order_type()
-    {
-        return $this->belongsTo(Option::class,'P_REQUEST_TYP');
-    }
+
     public function type()
     {
         return $this->belongsTo(Option::class,'P_REQUEST_TYP');
