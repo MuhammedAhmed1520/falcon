@@ -281,7 +281,6 @@
                                             <div class="has-text-centered">
                                                 <h1>بيانات الصقر </h1>
                                             </div>
-
                                             <div class="columns centered">
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_CUR_PASS_FAL">
@@ -430,33 +429,42 @@
                                                 <h1> الملفات </h1>
                                             </div>
 
+                                            <button class="btn btn-secondary mb-5" type="button" onclick="addRow()">
+                                                <i class="icon icon-plus"></i>
+                                            </button>
 
-                                            <div class="columns centered">
-                                                <div class="column is-12 is-4-desktop">
-                                                    <label for="file_type_id">
-                                                        نوع الصقر
-                                                    </label>
-                                                    <select name="files[0][file_type_id]" class="ui-input">
-                                                        @foreach($helper_utilities['documents_type'] ?? [] as $item)
-                                                            <option value="{{$item['id']}}">{{$item['label']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @if($errors->has('P_FAL_TYPE'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
-                                                    @endif
+                                            <div id="row_files">
+
+                                                <div class="columns centered">
+                                                    <div class="column is-12 is-4-desktop">
+                                                        <label for="file_type_id">
+                                                            نوع الملف
+                                                        </label>
+                                                        <select name="files[][file_type_id]" class="ui-input">
+                                                            @foreach($helper_utilities['documents_type'] ?? [] as $item)
+                                                                <option
+                                                                    value="{{$item['id']}}">{{$item['label']}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @if($errors->has('P_FAL_TYPE'))
+                                                            <span
+                                                                class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
+                                                        @endif
+                                                    </div>
+
+                                                    <div class="column is-12 is-4-desktop">
+                                                        <label for="P_FAL_PIT_NO">
+                                                            الملف
+                                                        </label>
+                                                        <input type="file" name="files[][file]" class="ui-input">
+                                                        @if($errors->has('files'))
+                                                            <span
+                                                                class="tag color-red">{{$errors->first('files')}}</span>
+                                                        @endif
+                                                    </div>
                                                 </div>
 
-                                                <div class="column is-12 is-4-desktop">
-                                                    <label for="P_FAL_PIT_NO">
-                                                        الملف
-                                                    </label>
-                                                    <input type="file" name="files[0][file]" class="ui-input">
-                                                    @if($errors->has('files'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('files')}}</span>
-                                                    @endif
-                                                </div>
+
                                             </div>
 
                                         </div>
@@ -644,6 +652,39 @@
                 form.submit();
             }
         });
+
+        function addRow() {
+            $('#row_files').append(`
+                                                <div class="columns centered">
+                                                    <div class="column is-12 is-4-desktop">
+                                                        <label for="file_type_id">
+                                                            نوع الملف
+                                                        </label>
+                                                        <select name="files[][file_type_id]" class="ui-input">
+                                                            @foreach($helper_utilities['documents_type'] ?? [] as $item)
+                <option
+                    value="{{$item['id']}}">{{$item['label']}}</option>
+                                                            @endforeach
+                </select>
+@if($errors->has('P_FAL_TYPE'))
+                <span
+                    class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
+                                                        @endif
+                </div>
+
+                <div class="column is-12 is-4-desktop">
+                    <label for="P_FAL_PIT_NO">
+                        الملف
+                    </label>
+                    <input type="file" name="files[][file]" class="ui-input">
+@if($errors->has('files'))
+                <span
+                    class="tag color-red">{{$errors->first('files')}}</span>
+                                                        @endif
+                </div>
+            </div>`)
+        }
+
     </script>
 @endsection
 @section('styles')

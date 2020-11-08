@@ -29,7 +29,7 @@
 
                     {{Form::open([
                         'method'=>'post',
-                        'route'=>['handle-edit-falcon',1],
+                        'route'=>['handle-edit-falcon',$falcon->id],
                         'id'=>'form',
                         'files' => true
 
@@ -53,12 +53,15 @@
                                                     </label>
                                                     <select name="P_REQUEST_TYP" class="ui-input"
                                                             value="{{old('P_REQUEST_TYP')}}">
-                                                        @foreach(getStaticData()['lookup1'] ?? [] as $item)
-                                                            <option value="{{$item['code']}}">{{$item['label']}}</option>
+                                                        @foreach($helper_utilities['P_REQUEST_TYP'] ?? [] as $item)
+                                                            <option
+                                                                @if($falcon->P_REQUEST_TYP == $item->id) selected
+                                                                @endif value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('P_REQUEST_TYP'))
-                                                        <span class="tag color-red">{{$errors->first('P_REQUEST_TYP')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_REQUEST_TYP')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -67,10 +70,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_O_CIVIL_ID" class="ui-input"
-                                                           value="{{old('P_O_CIVIL_ID')}}"
+                                                           value="{{$falcon->P_O_CIVIL_ID ?? ''}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_O_CIVIL_ID'))
-                                                        <span class="tag color-red">{{$errors->first('P_O_CIVIL_ID')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_O_CIVIL_ID')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -78,10 +82,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_O_A_NAME" class="ui-input"
-                                                           value="{{old('P_O_A_NAME')}}"
+                                                           value="{{$falcon->P_O_A_NAME ?? ''}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_O_A_NAME'))
-                                                        <span class="tag color-red">{{$errors->first('P_O_A_NAME')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_O_A_NAME')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -91,10 +96,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_O_ADDRESS" class="ui-input"
-                                                           value="{{old('P_O_ADDRESS')}}"
+                                                           value="{{$falcon->P_O_ADDRESS ?? ''}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_O_ADDRESS'))
-                                                        <span class="tag color-red">{{$errors->first('P_O_ADDRESS')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_O_ADDRESS')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -102,10 +108,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_O_PASSPORT_NO" class="ui-input"
-                                                           value="{{old('P_O_PASSPORT_NO')}}"
+                                                           value="{{$falcon->P_O_PASSPORT_NO ?? ''}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_O_PASSPORT_NO'))
-                                                        <span class="tag color-red">{{$errors->first('P_O_PASSPORT_NO')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_O_PASSPORT_NO')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -113,11 +120,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_CIVIL_EXPIRY_DT" class="ui-input date"
-
-                                                           value="{{old('P_CIVIL_EXPIRY_DT')}}"
+                                                           value="{{$falcon->P_CIVIL_EXPIRY_DT}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_CIVIL_EXPIRY_DT'))
-                                                        <span class="tag color-red">{{$errors->first('P_CIVIL_EXPIRY_DT')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_CIVIL_EXPIRY_DT')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -129,10 +136,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_O_MOBILE" class="ui-input"
-                                                           value="{{old('P_O_MOBILE')}}"
+                                                           value="{{$falcon->P_O_MOBILE ?? ''}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_O_MOBILE'))
-                                                        <span class="tag color-red">{{$errors->first('P_O_MOBILE')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_O_MOBILE')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -140,10 +148,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_O_MAIL" class="ui-input"
-                                                           value="{{old('P_O_MAIL')}}"
+                                                           value="{{$falcon->P_O_MAIL ?? ''}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_O_MAIL'))
-                                                        <span class="tag color-red">{{$errors->first('P_O_MAIL')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_O_MAIL')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -171,10 +180,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_NW_CIVIL_ID" class="ui-input"
-                                                           value="{{old('P_NW_CIVIL_ID')}}"
+                                                           value="{{$falcon->P_NW_CIVIL_ID}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_NW_CIVIL_ID'))
-                                                        <span class="tag color-red">{{$errors->first('P_NW_CIVIL_ID')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_NW_CIVIL_ID')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -182,10 +192,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_NW_A_NAME" class="ui-input"
-                                                           value="{{old('P_NW_A_NAME')}}"
+                                                           value="{{$falcon->P_NW_A_NAME}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_NW_A_NAME'))
-                                                        <span class="tag color-red">{{$errors->first('P_NW_A_NAME')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_NW_A_NAME')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -193,10 +204,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_NW_ADDRESS" class="ui-input"
-                                                           value="{{old('P_NW_ADDRESS')}}"
+                                                           value="{{$falcon->P_NW_ADDRESS}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_NW_ADDRESS'))
-                                                        <span class="tag color-red">{{$errors->first('P_NW_ADDRESS')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_NW_ADDRESS')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -206,10 +218,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_NW_PASSPORT_NO" class="ui-input"
-                                                           value="{{old('P_NW_PASSPORT_NO')}}"
+                                                           value="{{$falcon->P_NW_PASSPORT_NO}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_NW_PASSPORT_NO'))
-                                                        <span class="tag color-red">{{$errors->first('P_NW_PASSPORT_NO')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_NW_PASSPORT_NO')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -219,10 +232,11 @@
                                                     </label>
                                                     <input type="text" name="P_NW_CIVIL_EXPIRY" class="ui-input date"
 
-                                                           value="{{old('P_NW_CIVIL_EXPIRY')}}"
+                                                           value="{{$falcon->P_NW_CIVIL_EXPIRY}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_NW_CIVIL_EXPIRY'))
-                                                        <span class="tag color-red">{{$errors->first('P_NW_CIVIL_EXPIRY')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_NW_CIVIL_EXPIRY')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -233,10 +247,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_NW_MOBILE" class="ui-input"
-                                                           value="{{old('P_NW_MOBILE')}}"
+                                                           value="{{$falcon->P_NW_MOBILE}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_NW_MOBILE'))
-                                                        <span class="tag color-red">{{$errors->first('P_NW_MOBILE')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_NW_MOBILE')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -244,10 +259,11 @@
 
                                                     </label>
                                                     <input type="text" name="P_NW_O_MAIL" class="ui-input"
-                                                           value="{{old('P_NW_O_MAIL')}}"
+                                                           value="{{$falcon->P_NW_O_MAIL}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_NW_O_MAIL'))
-                                                        <span class="tag color-red">{{$errors->first('P_NW_O_MAIL')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_NW_O_MAIL')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -267,17 +283,17 @@
                                             <div class="has-text-centered">
                                                 <h1>بيانات الصقر </h1>
                                             </div>
-
                                             <div class="columns centered">
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_CUR_PASS_FAL">
                                                         رقم جواز الصقر الحالي
                                                     </label>
                                                     <input type="text" name="P_CUR_PASS_FAL" class="ui-input"
-                                                           value="{{old('P_CUR_PASS_FAL')}}"
+                                                           value="{{$falcon->P_CUR_PASS_FAL}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_CUR_PASS_FAL'))
-                                                        <span class="tag color-red">{{$errors->first('P_CUR_PASS_FAL')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_CUR_PASS_FAL')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -287,20 +303,24 @@
                                                     <select name="P_FAL_SEX" class="ui-input"
                                                             value="{{old('P_FAL_SEX')}}">
                                                         @foreach(getStaticData()['lookup2'] ?? [] as $item)
-                                                            <option value="{{$item['code']}}">{{$item['label']}}</option>
+                                                            <option @if($falcon->P_FAL_SEX == $item['code']) selected
+                                                                    @endif
+                                                                    value="{{$item['code']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('P_FAL_SEX'))
-                                                        <span class="tag color-red">{{$errors->first('P_FAL_SEX')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_FAL_SEX')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_FAL_SPECIES">فئة الصقر</label>
                                                     <input type="text" name="P_FAL_SPECIES" class="ui-input"
-                                                           value="{{old('P_FAL_SPECIES')}}"
+                                                           value="{{$falcon->P_FAL_SPECIES}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_FAL_SPECIES'))
-                                                        <span class="tag color-red">{{$errors->first('P_FAL_SPECIES')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_FAL_SPECIES')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -311,12 +331,14 @@
                                                         نوع الصقر
                                                     </label>
                                                     <select name="P_FAL_TYPE" class="ui-input">
-                                                        @foreach(getStaticData()['lookup3'] ?? [] as $item)
-                                                            <option value="{{$item['code']}}">{{$item['label']}}</option>
+                                                        @foreach($helper_utilities['P_FAL_TYPE'] ?? [] as $item)
+                                                            <option @if($falcon->P_FAL_TYPE == $item['id']) selected
+                                                                    @endif value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('P_FAL_TYPE'))
-                                                        <span class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -325,10 +347,11 @@
                                                     </label>
                                                     <input type="text" name="P_FAL_OTHER_TYPE" class="ui-input"
 
-                                                           value="{{old('P_FAL_OTHER_TYPE')}}"
+                                                           value="{{$falcon->P_FAL_OTHER_TYPE}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_FAL_OTHER_TYPE'))
-                                                        <span class="tag color-red">{{$errors->first('P_FAL_OTHER_TYPE')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_FAL_OTHER_TYPE')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -336,12 +359,14 @@
                                                         بلد المنشأ
                                                     </label>
                                                     <select name="P_FAL_ORIGIN_COUNTRY" class="ui-input">
-                                                        @foreach(getStaticData()['lookup4'] ?? [] as $item)
-                                                            <option value="{{$item['code']}}">{{$item['label']}}</option>
+                                                        @foreach($helper_utilities['P_FAL_ORIGIN_COUNTRY'] ?? [] as $item)
+                                                            <option @if($falcon->P_FAL_ORIGIN_COUNTRY == $item['id']) selected
+                                                                    @endif value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('P_FAL_ORIGIN_COUNTRY'))
-                                                        <span class="tag color-red">{{$errors->first('P_FAL_ORIGIN_COUNTRY')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_FAL_ORIGIN_COUNTRY')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -352,12 +377,15 @@
                                                         رقم ملحق سايتس
                                                     </label>
                                                     <select name="P_FAL_CITES_NO" class="ui-input">
-                                                        @foreach(getStaticData()['lookup5'] ?? [] as $item)
-                                                            <option value="{{$item['code']}}">{{$item['label']}}</option>
+                                                        @foreach($helper_utilities['P_FAL_CITES_NO'] ?? [] as $item)
+                                                            <option @if($falcon->P_FAL_CITES_NO == $item['id']) selected
+                                                                @endif
+                                                                value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('P_FAL_CITES_NO'))
-                                                        <span class="tag color-red">{{$errors->first('P_FAL_CITES_NO')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_FAL_CITES_NO')}}</span>
                                                     @endif
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
@@ -365,13 +393,87 @@
                                                         رقم الشريحة
                                                     </label>
                                                     <input type="text" name="P_FAL_PIT_NO" class="ui-input"
-                                                           value="{{old('P_FAL_PIT_NO')}}"
+                                                           value="{{$falcon->P_FAL_PIT_NO}}"
                                                            autocomplete="off">
                                                     @if($errors->has('P_FAL_PIT_NO'))
-                                                        <span class="tag color-red">{{$errors->first('P_FAL_PIT_NO')}}</span>
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_FAL_PIT_NO')}}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="column is-12 is-4-desktop">
+                                                    <label for="P_FAL_INJ_HOSPITAL">
+                                                        المستشفي
+                                                    </label>
+                                                    <select name="P_FAL_INJ_HOSPITAL" class="ui-input"
+                                                            value="{{old('P_FAL_INJ_HOSPITAL')}}">
+                                                        @foreach($helper_utilities['P_FAL_INJ_HOSPITAL'] ?? [] as $item)
+                                                            <option @if($falcon->P_FAL_INJ_HOSPITAL == $item['id']) selected
+                                                                    @endif
+                                                                value="{{$item['id']}}">{{$item['label']}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if($errors->has('P_FAL_INJ_HOSPITAL'))
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('P_FAL_INJ_HOSPITAL')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="columns">
+                        <div class="column">
+                            <div class="box">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <div class="has-text-centered">
+                                                <h1> الملفات </h1>
+                                            </div>
+
+                                            <button class="btn btn-secondary mb-5" type="button" onclick="addRow()">
+                                                <i class="icon icon-plus"></i>
+                                            </button>
+
+                                            <div id="row_files">
+
+                                                <div class="columns centered">
+                                                    <div class="column is-12 is-4-desktop">
+                                                        <label for="file_type_id">
+                                                            نوع الملف
+                                                        </label>
+                                                        <select name="files[][file_type_id]" class="ui-input">
+                                                            @foreach($helper_utilities['documents_type'] ?? [] as $item)
+                                                                <option
+                                                                    value="{{$item['id']}}">{{$item['label']}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @if($errors->has('P_FAL_TYPE'))
+                                                            <span
+                                                                class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
+                                                        @endif
+                                                    </div>
+
+                                                    <div class="column is-12 is-4-desktop">
+                                                        <label for="P_FAL_PIT_NO">
+                                                            الملف
+                                                        </label>
+                                                        <input type="file" name="files[][file]" class="ui-input">
+                                                        @if($errors->has('files'))
+                                                            <span
+                                                                class="tag color-red">{{$errors->first('files')}}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -557,6 +659,38 @@
                 form.submit();
             }
         });
+
+        function addRow() {
+            $('#row_files').append(`
+                                                <div class="columns centered">
+                                                    <div class="column is-12 is-4-desktop">
+                                                        <label for="file_type_id">
+                                                            نوع الملف
+                                                        </label>
+                                                        <select name="files[][file_type_id]" class="ui-input">
+                                                            @foreach($helper_utilities['documents_type'] ?? [] as $item)
+                <option
+                    value="{{$item['id']}}">{{$item['label']}}</option>
+                                                            @endforeach
+                </select>
+@if($errors->has('P_FAL_TYPE'))
+                <span
+                    class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
+                                                        @endif
+                </div>
+
+                <div class="column is-12 is-4-desktop">
+                    <label for="P_FAL_PIT_NO">
+                        الملف
+                    </label>
+                    <input type="file" name="files[][file]" class="ui-input">
+@if($errors->has('files'))
+                <span
+                    class="tag color-red">{{$errors->first('files')}}</span>
+                                                        @endif
+                </div>
+            </div>`)
+        }
     </script>
 @endsection
 @section('styles')

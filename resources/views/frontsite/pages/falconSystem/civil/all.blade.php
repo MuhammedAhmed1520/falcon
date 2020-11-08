@@ -90,7 +90,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         url: "{{route('civilDeleteFalcon')}}",
-                        method: "delete",
+                        method: "post",
                         data: {
                             _token: '{{csrf_token()}}',
                             id: id

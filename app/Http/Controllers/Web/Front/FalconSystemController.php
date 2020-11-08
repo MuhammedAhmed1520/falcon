@@ -74,7 +74,6 @@ class FalconSystemController extends Controller
     {
         $is_active = 1;
         $falcons = $this->falcon_ctrl->all($request)['data']['falcons'] ?? [];
-//        return $falcons;
         return view('frontsite.pages.falconSystem.civil.all', compact('is_active', 'falcons'));
     }
 
@@ -87,7 +86,6 @@ class FalconSystemController extends Controller
 
     public function handleAddCivilFalcon(Request $request)
     {
-
         $response = $this->falcon_ctrl->create($request);
         if (!$response['status']) {
             return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
@@ -104,7 +102,12 @@ class FalconSystemController extends Controller
     public function editCivilFalcon($id)
     {
         $is_active = 1;
-        return view('frontsite.pages.falconSystem.civil.edit', compact('is_active'));
+        $falcon = $this->falcon_ctrl->show($id)['data']['falcon'] ?? null;
+        $helper_utilities = $this->utility_ctrl->allOptions()['data']['options']->groupBy('type');
+        if (!$falcon) {
+            return back()->with('error', 'غير موجود');
+        }
+        return view('frontsite.pages.falconSystem.civil.edit', compact('is_active', 'falcon', 'helper_utilities'));
     }
 
     public function handleEditCivilFalcon(Request $request, $id)
