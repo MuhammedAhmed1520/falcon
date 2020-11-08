@@ -108,6 +108,14 @@ class FalconRepository
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
+        if ($falcon->P_REQUEST_TYP == 1)
+        {
+            if (!isset($data['P_FAL_RING_NO'])){
+
+            }
+
+        }
+
         $falcon->P_FAL_PIT_NO = $data['P_FAL_PIT_NO'] ?? null;
         $falcon->P_FAL_RING_NO = $data['P_FAL_RING_NO'] ?? null;
         $falcon->P_FAL_INJ_DATE = $data['P_FAL_INJ_DATE'] ?? null;

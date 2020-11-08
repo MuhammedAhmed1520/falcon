@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\MainTrait\FalconTrait;
+use App\Models\Falcon;
 use App\Modules\Falcon\FalconRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,7 +43,11 @@ class FalconController extends Controller
     }
     public function updateHospital(Request $request)
     {
-        $validation = $this->validateFalconUpdateHospitalRequest($request->all());
+        $data = $request->all();
+        $falcon = Falcon::find($data['id'] ?? null);
+        $data['P_REQUEST_TYP'] = $falcon->P_REQUEST_TYP ?? null;
+
+        $validation = $this->validateFalconUpdateHospitalRequest($data);
         if ($validation->fails()){
             return return_msg(false,"validation Errors",[
                 "validation_errors" => $validation->getMessageBag()->getMessages(),
