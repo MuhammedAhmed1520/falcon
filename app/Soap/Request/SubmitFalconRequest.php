@@ -33,9 +33,12 @@ class SubmitFalconRequest
     protected $P_FAL_RING_NO;
     protected $P_FAL_INJ_DATE;
     protected $P_FAL_INJ_HOSPITAL;
+
     protected $P_PAYMENT_ID;
     protected $P_AMOUNT;
-//    protected $P_AMOUNT;
+    protected $P_TRANS_ID;
+    protected $P_TRACK_ID;
+
 
 
 

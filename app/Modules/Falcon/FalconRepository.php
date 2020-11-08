@@ -52,7 +52,6 @@ class FalconRepository
         }
         $falcon->load([
             'user',
-            'order_type',
             'type',
             'fal_type',
             'origin_country',
@@ -66,7 +65,6 @@ class FalconRepository
     {
         $falcons = $this->falconModel->with([
             'user',
-            'order_type',
             'type',
             'fal_type',
             'origin_country',
