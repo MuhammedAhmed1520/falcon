@@ -62,7 +62,6 @@ class FalconSystemController extends Controller
 
         $response = $this->auth_civil->register($request);
         if (!$response['status']) {
-            return $response;
             return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
         }
         $user = $response['data']['user'];
