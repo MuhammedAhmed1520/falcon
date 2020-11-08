@@ -81,7 +81,6 @@ class AuthController extends Controller
 
         return validator($request->all(), [
             'P_O_A_NAME' => 'required|string',
-            'username' => 'required|unique:users,username',
             'password' => 'required|min:6|confirmed',
             'P_O_MOBILE' => 'required|numeric|digits:8',
             'email' => 'required|email',

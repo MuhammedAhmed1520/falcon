@@ -276,9 +276,9 @@ function getOfficeAgentAuth()
     return auth('agent')->user()->office_agent;
 }
 
-function getAuthUser()
+function getAuthUser($guard = "")
 {
-    return auth()->user();
+    return auth($guard)->user();
 }
 
 function getUserFile($type)

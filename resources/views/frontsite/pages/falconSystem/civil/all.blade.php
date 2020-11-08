@@ -41,10 +41,10 @@
                         <tbody>
 
                         @foreach($falcons as $falcon)
-                            <tr>
+                            <tr id="row_{{$falcon->id}}">
                                 <td>{{$falcon->P_OUT_REQUEST_NO ?? ''}}</td>
-                                <td>{{$falcon->origin_country->title ?? ''}}</td>
-                                <td>{{$falcon->fal_type->title ?? ''}}</td>
+                                <td>{{$falcon->origin_country->label ?? ''}}</td>
+                                <td>{{$falcon->fal_type->label ?? ''}}</td>
                                 {{--<td>--}}
                                 {{--                                    <span class="tag is-dark">{{$order->status->title_ar ?? ''}}</span>--}}
                                 {{--</td>--}}
@@ -53,7 +53,7 @@
                                        class="button is-link">
                                         تعديل
                                     </a>
-                                    <a class="button is-danger p-0">
+                                    <a class="button is-danger p-0" onclick="deleteRow('{{$falcon->id}}')">
                                         <i class="icon icon-trash" style="margin-top: 5px"></i>
                                     </a>
                                 </td>
@@ -71,6 +71,44 @@
 @endsection
 @section('scripts')
     {{Html::script('https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')}}
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
+    <script>
+        function deleteRow(id) {
+            Swal.fire({
+                title: 'انتبه',
+                text: 'هل انت متأكد ؟',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'ﻻ',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "https://approc.com/~approctest/epa/beta/system/violation/delete-violation",
+                        method: "delete",
+                        data: {
+                            _token: '{{csrf_token()}}',
+                            id: id
+                        },
+                        success: function (response) {
+                            if (response.status) {
+                                $(`#row_${id}`).remove()
+                                // location.reload()
+                                // let oTable = $('#data_table').dataTable();
+                                // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
+                            }
+                        }
+                    })
+
+                }
+            })
+        }
+    </script>
     <script>
         $(document).ready(function () {
             $('#myTable').DataTable({

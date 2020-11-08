@@ -47,7 +47,7 @@ class FalconSystemController extends Controller
         }
         $user = $response['data']['user'];
         auth('civil')->login($user);
-        return redirect()->route('falcon-civilIndex');
+        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
 
     }
 
@@ -66,7 +66,7 @@ class FalconSystemController extends Controller
         }
         $user = $response['data']['user'];
         auth('civil')->login($user);
-        return redirect()->route('falcon-civilIndex');
+        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
 
     }
 
@@ -74,20 +74,25 @@ class FalconSystemController extends Controller
     {
         $is_active = 1;
         $falcons = $this->falcon_ctrl->all($request)['data']['falcons'] ?? [];
+//        return $falcons;
         return view('frontsite.pages.falconSystem.civil.all', compact('is_active', 'falcons'));
     }
 
     public function addCivilFalcon()
     {
         $is_active = 1;
-        return $this->utility_ctrl->allOptions()['data']['options']->groupBy('type');
-        return view('frontsite.pages.falconSystem.civil.add', compact('is_active'));
+        $helper_utilities = $this->utility_ctrl->allOptions()['data']['options']->groupBy('type');
+        return view('frontsite.pages.falconSystem.civil.add', compact('is_active', 'helper_utilities'));
     }
 
     public function handleAddCivilFalcon(Request $request)
     {
 
-        return $request->all();
+        $response = $this->falcon_ctrl->create($request);
+        if (!$response['status']) {
+            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+        }
+        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
     }
 
     public function searchCivilFalcon(Request $request)
@@ -123,7 +128,7 @@ class FalconSystemController extends Controller
         }
         $user = $response['data']['user'];
         auth('hospital')->login($user);
-        return redirect()->route('falcon-hospitalIndex');
+        return redirect()->route('falcon-hospitalIndex')->with('success', 'تمت العملية بنجاح');
     }
 
     public function hospitalIndex()

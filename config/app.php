@@ -159,6 +159,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Matthewbdaly\LaravelAzureStorage\AzureStorageServiceProvider::class,
+        Artisaninweb\SoapWrapper\ServiceProvider::class,
 
 
     ],
@@ -214,6 +215,7 @@ return [
 
         'Adldap' => Adldap\Laravel\Facades\Adldap::class,
 //        'SoapClient' => SoapClient::class,
+        'SoapWrapper' => Artisaninweb\SoapWrapper\Facade\SoapWrapper::class,
 
 
 
