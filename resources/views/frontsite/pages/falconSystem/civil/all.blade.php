@@ -89,7 +89,7 @@
             }).then(function (result) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "https://approc.com/~approctest/epa/beta/system/violation/delete-violation",
+                        url: "{{route('civilDeleteFalcon')}}",
                         method: "delete",
                         data: {
                             _token: '{{csrf_token()}}',
