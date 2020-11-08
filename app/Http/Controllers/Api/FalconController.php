@@ -74,4 +74,10 @@ class FalconController extends Controller
         return $this->falconRepo->deleteFileDetail($request->id);
 
     }
+
+    public function delete(Request $request)
+    {
+        return $this->falconRepo->delete($request->id);
+
+    }
 }

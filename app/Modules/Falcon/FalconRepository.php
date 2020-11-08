@@ -20,7 +20,7 @@ class FalconRepository
 
     public function create(array $data)
     {
-        $data['user_id'] = auth()->user()->id ?? $data['user_id'] ?? null;
+        $data['user_id'] = auth('civil')->user()->id ?? $data['user_id'] ?? null;
         $falcon = $this->falconModel->create($data);
         // Check Files
 
@@ -81,6 +81,31 @@ class FalconRepository
         return return_msg(true,'Success',compact('falcons'));
     }
 
+    public function delete($id)
+    {
+        $falcon = $this->falconModel->find($id);
+        if (!$falcon){
+            return return_msg(false,'Not Found');
+        }
+        foreach ($falcon->file_details as $file){
+
+            $file_object = $file->getFile;
+            try {
+                $file_object ? unlink(storage_path('files/falcon/'.$file_object->name)) : null;
+            }catch (\Exception $exception)
+            {
+
+            }
+            $file_object->delete();
+            $file->delete();
+
+        }
+        $falcon->delete();
+
+        return return_msg(true,'Success');
+
+
+    }
     public function deleteFileDetail($id)
     {
         $file_details = FalconFileDetail::find($id);
@@ -101,6 +126,7 @@ class FalconRepository
 
 
     }
+
 
     public function updateHospital($data)
     {
