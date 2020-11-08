@@ -108,7 +108,10 @@ class FalconRepository
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
-//        $falcon->;
+        $falcon->P_FAL_PIT_NO = $data['P_FAL_PIT_NO'] ?? null;
+        $falcon->P_FAL_RING_NO = $data['P_FAL_RING_NO'] ?? null;
+        $falcon->P_FAL_INJ_DATE = $data['P_FAL_INJ_DATE'] ?? null;
+        $falcon->save();
 
 
         return return_msg(true,'Success',compact('falcon'));

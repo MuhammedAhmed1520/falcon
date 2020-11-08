@@ -11,7 +11,11 @@ trait FalconRepoHelper
     {
         if ($data['hospital_id'] ?? null)
         {
-            $model->where('P_FAL_INJ_HOSPITAL',$data['hospital_id']);
+            $model->where('P_FAL_INJ_HOSPITAL',$data['hospital_id'])
+                ->whereNull('P_FAL_PIT_NO')
+                ->whereNull('P_FAL_RING_NO')
+                ->whereNull('P_FAL_INJ_DATE')
+            ;
 
         }
 

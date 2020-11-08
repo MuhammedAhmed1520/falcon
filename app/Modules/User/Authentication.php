@@ -51,7 +51,7 @@ class Authentication
             return return_msg(false, 'something went wrong...', []);
         }
 
-        auth()->login($user);
+        auth('civil')->login($user);
 
         return return_msg(true, 'register done successfully', compact('user'));
     }
@@ -90,7 +90,7 @@ class Authentication
 
         $remember_me = isset($data['remember_me']) ? $data['remember_me'] : false;
 
-        auth()->login($user, $remember_me);
+        auth('civil')->login($user, $remember_me);
 
         return return_msg(true, 'login done successfully', compact('user'));
     }

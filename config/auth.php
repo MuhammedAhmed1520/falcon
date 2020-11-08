@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
 
+        'civil' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
         'hospital' => [
             'driver' => 'session',
             'provider' => 'hospitals',

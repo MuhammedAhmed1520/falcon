@@ -40,6 +40,17 @@ class FalconController extends Controller
         return $this->falconRepo->update($request->all());
 
     }
+    public function updateHospital(Request $request)
+    {
+        $validation = $this->validateFalconUpdateHospitalRequest($request->all());
+        if ($validation->fails()){
+            return return_msg(false,"validation Errors",[
+                "validation_errors" => $validation->getMessageBag()->getMessages(),
+            ]);
+        }
+        return $this->falconRepo->updateHospital($request->all());
+
+    }
 
     public function show($id)
     {
