@@ -138,7 +138,7 @@
                                                 <label for="password_confirmation">تأكيد كلمة المرور
                                                     <star>*</star>
                                                 </label>
-                                                <input type="password_confirmation" name="password_confirmation"
+                                                <input type="password" name="password_confirmation"
                                                        class="ui-input"
                                                        value="{{old('password_confirmation')}}"
                                                        autocomplete="off">

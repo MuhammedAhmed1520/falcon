@@ -60,7 +60,15 @@ class FalconSystemController extends Controller
     public function handleCivilRegister(Request $request)
     {
 
-        return $request->all();
+        $response = $this->auth_civil->register($request);
+        if (!$response['status']) {
+            return $response;
+            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+        }
+        $user = $response['data']['user'];
+        auth('civil')->login($user);
+        return redirect()->route('falcon-civilIndex');
+
     }
 
     public function civilIndex(Request $request)
