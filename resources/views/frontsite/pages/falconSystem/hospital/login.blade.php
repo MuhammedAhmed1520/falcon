@@ -32,24 +32,24 @@
                                         <div class="columns centered">
                                             <div class="column is-3-desktop"></div>
                                             <div class="column is-12 is-6-desktop">
-                                                <label for="P_O_MAIL">البريد الالكتروني</label>
-                                                <input type="text" name="P_O_MAIL" class="ui-input"
-                                                       value="{{old('P_O_MAIL')}}"
+                                                <label for="email">البريد الالكتروني</label>
+                                                <input type="text" name="email" class="ui-input"
+                                                       value="{{old('email')}}"
                                                        autocomplete="off">
-                                                @if($errors->has('P_O_MAIL'))
-                                                    <span class="tag color-red">{{$errors->first('P_O_MAIL')}}</span>
+                                                @if($errors->has('email'))
+                                                    <span class="tag color-red">{{$errors->first('email')}}</span>
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="columns centered">
                                             <div class="column is-3-desktop"></div>
                                             <div class="column is-12 is-6-desktop">
-                                                <label for="P_O_PASSWORD">كلمة المرور </label>
-                                                <input type="password" name="P_O_PASSWORD" class="ui-input"
-                                                       value="{{old('P_O_PASSWORD')}}"
+                                                <label for="password">كلمة المرور </label>
+                                                <input type="password" name="password" class="ui-input"
+                                                       value="{{old('password')}}"
                                                        autocomplete="off">
-                                                @if($errors->has('P_O_PASSWORD'))
-                                                    <span class="tag color-red">{{$errors->first('P_O_PASSWORD')}}</span>
+                                                @if($errors->has('password'))
+                                                    <span class="tag color-red">{{$errors->first('password')}}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -87,11 +87,11 @@
         });
         $("#form").validate({
             rules: {
-                P_O_MAIL: {
+                email: {
                     required: true,
                     email: true
                 },
-                P_O_PASSWORD: {
+                password: {
                     required: true,
                 },
             },

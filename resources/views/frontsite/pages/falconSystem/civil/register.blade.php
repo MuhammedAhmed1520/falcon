@@ -40,18 +40,19 @@
                                                     الرقم المدني
                                                     <star>*</star>
                                                 </label>
-                                                <input type="text" name="P_O_CIVIL_ID" class="ui-input" 
+                                                <input type="text" name="P_O_CIVIL_ID" class="ui-input"
                                                        value="{{old('P_O_CIVIL_ID')}}"
                                                        autocomplete="off">
                                                 @if($errors->has('P_O_CIVIL_ID'))
-                                                    <span class="tag color-red">{{$errors->first('P_O_CIVIL_ID')}}</span>
+                                                    <span
+                                                        class="tag color-red">{{$errors->first('P_O_CIVIL_ID')}}</span>
                                                 @endif
                                             </div>
                                             <div class="column is-12 is-4-desktop">
                                                 <label for="P_O_A_NAME"> الاسم بالعربي
                                                     <star>*</star>
                                                 </label>
-                                                <input type="text" name="P_O_A_NAME" class="ui-input" 
+                                                <input type="text" name="P_O_A_NAME" class="ui-input"
                                                        value="{{old('P_O_A_NAME')}}"
                                                        autocomplete="off">
                                                 @if($errors->has('P_O_A_NAME'))
@@ -62,7 +63,7 @@
                                                 <label for="P_O_ADDRESS"> العنوان
                                                     <star>*</star>
                                                 </label>
-                                                <input type="text" name="P_O_ADDRESS" class="ui-input" 
+                                                <input type="text" name="P_O_ADDRESS" class="ui-input"
                                                        value="{{old('P_O_ADDRESS')}}"
                                                        autocomplete="off">
                                                 @if($errors->has('P_O_ADDRESS'))
@@ -76,7 +77,7 @@
 
                                                     <star>*</star>
                                                 </label>
-                                                <input type="text" name="P_O_MOBILE" class="ui-input" 
+                                                <input type="text" name="P_O_MOBILE" class="ui-input"
                                                        value="{{old('P_O_MOBILE')}}"
                                                        autocomplete="off">
                                                 @if($errors->has('P_O_MOBILE'))
@@ -87,11 +88,12 @@
                                                 <label for="P_O_PASSPORT_NO">رقم الجواز لصاحب الطلب
                                                     <star>*</star>
                                                 </label>
-                                                <input type="text" name="P_O_PASSPORT_NO" class="ui-input" 
+                                                <input type="text" name="P_O_PASSPORT_NO" class="ui-input"
                                                        value="{{old('P_O_PASSPORT_NO')}}"
                                                        autocomplete="off">
                                                 @if($errors->has('P_O_PASSPORT_NO'))
-                                                    <span class="tag color-red">{{$errors->first('P_O_PASSPORT_NO')}}</span>
+                                                    <span
+                                                        class="tag color-red">{{$errors->first('P_O_PASSPORT_NO')}}</span>
                                                 @endif
                                             </div>
                                             <div class="column is-12 is-4-desktop">
@@ -99,36 +101,50 @@
                                                     <star>*</star>
                                                 </label>
                                                 <input type="text" name="P_CIVIL_EXPIRY_DT" class="ui-input date"
-                                                       
+
                                                        value="{{old('P_CIVIL_EXPIRY_DT')}}"
                                                        autocomplete="off">
                                                 @if($errors->has('P_CIVIL_EXPIRY_DT'))
-                                                    <span class="tag color-red">{{$errors->first('P_CIVIL_EXPIRY_DT')}}</span>
+                                                    <span
+                                                        class="tag color-red">{{$errors->first('P_CIVIL_EXPIRY_DT')}}</span>
                                                 @endif
                                             </div>
                                         </div>
 
                                         <div class="columns centered">
                                             <div class="column is-12 is-4-desktop">
-                                                <label for="P_O_MAIL">البريد الالكتروني
+                                                <label for="email">البريد الالكتروني
                                                     <star>*</star>
                                                 </label>
-                                                <input type="text" name="P_O_MAIL" class="ui-input"  
-                                                       value="{{old('P_O_MAIL')}}"
+                                                <input type="text" name="email" class="ui-input"
+                                                       value="{{old('email')}}"
                                                        autocomplete="off">
-                                                @if($errors->has('P_O_MAIL'))
-                                                    <span class="tag color-red">{{$errors->first('P_O_MAIL')}}</span>
+                                                @if($errors->has('email'))
+                                                    <span class="tag color-red">{{$errors->first('email')}}</span>
                                                 @endif
                                             </div>
                                             <div class="column is-12 is-4-desktop">
-                                                <label for="P_O_PASSWORD">كلمة المرور
+                                                <label for="password">كلمة المرور
                                                     <star>*</star>
                                                 </label>
-                                                <input type="password" name="P_O_PASSWORD" class="ui-input" 
-                                                       value="{{old('P_O_PASSWORD')}}"
+                                                <input type="password" name="password" class="ui-input"
+                                                       value="{{old('password')}}"
                                                        autocomplete="off">
-                                                @if($errors->has('P_O_PASSWORD'))
-                                                    <span class="tag color-red">{{$errors->first('P_O_PASSWORD')}}</span>
+                                                @if($errors->has('password'))
+                                                    <span class="tag color-red">{{$errors->first('password')}}</span>
+                                                @endif
+                                            </div>
+                                            <div class="column is-12 is-4-desktop">
+                                                <label for="password_confirmation">تأكيد كلمة المرور
+                                                    <star>*</star>
+                                                </label>
+                                                <input type="password_confirmation" name="password_confirmation"
+                                                       class="ui-input"
+                                                       value="{{old('password_confirmation')}}"
+                                                       autocomplete="off">
+                                                @if($errors->has('password_confirmation'))
+                                                    <span
+                                                        class="tag color-red">{{$errors->first('password_confirmation')}}</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -197,11 +213,14 @@
                     required: true,
                     date: true,
                 },
-                P_O_MAIL: {
+                email: {
                     required: true,
                     email: true
                 },
-                P_O_PASSWORD: {
+                password: {
+                    required: true,
+                },
+                password_confirmation: {
                     required: true,
                 },
             },

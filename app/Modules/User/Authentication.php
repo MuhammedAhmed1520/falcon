@@ -51,7 +51,7 @@ class Authentication
             return return_msg(false, 'something went wrong...', []);
         }
 
-        auth()->login($user);
+        auth('civil')->login($user);
 
         return return_msg(true, 'register done successfully', compact('user'));
     }
@@ -66,13 +66,13 @@ class Authentication
     public function login(array $data)
     {
         $user = $this->globalRepository->findSingleWhere($this->user, [
-            ['username' => $data['username']]
+            ['email' => $data['email']]
         ]);
 
         if (!$user) {
             return return_msg(false, 'user is not found', [
                 'validation_errors' => [
-                    "username" => ["هذا المستخدم غير موجود"]
+                    "email" => ["هذا المستخدم غير موجود"]
                 ]
             ]);
         }
@@ -83,14 +83,14 @@ class Authentication
 
             return return_msg(false, 'wrong password', [
                 'validation_errors' => [
-                    "username" => ["كلمة المرور غير صحيحة"]
+                    "password" => ["كلمة المرور غير صحيحة"]
                 ]
             ]);
         }
 
         $remember_me = isset($data['remember_me']) ? $data['remember_me'] : false;
 
-        auth()->login($user, $remember_me);
+        auth('civil')->login($user, $remember_me);
 
         return return_msg(true, 'login done successfully', compact('user'));
     }

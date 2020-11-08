@@ -40,16 +40,16 @@
                         <tfoot>
                         <tbody>
 
-                        @foreach([1] as $order)
+                        @foreach($falcons as $falcon)
                             <tr>
-                                <td>{{$order}}</td>
-                                <td>{{$order}}</td>
-                                <td>{{$order}}</td>
+                                <td>{{$falcon->P_OUT_REQUEST_NO ?? ''}}</td>
+                                <td>{{$falcon->origin_country->title ?? ''}}</td>
+                                <td>{{$falcon->fal_type->title ?? ''}}</td>
                                 {{--<td>--}}
                                 {{--                                    <span class="tag is-dark">{{$order->status->title_ar ?? ''}}</span>--}}
                                 {{--</td>--}}
                                 <td>
-                                    <a href="{{route('falcon-editCivilFalcon',['id'=>1])}}"
+                                    <a href="{{route('falcon-editCivilFalcon',['id'=>$falcon->id])}}"
                                        class="button is-link">
                                         تعديل
                                     </a>

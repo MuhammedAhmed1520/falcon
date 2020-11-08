@@ -11,7 +11,6 @@ class AuthHospitalController extends Controller
 {
 
     /**
-     * @var Authentication $authentication
      */
     private $authentication;
 
@@ -72,7 +71,7 @@ class AuthHospitalController extends Controller
     {
 
         return validator($request->all(), [
-            'username' => 'required|min:1',
+            'email' => 'required|email',
             'password' => 'required|min:6|max:20'
         ]);
     }
@@ -84,7 +83,8 @@ class AuthHospitalController extends Controller
             'username' => 'required|unique:users_hospital,username',
             'password' => 'required|min:6|confirmed',
             'mobile' => 'nullable|digits:8',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
+            'hospital_id' => 'required|numeric',
         ]);
     }
 
