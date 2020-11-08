@@ -18,6 +18,17 @@
       'Adldap' => 'Adldap\\Laravel\\Facades\\Adldap',
     ),
   ),
+  'artisaninweb/laravel-soap' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Artisaninweb\\SoapWrapper\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'SoapWrapper' => 'Artisaninweb\\SoapWrapper\\Facade',
+    ),
+  ),
   'beyondcode/laravel-dump-server' => 
   array (
     'providers' => 
