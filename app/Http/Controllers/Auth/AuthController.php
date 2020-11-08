@@ -72,7 +72,7 @@ class AuthController extends Controller
     {
 
         return validator($request->all(), [
-            'username' => 'required|min:1',
+            'email' => 'required|email',
             'password' => 'required|min:6|max:20'
         ]);
     }
@@ -84,7 +84,7 @@ class AuthController extends Controller
             'username' => 'required|unique:users,username',
             'password' => 'required|min:6|confirmed',
             'mobile' => 'nullable|digits:8',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
         ]);
     }
 

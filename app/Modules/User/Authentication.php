@@ -66,13 +66,13 @@ class Authentication
     public function login(array $data)
     {
         $user = $this->globalRepository->findSingleWhere($this->user, [
-            ['username' => $data['username']]
+            ['email' => $data['email']]
         ]);
 
         if (!$user) {
             return return_msg(false, 'user is not found', [
                 'validation_errors' => [
-                    "username" => ["هذا المستخدم غير موجود"]
+                    "email" => ["هذا المستخدم غير موجود"]
                 ]
             ]);
         }
@@ -83,7 +83,7 @@ class Authentication
 
             return return_msg(false, 'wrong password', [
                 'validation_errors' => [
-                    "username" => ["كلمة المرور غير صحيحة"]
+                    "password" => ["كلمة المرور غير صحيحة"]
                 ]
             ]);
         }
