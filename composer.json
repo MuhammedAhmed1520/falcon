@@ -18,8 +18,7 @@
         "laravelcollective/html": "^5.2.0",
         "mews/captcha": "^2.2",
         "pusher/pusher-php-server": "^4.1",
-        "tymon/jwt-auth": "^1.0",
-        "artisaninweb/laravel-soap": "0.3.*"
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
