@@ -51,6 +51,7 @@
     47 => 'Mews\\Captcha\\CaptchaServiceProvider',
     48 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     49 => 'Matthewbdaly\\LaravelAzureStorage\\AzureStorageServiceProvider',
+    50 => 'Artisaninweb\\SoapWrapper\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -85,6 +86,7 @@
     28 => 'Mews\\Captcha\\CaptchaServiceProvider',
     29 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     30 => 'Matthewbdaly\\LaravelAzureStorage\\AzureStorageServiceProvider',
+    31 => 'Artisaninweb\\SoapWrapper\\ServiceProvider',
   ),
   'deferred' => 
   array (
