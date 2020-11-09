@@ -31,7 +31,7 @@ trait FalconRepoHelper
 
     protected function createFiles($falcon,$data)
     {
-        foreach ($data['files'] as $file)
+        foreach ($data['files'] ?? [] as $file)
         {
             if ($file['file'] ?? null){
                 $uploaded_file = uploadFile($file['file'] ,'falcon');
