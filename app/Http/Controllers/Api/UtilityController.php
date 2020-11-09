@@ -60,6 +60,47 @@ class UtilityController extends Controller
 //        var_dump($response);
         exit;
     }
+    public function ___testSoap()
+    {
+        $this->soapWrapper->add('Falcon', function ($service) {
+            $service
+                ->wsdl('https://xmlpitest-ea.dhl.com/XMLShippingServlet')
+                ->trace(true)
+                ->options(['user_agent' => 'PHPSoapClient'])
+                ->classmap([
+                    SubmitFalconRequest::class,
+                    SubmitFalconRequestResponse::class,
+                ]);
+        });
+
+        $req = new SubmitFalconRequest(1, 123456789632,
+            'محمد', 'تجريبى',
+            12345678, '12589632',
+            '2022-01-01', 'muhammedahmed1520@gmail.com',
+            null, null,
+            null, null,
+            null, null,
+            null, null,
+            'M', 'test',
+            '1', 'test',
+            '1', '1',
+            '157654', '4361',
+            '2020-11-01', '1',
+            '46347643', '5',
+            '46347643', '46347643'
+        );
+//        dd($req);
+
+        // With classmap
+        $response = $this->soapWrapper->call('Falcon.submitFalconRequest', [
+            $req
+        ]);
+
+//        $json = json_encode($response);
+//        $response = json_decode($json,TRUE);
+//        dd($response);
+        exit;
+    }
     public function testSoap()
     {
         $this->soapWrapper->add('Falcon', function ($service) {
