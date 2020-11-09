@@ -465,6 +465,8 @@ return [
         'P_FAL_RING_NO' => 'رقم الحلقة',
         'P_FAL_INJ_DATE' => 'تاريخ الحقن',
         'P_FAL_INJ_HOSPITAL' => 'المستشفي',
+        'files.*.file' => 'الملف',
+        'files.*.file_type_id' => 'نوع الملف',
 
     ],
     'values' => [
