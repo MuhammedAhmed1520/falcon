@@ -387,7 +387,7 @@
 
                                             <div id="row_files">
                                                 @foreach($falcon->file_details ?? [] as $k=>$file)
-                                                    <div class="columns centered">
+                                                    <div class="columns centered" id="row_{{$file->id}}">
                                                         <div class="column is-12 is-4-desktop">
                                                             <b for="file_type_id" class="text-bold">
                                                                 نوع الملف <br>
@@ -403,6 +403,12 @@
                                                                 <a href="{{$file['file']}}" target="_blank">عرض
                                                                     الملف</a>
                                                             @endif
+                                                        </div>
+                                                        <div class="column is-12 is-4-desktop">
+                                                            <button class="btn btn-primary has-background-danger" type="button"
+                                                                    onclick="deleteRow('{{$file->id}}')">
+                                                                حذف
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 @endforeach
@@ -440,6 +446,42 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script>
+
+        function deleteRow(id) {
+            Swal.fire({
+                title: 'انتبه',
+                text: 'هل انت متأكد ؟',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'ﻻ',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{route('deleteFileDetail')}}",
+                        method: "post",
+                        data: {
+                            _token: '{{csrf_token()}}',
+                            id: id
+                        },
+                        success: function (response) {
+                            if (response.status) {
+                                $(`#row_${id}`).remove()
+                                // location.reload()
+                                // let oTable = $('#data_table').dataTable();
+                                // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
+                            }
+                        }
+                    })
+
+                }
+            })
+        }
+
         let counter = -1
         $(document).ready(function () {
 

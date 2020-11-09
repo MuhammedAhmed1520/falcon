@@ -4,10 +4,29 @@
             <div class="column is-12">
                 <nav class="navbar is-dark navbar-is-dark" role="navigation" aria-label="main navigation">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="./">
-                            <img src="{{asset('assets/images/logo.png')}}" style="width: 120px;max-height: 120px">
-                        </a>
+                        @if(!getAuthUser('civil') && !getAuthUser('hospital'))
+                            <a class="navbar-item" href="{{route('falcon-index')}}">
+                                <img src="{{asset('assets/images/logo.png')}}" style="width: 120px;max-height: 120px">
+                            </a>
+                        @else
 
+
+                            @if(getAuthUser('civil'))
+                                <a class="navbar-item" href="{{route('falcon-civilIndex')}}">
+                                    <img src="{{asset('assets/images/logo.png')}}"
+                                         style="width: 120px;max-height: 120px">
+                                </a>
+                            @endif
+
+
+                            @if(getAuthUser('hospital'))
+                                <a class="navbar-item" href="{{route('falcon-hospitalIndex')}}">
+                                    <img src="{{asset('assets/images/logo.png')}}"
+                                         style="width: 120px;max-height: 120px">
+                                </a>
+                            @endif
+
+                        @endif
                         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                            data-target="navbarBasicExample">
                             <span aria-hidden="true"></span>
@@ -76,7 +95,7 @@
                                     </a>
 
 
-                                    <a href="" class="navbar-item">
+                                    <a href="{{route('falcon-getCivilProfile')}}" class="navbar-item">
                                         <span class="item_text">
                                             الصفحة الشخصية
                                         </span>

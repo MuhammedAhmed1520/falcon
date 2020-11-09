@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Front;
 
 use App\Http\Controllers\Api\FalconController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UtilityController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\AuthHospitalController;
@@ -16,12 +17,14 @@ class FalconSystemController extends Controller
     private $auth_civil;
     private $auth_hospital;
     private $falcon_ctrl;
+    private $user_ctrl;
     private $utility_ctrl;
 
     public function __construct()
     {
         $this->falcon_ctrl = new FalconController();
         $this->auth_civil = new AuthController();
+        $this->user_ctrl = new UserController();
         $this->auth_hospital = new AuthHospitalController();
         $this->utility_ctrl = new UtilityController();
     }
@@ -77,6 +80,22 @@ class FalconSystemController extends Controller
         return view('frontsite.pages.falconSystem.civil.all', compact('is_active', 'falcons'));
     }
 
+    public function getCivilProfile()
+    {
+        $is_active = 1;
+        return view('frontsite.pages.falconSystem.civil.profile', compact('is_active'));
+    }
+
+    public function handleUpdateCivilProfile(Request $request)
+    {
+
+        $response = $this->user_ctrl->updateAuthData($request);
+        if (!$response['status']) {
+            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+        }
+        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
+    }
+
     public function addCivilFalcon()
     {
         $is_active = 1;
@@ -87,11 +106,6 @@ class FalconSystemController extends Controller
     public function handleAddCivilFalcon(Request $request)
     {
         return $this->falcon_ctrl->create($request);
-//        $response = $this->falcon_ctrl->create($request);
-//        if (!$response['status']) {
-//            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
-//        }
-//        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
     }
 
     public function searchCivilFalcon(Request $request)
@@ -117,12 +131,6 @@ class FalconSystemController extends Controller
 
         $request->request->add(['id' => $id]);
         return $this->falcon_ctrl->update($request);
-//        $response = $this->falcon_ctrl->update($request);
-////        return $response;
-//        if (!$response['status']) {
-//            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
-//        }
-//        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
     }
 
     public function hospitalLogin()
@@ -191,6 +199,38 @@ class FalconSystemController extends Controller
             logout('civil');
         }
         return back();
+    }
+
+
+    public function civilForgetPassword()
+    {
+        $is_active = 1;
+        return view('frontsite.pages.falconSystem.civil.forgetPassword', compact('is_active'));
+    }
+
+    public function resetPasswordView(Request $request, $token)
+    {
+        $is_active = 1;
+        return view('frontsite.pages.falconSystem.civil.resetPassword', compact('is_active'));
+    }
+
+    public function handleForgetPassword(Request $request)
+    {
+        $response = $this->user_ctrl->forgetPassword($request);
+        if (!$response['status']) {
+            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+        }
+        return redirect()->route('falcon-civilLogin')->with('success', 'تمت ارسال رابط تغيير كلمة المرور الى بريدك الالكتروني بنجاح');
+    }
+
+    public function handleResetPassword(Request $request, $token)
+    {
+        $request->request->add(['token'=> $token]);
+        $response = $this->user_ctrl->resetPassword($request);
+        if (!$response['status']) {
+            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+        }
+        return redirect()->route('falcon-civilLogin')->with('success', 'تم تغيير كلمة المرور بنجاح');
     }
 
 }
