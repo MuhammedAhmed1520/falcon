@@ -29,6 +29,8 @@ Route::group([
                 Route::group([
                     'middleware' => 'civilAuth',
                 ], function () {
+                    Route::get('logoutCivil', 'FalconSystemController@logoutCivil')->name('logoutCivil');
+
                     Route::get('', 'FalconSystemController@civilIndex')->name('falcon-civilIndex');
 
                     Route::get('/search', 'FalconSystemController@searchCivilFalcon')->name('falcon-searchCivilFalcon');
@@ -53,9 +55,11 @@ Route::group([
                 Route::group([
                     'middleware' => 'hospitalAuth',
                 ], function () {
-                    Route::get('', 'FalconSystemController@hospitalIndex')->name('falcon-hospitalIndex');
+                    Route::get('logoutHospital', 'FalconSystemController@logoutHospital')->name('logoutHospital');
 
+                    Route::get('', 'FalconSystemController@hospitalIndex')->name('falcon-hospitalIndex');
                     Route::get('/edit/{id}', 'FalconSystemController@editHospitalFalcon')->name('falcon-editHospitalFalcon');
+                    Route::post('/edit/{id}', 'FalconSystemController@handleEditHospitalFalcon')->name('handle-hospital-edit-falcon');
 
                 });
             });

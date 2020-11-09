@@ -113,7 +113,7 @@
                                                            value="{{$falcon->P_CIVIL_EXPIRY_DT}}"
                                                            autocomplete="off">
                                                     <span id="P_CIVIL_EXPIRY_DT"
-                                                          class="tag color-red">{{$errors->first('P_CIVIL_EXPIRY_DT')}}
+                                                          class="tag color-red">{{$errors->first('P_CIVIL_EXPIRY_DT')}}</span>
                                                 </div>
                                             </div>
 

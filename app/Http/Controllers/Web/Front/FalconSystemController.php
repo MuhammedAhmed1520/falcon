@@ -87,11 +87,11 @@ class FalconSystemController extends Controller
     public function handleAddCivilFalcon(Request $request)
     {
         return $this->falcon_ctrl->create($request);
-        $response = $this->falcon_ctrl->create($request);
-        if (!$response['status']) {
-            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
-        }
-        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
+//        $response = $this->falcon_ctrl->create($request);
+//        if (!$response['status']) {
+//            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+//        }
+//        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
     }
 
     public function searchCivilFalcon(Request $request)
@@ -117,12 +117,12 @@ class FalconSystemController extends Controller
 
         $request->request->add(['id' => $id]);
         return $this->falcon_ctrl->update($request);
-        $response = $this->falcon_ctrl->update($request);
-//        return $response;
-        if (!$response['status']) {
-            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
-        }
-        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
+//        $response = $this->falcon_ctrl->update($request);
+////        return $response;
+//        if (!$response['status']) {
+//            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+//        }
+//        return redirect()->route('falcon-civilIndex')->with('success', 'تمت العملية بنجاح');
     }
 
     public function hospitalLogin()
@@ -143,16 +143,54 @@ class FalconSystemController extends Controller
         return redirect()->route('falcon-hospitalIndex')->with('success', 'تمت العملية بنجاح');
     }
 
-    public function hospitalIndex()
+    public function hospitalIndex(Request $request)
     {
         $is_active = 1;
-        return view('frontsite.pages.falconSystem.hospital.all', compact('is_active'));
+        $hospital_id = getAuthUser('hospital')->hospital_id;
+        $request->request->add(['hospital_id' => $hospital_id]);
+        $falcons = $this->falcon_ctrl->all($request)['data']['falcons'] ?? [];
+        return view('frontsite.pages.falconSystem.hospital.all', compact('is_active', 'falcons'));
     }
 
     public function editHospitalFalcon(Request $request, $id)
     {
         $is_active = 1;
-        return view('frontsite.pages.falconSystem.hospital.edit', compact('is_active'));
+        $falcon = $this->falcon_ctrl->show($id)['data']['falcon'] ?? null;
+        $helper_utilities = $this->utility_ctrl->allOptions()['data']['options']->groupBy('type');
+        if (!$falcon) {
+            return back()->with('error', 'غير موجود');
+        }
+        return view('frontsite.pages.falconSystem.hospital.edit', compact('is_active', 'falcon', 'helper_utilities'));
+    }
+
+    public function handleEditHospitalFalcon(Request $request, $id)
+    {
+        $is_active = 1;
+        $request->request->add(['id' => $id]);
+//        return $request->all();
+        $response = $this->falcon_ctrl->updateHospital($request);
+        if (!$response['status']) {
+            return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
+        }
+        return redirect()->route('falcon-hospitalIndex')->with('success', 'تمت العملية بنجاح');
+    }
+
+    public function logoutHospital()
+    {
+        $user = getAuthUser('hospital');
+        if ($user) {
+            logout('hospital');
+        }
+        return back();
+    }
+
+    public function logoutCivil()
+    {
+        $user = getAuthUser('civil');
+        if ($user) {
+            logout('civil');
+        }
+        return back();
     }
 
 }

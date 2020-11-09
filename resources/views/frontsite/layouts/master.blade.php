@@ -78,21 +78,11 @@
 <div class="env_loader">
     <img src="{{asset('assets/images/gifs/env.gif')}}"/>
 </div>
-@if(!request()->get('window'))
-    @include('frontsite.includes.inner_header')
-@endif
-@if(env('SITE_FRAMES'))
-    @include('frontsite.includes.header')
-@endif
+@include('frontsite.includes.inner_header')
 
 @yield('content')
 
-@if(env('SITE_FRAMES'))
-    @include('frontsite.includes.footer')
-@endif
-@if(!request()->get('window'))
-    @include('frontsite.includes.inner_footer')
-@endif
+@include('frontsite.includes.inner_footer')
 <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
 @yield('scripts')

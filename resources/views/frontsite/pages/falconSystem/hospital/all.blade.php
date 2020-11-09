@@ -24,11 +24,12 @@
                     @include('frontsite.includes.alerts')
                 </div>
 
-                <div class="column is-12-desktop is-12-tablet">
+                <div class="column is-12-desktop is-12-tablet" style="min-height: 520px">
                     <table class="table" id="myTable">
                         <thead>
                         <tr>
-                            <th><abbr>رقم جواز الصقر</abbr></th>
+                            <th><abbr>رقم جواز الصقر الحالى</abbr></th>
+                            <th>فئة الصقر</th>
                             <th>نوع الصقر</th>
                             <th>بلد المنشأ</th>
                             {{--<th><abbr>الحالة</abbr></th>--}}
@@ -38,16 +39,17 @@
                         <tfoot>
                         <tbody>
 
-                        @foreach([1] as $order)
-                            <tr>
-                                <td>{{$order}}</td>
-                                <td>{{$order}}</td>
-                                <td>{{$order}}</td>
+                        @foreach($falcons as $falcon)
+                            <tr id="row_{{$falcon->id}}">
+                                <td>{{$falcon->P_CUR_PASS_FAL ?? ''}}</td>
+                                <td>{{$falcon->P_FAL_SPECIES ?? ''}}</td>
+                                <td>{{$falcon->origin_country->label ?? ''}}</td>
+                                <td>{{$falcon->fal_type->label ?? ''}}</td>
                                 {{--<td>--}}
                                 {{--                                    <span class="tag is-dark">{{$order->status->title_ar ?? ''}}</span>--}}
                                 {{--</td>--}}
                                 <td>
-                                    <a href="{{route('falcon-editHospitalFalcon',['id'=>1])}}"
+                                    <a href="{{route('falcon-editHospitalFalcon',['id'=>$falcon->id])}}"
                                        class="button is-link">
                                         عرض تفاصيل
                                     </a>

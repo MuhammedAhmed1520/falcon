@@ -135,8 +135,8 @@ function send_email($data)
 
 
 //    try {
-        Mail::to($data['to'])
-            ->send(new MailSender($data['content'], $data['template']));
+    Mail::to($data['to'])
+        ->send(new MailSender($data['content'], $data['template']));
 //    } catch (\Exception $exception) {
 
 //    }
@@ -275,7 +275,12 @@ function getOfficeAgentAuth()
 
 function getAuthUser($guard = "")
 {
-    return auth($guard)->user();
+    return auth($guard)->user() ?? null;
+}
+
+function logout($guard = "")
+{
+    return auth($guard)->logout();
 }
 
 function getUserFile($type)
