@@ -93,6 +93,8 @@
 @if(!request()->get('window'))
     @include('frontsite.includes.inner_footer')
 @endif
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
 @yield('scripts')
 </body>
 </html>

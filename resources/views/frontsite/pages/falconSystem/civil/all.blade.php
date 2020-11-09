@@ -71,8 +71,6 @@
 @endsection
 @section('scripts')
     {{Html::script('https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')}}
-    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.js"></script>
     <script>
         function deleteRow(id) {
             Swal.fire({

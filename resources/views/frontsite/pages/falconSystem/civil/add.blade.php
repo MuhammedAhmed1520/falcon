@@ -57,10 +57,9 @@
                                                             <option value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
-                                                    @if($errors->has('P_REQUEST_TYP'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_REQUEST_TYP')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_REQUEST_TYP">{{$errors->first('P_REQUEST_TYP') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_O_CIVIL_ID">
@@ -70,10 +69,9 @@
                                                     <input type="text" name="P_O_CIVIL_ID" class="ui-input"
                                                            value="{{getAuthUser("civil")->P_O_CIVIL_ID ?? ''}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_O_CIVIL_ID'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_O_CIVIL_ID')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_O_CIVIL_ID">{{$errors->first('P_O_CIVIL_ID') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_O_A_NAME"> الاسم بالعربي
@@ -82,10 +80,9 @@
                                                     <input type="text" name="P_O_A_NAME" class="ui-input"
                                                            value="{{getAuthUser("civil")->P_O_A_NAME ?? ''}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_O_A_NAME'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_O_A_NAME')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_O_A_NAME">{{$errors->first('P_O_A_NAME') ?? ''}}</span>
                                                 </div>
                                             </div>
                                             <div class="columns centered">
@@ -96,10 +93,9 @@
                                                     <input type="text" name="P_O_ADDRESS" class="ui-input"
                                                            value="{{getAuthUser("civil")->P_O_ADDRESS ?? ''}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_O_ADDRESS'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_O_ADDRESS')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_O_ADDRESS">{{$errors->first('P_O_ADDRESS') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_O_PASSPORT_NO">رقم الجواز لصاحب الطلب
@@ -108,10 +104,9 @@
                                                     <input type="text" name="P_O_PASSPORT_NO" class="ui-input"
                                                            value="{{getAuthUser("civil")->P_O_PASSPORT_NO ?? ''}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_O_PASSPORT_NO'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_O_PASSPORT_NO')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_O_PASSPORT_NO">{{$errors->first('P_O_PASSPORT_NO') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_CIVIL_EXPIRY_DT"> تاريخ انتهاء البطاقة المدنية
@@ -120,10 +115,9 @@
                                                     <input type="text" name="P_CIVIL_EXPIRY_DT" class="ui-input date"
                                                            value="{{getAuthUser("civil")->P_CIVIL_EXPIRY_DT}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_CIVIL_EXPIRY_DT'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_CIVIL_EXPIRY_DT')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_CIVIL_EXPIRY_DT">{{$errors->first('P_CIVIL_EXPIRY_DT') ?? ''}}</span>
                                                 </div>
                                             </div>
 
@@ -136,10 +130,9 @@
                                                     <input type="text" name="P_O_MOBILE" class="ui-input"
                                                            value="{{getAuthUser("civil")->P_O_MOBILE ?? ''}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_O_MOBILE'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_O_MOBILE')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_O_MOBILE">{{$errors->first('P_O_MOBILE') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_O_MAIL">البريد الالكتروني
@@ -148,10 +141,9 @@
                                                     <input type="text" name="P_O_MAIL" class="ui-input"
                                                            value="{{getAuthUser("civil")->email ?? ''}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_O_MAIL'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_O_MAIL')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_O_MAIL">{{$errors->first('P_O_MAIL') ?? ''}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,7 +153,7 @@
                         </div>
                     </div>
 
-                    <div class="columns">
+                    <div class="columns" id="new_owner" style="display: none">
                         <div class="column">
                             <div class="box">
                                 <div class="media">
@@ -180,10 +172,9 @@
                                                     <input type="text" name="P_NW_CIVIL_ID" class="ui-input"
                                                            value="{{old('P_NW_CIVIL_ID')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_NW_CIVIL_ID'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_NW_CIVIL_ID')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_NW_CIVIL_ID">{{$errors->first('P_NW_CIVIL_ID') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_NW_A_NAME"> الاسم العربي للمالك الجديد
@@ -192,10 +183,9 @@
                                                     <input type="text" name="P_NW_A_NAME" class="ui-input"
                                                            value="{{old('P_NW_A_NAME')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_NW_A_NAME'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_NW_A_NAME')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_NW_A_NAME">{{$errors->first('P_NW_A_NAME') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_NW_ADDRESS"> العنوان للمالك الجديد
@@ -204,10 +194,9 @@
                                                     <input type="text" name="P_NW_ADDRESS" class="ui-input"
                                                            value="{{old('P_NW_ADDRESS')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_NW_ADDRESS'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_NW_ADDRESS')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_NW_ADDRESS">{{$errors->first('P_NW_ADDRESS') ?? ''}}</span>
                                                 </div>
                                             </div>
                                             <div class="columns centered">
@@ -218,10 +207,9 @@
                                                     <input type="text" name="P_NW_PASSPORT_NO" class="ui-input"
                                                            value="{{old('P_NW_PASSPORT_NO')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_NW_PASSPORT_NO'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_NW_PASSPORT_NO')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_NW_PASSPORT_NO">{{$errors->first('P_NW_PASSPORT_NO') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_NW_CIVIL_EXPIRY"> تاريخ انتهاء البطاقة المدنية للمالك
@@ -232,10 +220,8 @@
 
                                                            value="{{old('P_NW_CIVIL_EXPIRY')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_NW_CIVIL_EXPIRY'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_NW_CIVIL_EXPIRY')}}</span>
-                                                    @endif
+                                                    <span id="P_NW_CIVIL_EXPIRY"
+                                                          class="tag color-red">{{$errors->first('P_NW_CIVIL_EXPIRY') ?? ''}}</span>
                                                 </div>
                                             </div>
 
@@ -247,10 +233,8 @@
                                                     <input type="text" name="P_NW_MOBILE" class="ui-input"
                                                            value="{{old('P_NW_MOBILE')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_NW_MOBILE'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_NW_MOBILE')}}</span>
-                                                    @endif
+                                                    <span id="P_NW_MOBILE"
+                                                          class="tag color-red">{{$errors->first('P_NW_MOBILE') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_NW_O_MAIL">البريد الالكتروني للمالك الجديد
@@ -259,10 +243,8 @@
                                                     <input type="text" name="P_NW_O_MAIL" class="ui-input"
                                                            value="{{old('P_NW_O_MAIL')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_NW_O_MAIL'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_NW_O_MAIL')}}</span>
-                                                    @endif
+                                                    <span id="P_NW_O_MAIL"
+                                                          class="tag color-red">{{$errors->first('P_NW_O_MAIL') ?? ''}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,10 +271,9 @@
                                                     <input type="text" name="P_CUR_PASS_FAL" class="ui-input"
                                                            value="{{old('P_CUR_PASS_FAL')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_CUR_PASS_FAL'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_CUR_PASS_FAL')}}</span>
-                                                    @endif
+                                                    <span
+                                                        class="tag color-red"
+                                                        id="P_CUR_PASS_FAL">{{$errors->first('P_CUR_PASS_FAL') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_NW_A_NAME">
@@ -305,20 +286,16 @@
                                                                 value="{{$item['code']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
-                                                    @if($errors->has('P_FAL_SEX'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_SEX')}}</span>
-                                                    @endif
+                                                    <span id="P_FAL_SEX"
+                                                          class="tag color-red">{{$errors->first('P_FAL_SEX') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_FAL_SPECIES">فئة الصقر</label>
                                                     <input type="text" name="P_FAL_SPECIES" class="ui-input"
                                                            value="{{old('P_FAL_SPECIES')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_FAL_SPECIES'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_SPECIES')}}</span>
-                                                    @endif
+                                                    <span id="P_FAL_SPECIES"
+                                                          class="tag color-red">{{$errors->first('P_FAL_SPECIES') ?? ''}}</span>
                                                 </div>
                                             </div>
 
@@ -332,10 +309,8 @@
                                                             <option value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
-                                                    @if($errors->has('P_FAL_TYPE'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
-                                                    @endif
+                                                    <span id="P_FAL_TYPE"
+                                                          class="tag color-red">{{$errors->first('P_FAL_TYPE') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_FAL_OTHER_TYPE"> اخري
@@ -345,10 +320,8 @@
 
                                                            value="{{old('P_FAL_OTHER_TYPE')}}"
                                                            autocomplete="off">
-                                                    @if($errors->has('P_FAL_OTHER_TYPE'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_OTHER_TYPE')}}</span>
-                                                    @endif
+                                                    <span id="P_FAL_OTHER_TYPE"
+                                                          class="tag color-red">{{$errors->first('P_FAL_OTHER_TYPE') ?? ''}}</span>
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_FAL_ORIGIN_COUNTRY">
@@ -359,10 +332,10 @@
                                                             <option value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
-                                                    @if($errors->has('P_FAL_ORIGIN_COUNTRY'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_ORIGIN_COUNTRY')}}</span>
-                                                    @endif
+
+                                                    <span id="P_FAL_ORIGIN_COUNTRY"
+                                                          class="tag color-red">{{$errors->first('P_FAL_ORIGIN_COUNTRY') ?? ''}}</span>
+
                                                 </div>
                                             </div>
 
@@ -377,22 +350,10 @@
                                                                 value="{{$item['id']}}">{{$item['label']}}</option>
                                                         @endforeach
                                                     </select>
-                                                    @if($errors->has('P_FAL_CITES_NO'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_CITES_NO')}}</span>
-                                                    @endif
-                                                </div>
-                                                <div class="column is-12 is-4-desktop">
-                                                    <label for="P_FAL_PIT_NO">
-                                                        رقم الشريحة
-                                                    </label>
-                                                    <input type="text" name="P_FAL_PIT_NO" class="ui-input"
-                                                           value="{{old('P_FAL_PIT_NO')}}"
-                                                           autocomplete="off">
-                                                    @if($errors->has('P_FAL_PIT_NO'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_PIT_NO')}}</span>
-                                                    @endif
+
+                                                    <span id="P_FAL_CITES_NO"
+                                                          class="tag color-red">{{$errors->first('P_FAL_CITES_NO') ?? ''}}</span>
+
                                                 </div>
                                                 <div class="column is-12 is-4-desktop">
                                                     <label for="P_FAL_INJ_HOSPITAL">
@@ -406,8 +367,8 @@
                                                         @endforeach
                                                     </select>
                                                     @if($errors->has('P_FAL_INJ_HOSPITAL'))
-                                                        <span
-                                                            class="tag color-red">{{$errors->first('P_FAL_INJ_HOSPITAL')}}</span>
+                                                        <span id="P_FAL_INJ_HOSPITAL"
+                                                              class="tag color-red">{{$errors->first('P_FAL_INJ_HOSPITAL') ?? ''}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -440,27 +401,24 @@
                                                         <label for="file_type_id">
                                                             نوع الملف
                                                         </label>
-                                                        <select name="files[][file_type_id]" class="ui-input">
+                                                        <select name="files[0][file_type_id]" class="ui-input">
                                                             @foreach($helper_utilities['documents_type'] ?? [] as $item)
                                                                 <option
                                                                     value="{{$item['id']}}">{{$item['label']}}</option>
                                                             @endforeach
                                                         </select>
-                                                        @if($errors->has('P_FAL_TYPE'))
-                                                            <span
-                                                                class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
-                                                        @endif
+                                                        <span id="files0file_type_id"
+                                                              class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
+
                                                     </div>
 
                                                     <div class="column is-12 is-4-desktop">
                                                         <label for="P_FAL_PIT_NO">
                                                             الملف
                                                         </label>
-                                                        <input type="file" name="files[][file]" class="ui-input">
-                                                        @if($errors->has('files'))
-                                                            <span
-                                                                class="tag color-red">{{$errors->first('files')}}</span>
-                                                        @endif
+                                                        <input type="file" name="files[0][file]" class="ui-input">
+                                                        <span id="files0file"
+                                                              class="tag color-red">{{$errors->first('files')}}</span>
                                                     </div>
                                                 </div>
 
@@ -497,6 +455,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script>
+        let counter = 0;
         $(document).ready(function () {
 
             $('.date').flatpickr({
@@ -625,9 +584,6 @@
                         return $('select[name="P_REQUEST_TYP"] > option:selected').val() == 1;
                     }
                 },
-                P_FAL_PIT_NO: {
-                    required: true
-                },
                 // P_FAL_RING_NO: {
                 //     required: (element) => {
                 //         return $('select[name="P_REQUEST_TYP"] > option:selected').val() == 1;
@@ -649,42 +605,77 @@
                 // some other code
                 // maybe disabling submit button
                 // then:
-                form.submit();
+                // form.submit();
+                let form_data = new FormData(form)
+                $.ajax({
+                    url: form.action,
+                    type: form.method,
+                    data: form_data,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response.status) {
+                            Swal.fire({
+                                'icon': 'success',
+                                'text': 'تمت العملية بنجاح',
+                                'title': 'نجاح',
+                            })
+                            location.href = '{{route('falcon-civilIndex')}}'
+                        } else {
+                            $('.tag').text('')
+                            let errors = response.data.validation_errors;
+                            $.each(errors, (k, v) => {
+                                let selector = k.replace(/\./g, '').replace(/\./g, '').replace(/\./g, '');
+
+                                $(`#${selector}`).text(v[0])
+                            })
+
+                        }
+                    }
+                });
             }
         });
 
         function addRow() {
+            counter++;
             $('#row_files').append(`
                                                 <div class="columns centered">
                                                     <div class="column is-12 is-4-desktop">
                                                         <label for="file_type_id">
                                                             نوع الملف
                                                         </label>
-                                                        <select name="files[][file_type_id]" class="ui-input">
+                                                        <select name="files[${counter}][file_type_id]" class="ui-input">
                                                             @foreach($helper_utilities['documents_type'] ?? [] as $item)
                 <option
                     value="{{$item['id']}}">{{$item['label']}}</option>
                                                             @endforeach
                 </select>
-@if($errors->has('P_FAL_TYPE'))
-                <span
+                <span id="files${counter}file_type_id"
                     class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
-                                                        @endif
                 </div>
 
                 <div class="column is-12 is-4-desktop">
                     <label for="P_FAL_PIT_NO">
                         الملف
                     </label>
-                    <input type="file" name="files[][file]" class="ui-input">
-@if($errors->has('files'))
-                <span
+                    <input type="file" name="files[${counter}][file]" class="ui-input">
+                <span id="files${counter}file"
                     class="tag color-red">{{$errors->first('files')}}</span>
-                                                        @endif
                 </div>
             </div>`)
         }
 
+        $(`select[name="P_REQUEST_TYP"]`).on('change', () => {
+            let value = $("select[name=\"P_REQUEST_TYP\"] option:selected").val();
+            console.log(value)
+            if (value == 4) {
+
+                $('#new_owner').show();
+            } else {
+
+                $('#new_owner').hide()
+            }
+        })
     </script>
 @endsection
 @section('styles')

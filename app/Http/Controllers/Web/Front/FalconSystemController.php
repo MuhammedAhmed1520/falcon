@@ -86,6 +86,7 @@ class FalconSystemController extends Controller
 
     public function handleAddCivilFalcon(Request $request)
     {
+        return $this->falcon_ctrl->create($request);
         $response = $this->falcon_ctrl->create($request);
         if (!$response['status']) {
             return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
@@ -115,6 +116,7 @@ class FalconSystemController extends Controller
     {
 
         $request->request->add(['id' => $id]);
+        return $this->falcon_ctrl->update($request);
         $response = $this->falcon_ctrl->update($request);
 //        return $response;
         if (!$response['status']) {
