@@ -29,7 +29,7 @@ class UtilityController extends Controller
 
     }
 
-    public function _testSoap()
+    public function testSoap()
     {
         $this->soapWrapper->add('Currency', function ($service) {
             $service
@@ -41,25 +41,20 @@ class UtilityController extends Controller
                     GetConversionAmountResponse::class,
                 ]);
         });
+
         // Without classmap
-//        $response = $this->soapWrapper->call('Currency.GetConversionAmount', [
-//            'CurrencyFrom' => 'USD',
-//            'CurrencyTo'   => 'EUR',
-//            'RateDate'     => '2014-06-05',
-//            'Amount'       => '1000',
-//        ]);
-
-
-        // With classmap
-        $response = $this->soapWrapper->call('Currency.GetConversionAmount', [
-            new GetConversionAmount('USD', 'EG', '2020-11-08', '1000')
+        $response = $this->soapWrapper->call('Currency.GetConversionAmount',[
+            new GetConversionAmount('USD', 'EUR', '2014-06-05', '1000')
         ]);
 
-        dd($response);
-        var_dump($response);
-        exit;
+        $json = json_encode($response);
+        $response = json_decode($json,TRUE);
+        return $response;
+//        dd($response);
+//        var_dump($response);
+//        exit;
     }
-    public function testSoap()
+    public function _testSoap()
     {
         $this->soapWrapper->add('Falcon', function ($service) {
             $service

@@ -133,16 +133,13 @@ function getSetting($name)
 function send_email($data)
 {
 
-    if (in_array((getSetting('agent_mail_active')['data']['setting'] ?? null), [0, null])) {
-        return;
-    }
 
-    try {
+//    try {
         Mail::to($data['to'])
             ->send(new MailSender($data['content'], $data['template']));
-    } catch (\Exception $exception) {
+//    } catch (\Exception $exception) {
 
-    }
+//    }
 
 }
 

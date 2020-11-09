@@ -2,6 +2,7 @@
 
 namespace App\Modules\User;
 
+use App\Models\PasswordReset;
 use App\Support\Repository;
 use App\Models\User as UserModel;
 use Illuminate\Support\Facades\Artisan;
@@ -49,7 +50,6 @@ class User
         $users = custom_paginate($users,10);
         return return_msg(true, 'User Successfully Returned', compact('users'));
     }
-
 
     // Find User
     public function find($id)
@@ -112,6 +112,7 @@ class User
         // $this->repository->update($user, $data);
         return return_msg(true, 'User Successfully Updated');
     }
+
     public function updatePassword(array $data)
     {
         $user = $this->userModel->find($data['id'] ?? 0);
@@ -127,6 +128,83 @@ class User
         $user->password = bcrypt($data['password']);
         $user->save();
         return return_msg(true,"Updated Successfully");
+    }
+
+    public function updateAuthData($data)
+    {
+        $user = auth('civil')->user();
+        if (!$user){
+            return return_msg(false,"Not Found");
+        }
+        $user->P_O_A_NAME = $data['P_O_A_NAME'] ?? null;
+        $user->P_O_MOBILE = $data['P_O_MOBILE'] ?? null;
+        $user->P_O_CIVIL_ID = $data['P_O_CIVIL_ID'] ?? null;
+        $user->P_O_ADDRESS = $data['P_O_ADDRESS'] ?? null;
+        $user->P_O_PASSPORT_NO = $data['P_O_PASSPORT_NO'] ?? null;
+        $user->P_CIVIL_EXPIRY_DT = $data['P_CIVIL_EXPIRY_DT'] ?? null;
+
+        $user->save();
+        return return_msg(true,"Success");
+    }
+
+    public function forgetPassword(array $data)
+    {
+        $user = $this->userModel->where('email',$data['email'] ?? null)->first();
+        if (!$user) {
+            return return_msg(false, 'user is not found', [
+                'validation_errors' => [
+                    "email" => ["هذا المستخدم غير موجود"]
+                ]
+            ]);
+        }
+        $token = uniqid().time();
+
+        PasswordReset::insert([
+            'email' => $data['email'],
+            'token' => $token,
+        ]);
+
+        send_email([
+            'to' => $data['email'],
+            'content' => $token,
+            'template' => 'mails.reset_password',
+        ]);
+        return return_msg(true,"Success");
+
+
+
+    }
+
+    public function resetPassword(array $data)
+    {
+
+
+        $token = PasswordReset::where('token',$data['token'])->first();
+        if (!$token){
+            return return_msg(false, 'user is not found', [
+                'validation_errors' => [
+                    "token" => ["هذا المستخدم غير موجود"]
+                ]
+            ]);
+        }
+        $user = $this->userModel->where('email',$token->email)->first();
+        if (!$user) {
+            return return_msg(false, 'user is not found', [
+                'validation_errors' => [
+                    "token" => ["هذا المستخدم غير موجود"]
+                ]
+            ]);
+        }
+        $user->password = bcrypt($data['password']);
+        $user->save();
+
+        PasswordReset::where('email',$user->email)->delete();
+
+
+        return return_msg(true,"Success");
+
+
+
     }
 
 }
