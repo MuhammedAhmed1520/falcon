@@ -45,6 +45,16 @@ Route::group(['prefix' => 'utility','namespace' => 'Api'], function () {
     Route::get('/allOptions/{type?}','UtilityController@allOptions');
     Route::get('/testSoap','UtilityController@testSoap');
 });
+Route::group(['prefix' => 'user-auth','namespace' => 'Api'], function () {
+
+    Route::post('/forgetPassword','UserController@forgetPassword');
+    Route::post('/resetPassword','UserController@resetPassword');
+    Route::post('/updateAuthData','UserController@updateAuthData');
+});
+
+Route::get('reset_password/{token}',function ($token){
+   return $token;
+})->name('resetPasswordView');
 
 
 

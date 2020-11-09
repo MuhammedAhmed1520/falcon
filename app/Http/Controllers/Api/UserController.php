@@ -96,15 +96,45 @@ class UserController extends Controller
         return $this->userPresenter->updatePassword($request_data);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //
         return $this->userPresenter->delete($id);
+    }
+
+
+    public function updateAuthData(Request $request)
+    {
+        $validation = $this->UpdateAuthUserRequest($request->all());
+        if ($validation->fails()) {
+            return return_msg(false, 'validation errors', [
+                'validation_errors' => $validation->getMessageBag()->getMessages()
+            ]);
+        }
+        return $this->userPresenter->updateAuthData($request->all());
+
+    }
+    public function forgetPassword(Request $request)
+    {
+        $validation = $this->forgetPasswordRequest($request->all());
+        if ($validation->fails()) {
+            return return_msg(false, 'validation errors', [
+                'validation_errors' => $validation->getMessageBag()->getMessages()
+            ]);
+        }
+        return $this->userPresenter->forgetPassword($request->all());
+
+    }
+    public function resetPassword(Request $request)
+    {
+        $validation = $this->resetPasswordRequest($request->all());
+        if ($validation->fails()) {
+            return return_msg(false, 'validation errors', [
+                'validation_errors' => $validation->getMessageBag()->getMessages()
+            ]);
+        }
+        return $this->userPresenter->resetPassword($request->all());
+
     }
 }

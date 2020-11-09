@@ -74,6 +74,11 @@ trait FalconTrait
 //            'P_FAL_RING_NO' => 'required_if:P_REQUEST_TYP,1',
 //            'P_FAL_INJ_DATE' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_INJ_HOSPITAL' => 'required_if:P_REQUEST_TYP,1',
+
+            'files' => 'nullable|array',
+            'files.*.file_type_id' => 'required|numeric',
+            'files.*.file' => 'required|file',
+
             'id' => 'required',
         ]);
     }

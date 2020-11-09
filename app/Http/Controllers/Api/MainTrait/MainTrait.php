@@ -38,5 +38,30 @@ trait MainTrait
             'password' => 'required|confirmed|min:6|max:20',
         ]);
     }
+    public function UpdateAuthUserRequest(array $request_data)
+    {
+        return validator($request_data, [
+            'P_O_A_NAME' => 'required|string',
+            'P_O_MOBILE' => 'required|numeric|digits:8',
+            'P_O_CIVIL_ID' => 'required|numeric|digits:12',
+            'P_O_ADDRESS' => 'required',
+            'P_O_PASSPORT_NO' => 'required',
+            'P_CIVIL_EXPIRY_DT' => 'required|date',
+        ]);
+    }
+    public function forgetPasswordRequest(array $request_data)
+    {
+        return validator($request_data, [
+            'email' => 'required|email',
+
+        ]);
+    }
+    public function resetPasswordRequest(array $request_data)
+    {
+        return validator($request_data, [
+            'token' => 'required',
+            'password' => 'required|confirmed|min:6',
+        ]);
+    }
 
 }

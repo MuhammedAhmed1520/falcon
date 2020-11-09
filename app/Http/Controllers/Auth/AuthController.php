@@ -83,7 +83,7 @@ class AuthController extends Controller
             'P_O_A_NAME' => 'required|string',
             'password' => 'required|min:6|confirmed',
             'P_O_MOBILE' => 'required|numeric|digits:8',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'P_O_CIVIL_ID' => 'required|numeric|digits:12',
             'P_O_ADDRESS' => 'required',
             'P_O_PASSPORT_NO' => 'required',
