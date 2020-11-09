@@ -20,6 +20,13 @@ Route::group([
                 'prefix' => 'civil',
             ], function () {
 
+                Route::get('resetPasswordView/{token}', 'FalconSystemController@resetPasswordView')->name('resetPasswordView');
+                Route::post('resetPasswordView/{token}', 'FalconSystemController@handleResetPassword')->name('handleResetPassword');
+
+                Route::get('civilForgetPassword', 'FalconSystemController@civilForgetPassword')->name('civilForgetPassword');
+                Route::post('civilForgetPassword', 'FalconSystemController@handleForgetPassword')->name('civil-handle-forget-password');
+
+
                 Route::get('login', 'FalconSystemController@civilLogin')->name('falcon-civilLogin');
                 Route::post('login', 'FalconSystemController@handleCivilLogin')->name('falcon-handle-civil-login');
 
@@ -29,6 +36,8 @@ Route::group([
                 Route::group([
                     'middleware' => 'civilAuth',
                 ], function () {
+                    Route::get('logoutCivil', 'FalconSystemController@logoutCivil')->name('logoutCivil');
+
                     Route::get('', 'FalconSystemController@civilIndex')->name('falcon-civilIndex');
 
                     Route::get('/search', 'FalconSystemController@searchCivilFalcon')->name('falcon-searchCivilFalcon');
@@ -38,6 +47,9 @@ Route::group([
 
                     Route::get('/edit/{id}', 'FalconSystemController@editCivilFalcon')->name('falcon-editCivilFalcon');
                     Route::post('/edit/{id}', 'FalconSystemController@handleEditCivilFalcon')->name('handle-edit-falcon');
+
+                    Route::get('/profile', 'FalconSystemController@getCivilProfile')->name('falcon-getCivilProfile');
+                    Route::post('/profile', 'FalconSystemController@handleUpdateCivilProfile')->name('handle-update-info-civil');
 
                 });
 
@@ -53,9 +65,11 @@ Route::group([
                 Route::group([
                     'middleware' => 'hospitalAuth',
                 ], function () {
-                    Route::get('', 'FalconSystemController@hospitalIndex')->name('falcon-hospitalIndex');
+                    Route::get('logoutHospital', 'FalconSystemController@logoutHospital')->name('logoutHospital');
 
+                    Route::get('', 'FalconSystemController@hospitalIndex')->name('falcon-hospitalIndex');
                     Route::get('/edit/{id}', 'FalconSystemController@editHospitalFalcon')->name('falcon-editHospitalFalcon');
+                    Route::post('/edit/{id}', 'FalconSystemController@handleEditHospitalFalcon')->name('handle-hospital-edit-falcon');
 
                 });
             });
