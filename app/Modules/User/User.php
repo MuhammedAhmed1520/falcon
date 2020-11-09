@@ -183,7 +183,7 @@ class User
         if (!$token){
             return return_msg(false, 'user is not found', [
                 'validation_errors' => [
-                    "token" => ["هذا المستخدم غير موجود"]
+                    "password" => ["هذا المستخدم غير موجود"]
                 ]
             ]);
         }
@@ -191,7 +191,7 @@ class User
         if (!$user) {
             return return_msg(false, 'user is not found', [
                 'validation_errors' => [
-                    "token" => ["هذا المستخدم غير موجود"]
+                    "password" => ["هذا المستخدم غير موجود"]
                 ]
             ]);
         }

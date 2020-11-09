@@ -95,9 +95,10 @@ class UtilityController extends Controller
         $response = $this->soapWrapper->call('Falcon.submitFalconRequest', [
             $req
         ]);
+
 //        $json = json_encode($response);
 //        $response = json_decode($json,TRUE);
-        dd($response);
+//        dd($response);
         exit;
     }
 
