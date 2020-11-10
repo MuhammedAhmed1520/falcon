@@ -137,7 +137,7 @@ class FalconRepository
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
-        if (!$falcon->P_FAL_PIT_NO){
+        if ($falcon->P_FAL_PIT_NO){
 
             return return_msg(false,'Not Found',[
                 "validation_errors"=>[
