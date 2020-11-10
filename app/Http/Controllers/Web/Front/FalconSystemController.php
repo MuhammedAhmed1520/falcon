@@ -38,12 +38,14 @@ class FalconSystemController extends Controller
     public function civilLogin()
     {
         $is_active = 1;
+        $this->logoutAll();
         return view('frontsite.pages.falconSystem.civil.login', compact('is_active'));
     }
 
     public function handleCivilLogin(Request $request)
     {
 
+        $this->logoutAll();
         $response = $this->auth_civil->login($request);
         if (!$response['status']) {
             return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
@@ -57,6 +59,7 @@ class FalconSystemController extends Controller
     public function civilRegister()
     {
         $is_active = 1;
+        $this->logoutAll();
         return view('frontsite.pages.falconSystem.civil.register', compact('is_active'));
     }
 
@@ -136,12 +139,13 @@ class FalconSystemController extends Controller
     public function hospitalLogin()
     {
         $is_active = 1;
+        $this->logoutAll();
         return view('frontsite.pages.falconSystem.hospital.login', compact('is_active'));
     }
 
     public function handleHospitalLogin(Request $request)
     {
-
+        $this->logoutAll();
         $response = $this->auth_hospital->login($request);
         if (!$response['status']) {
             return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
@@ -233,4 +237,16 @@ class FalconSystemController extends Controller
         return redirect()->route('falcon-civilLogin')->with('success', 'تم تغيير كلمة المرور بنجاح');
     }
 
+    public function logoutAll()
+    {
+        $user = getAuthUser('civil');
+        if ($user) {
+            logout('civil');
+        }
+        $user = getAuthUser('hospital');
+        if ($user) {
+            logout('hospital');
+        }
+
+    }
 }
