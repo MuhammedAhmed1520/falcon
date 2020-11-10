@@ -35,8 +35,10 @@ class FalconRepository
 
     public function update(array $data)
     {
-
-        $falcon = $this->falconModel->find($data['id'] ?? null);
+        $user = auth('civil')->user();
+        $falcon = $this->falconModel->where('id',$data['id'] ?? null);
+        $user ? $falcon = $falcon->where('user_id',$user->id):null;
+        $falcon = $falcon->first();
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
@@ -50,7 +52,15 @@ class FalconRepository
     public function show($id)
     {
 
-        $falcon = $this->falconModel->find($id);
+        $user = auth('civil')->user();
+        $hospital = auth('hospital')->user();
+        $falcon = $this->falconModel->where('id',$id);
+
+        $user ? $falcon = $falcon->where('user_id',$user->id):null;
+        $hospital ? $falcon = $falcon->where('P_FAL_INJ_HOSPITAL',$hospital->hospital_id):null;
+
+        $falcon = $falcon->first();
+
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
@@ -133,26 +143,42 @@ class FalconRepository
 
     public function updateHospital($data)
     {
-        $falcon = $this->falconModel->find($data['id'] ?? null);
+        $hospital = auth('hospital')->user();
+        $falcon = $this->falconModel->where('id',$data['id'] ?? null);
+
+        $hospital ? $falcon = $falcon->where('P_FAL_INJ_HOSPITAL',$hospital->hospital_id):null;
+        $falcon = $falcon->first();
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
-        if ($falcon->P_REQUEST_TYP == 1)
-        {
-            if (!isset($data['P_FAL_RING_NO'])){
+        if ($falcon->P_FAL_PIT_NO){
 
-            }
-
+            return return_msg(false,'Not Found',[
+                "validation_errors"=>[
+                    "P_FAL_PIT_NO" => ['تم اضافة الطلب من قبل']
+                ]
+            ]);
         }
+
 
         $falcon->P_FAL_PIT_NO = $data['P_FAL_PIT_NO'] ?? null;
         $falcon->P_FAL_RING_NO = $data['P_FAL_RING_NO'] ?? null;
         $falcon->P_FAL_INJ_DATE = $data['P_FAL_INJ_DATE'] ?? null;
+
+        if ($data['file'] ?? null)
+        {
+            $uploaded_file = uploadFile($data['file'] ,'falcon');
+            $falcon->certificate_file = $uploaded_file['name'];
+
+        }
+
         $falcon->save();
         $falcon->refresh();
 
+        // Create File
+
         //// Send Order
-        $this->sendSoapRequest($falcon);
+//        $this->sendSoapRequest($falcon);
 
 
         return return_msg(true,'Success',compact('falcon'));

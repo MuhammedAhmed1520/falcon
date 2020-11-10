@@ -28,7 +28,7 @@ trait FalconTrait
             'P_FAL_SEX' => 'required_if:P_REQUEST_TYP,1|in:M,F',
             'P_FAL_SPECIES' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_TYPE' => 'required_if:P_REQUEST_TYP,1',
-            'P_FAL_OTHER_TYPE' => 'required_if:P_REQUEST_TYP,1',
+            'P_FAL_OTHER_TYPE' => 'required_if:P_FAL_TYPE,9',
             'P_FAL_ORIGIN_COUNTRY' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_CITES_NO' => 'required_if:P_REQUEST_TYP,1',
 //            'P_FAL_PIT_NO' => 'required',
@@ -67,7 +67,7 @@ trait FalconTrait
             'P_FAL_SEX' => 'required_if:P_REQUEST_TYP,1|in:M,F',
             'P_FAL_SPECIES' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_TYPE' => 'required_if:P_REQUEST_TYP,1',
-            'P_FAL_OTHER_TYPE' => 'required_if:P_REQUEST_TYP,1',
+            'P_FAL_OTHER_TYPE' => 'required_if:P_FAL_TYPE,9',
             'P_FAL_ORIGIN_COUNTRY' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_CITES_NO' => 'required_if:P_REQUEST_TYP,1',
 //            'P_FAL_PIT_NO' => 'required',
@@ -89,6 +89,7 @@ trait FalconTrait
             'P_FAL_PIT_NO' => 'required',
             'P_FAL_RING_NO' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_INJ_DATE' => 'required_if:P_REQUEST_TYP,1',
+            'file' => 'required|file',
 
             'id' => 'required',
         ]);

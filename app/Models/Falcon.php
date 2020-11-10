@@ -16,8 +16,11 @@ class Falcon extends Model
         'P_FAL_CITES_NO', 'P_FAL_PIT_NO', 'P_FAL_RING_NO',
         'P_FAL_INJ_DATE', 'P_FAL_INJ_HOSPITAL', 'P_PAYMENT_ID',
         'P_AMOUNT', 'P_TRANS_ID', 'P_TRACK_ID', 'P_OUT_REQUEST_NO',
-        'P_STATUS_MSG', 'user_id',
+        'P_STATUS_MSG','certificate_file', 'user_id',
     ];
+
+    protected $appends = ['certificate_file_path'];
+
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
@@ -47,5 +50,12 @@ class Falcon extends Model
     public function file_details()
     {
         return $this->hasMany(FalconFileDetail::class,'falcon_id');
+    }
+    public function getCertificateFilePathAttribute()
+    {
+        if ($this->certificate_file){
+            return getFullPathEdit($this->certificate_file,'falcon');
+        }
+        return null;
     }
 }
