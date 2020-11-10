@@ -7,6 +7,7 @@ namespace App\Modules\Falcon;
 use App\Models\Falcon;
 use App\Models\FalconFileDetail;
 use Artisaninweb\SoapWrapper\SoapWrapper;
+use Illuminate\Support\Facades\DB;
 
 class FalconRepository
 {
@@ -143,6 +144,7 @@ class FalconRepository
 
     public function updateHospital($data)
     {
+
         $hospital = auth('hospital')->user();
         $falcon = $this->falconModel->where('id',$data['id'] ?? null);
 
@@ -151,19 +153,20 @@ class FalconRepository
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
-        if ($falcon->P_FAL_PIT_NO){
-
-            return return_msg(false,'Not Found',[
-                "validation_errors"=>[
-                    "P_FAL_PIT_NO" => ['تم اضافة الطلب من قبل']
-                ]
-            ]);
-        }
+//        if (!$falcon->is_hospital){
+//
+//            return return_msg(false,'Not Found',[
+//                "validation_errors"=>[
+//                    "P_FAL_PIT_NO" => ['تم اضافة الطلب من قبل']
+//                ]
+//            ]);
+//        }
 
 
         $falcon->P_FAL_PIT_NO = $data['P_FAL_PIT_NO'] ?? null;
         $falcon->P_FAL_RING_NO = $data['P_FAL_RING_NO'] ?? null;
         $falcon->P_FAL_INJ_DATE = $data['P_FAL_INJ_DATE'] ?? null;
+        $falcon->is_hospital = 0;
 
         if ($data['file'] ?? null)
         {
@@ -172,13 +175,13 @@ class FalconRepository
 
         }
 
+
         $falcon->save();
         $falcon->refresh();
 
-        // Create File
-
         //// Send Order
-//        $this->sendSoapRequest($falcon);
+        $this->sendSoapRequest($falcon);
+
 
 
         return return_msg(true,'Success',compact('falcon'));
