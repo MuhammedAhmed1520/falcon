@@ -164,6 +164,16 @@ class FalconSystemController extends Controller
         return view('frontsite.pages.falconSystem.hospital.all', compact('is_active', 'falcons'));
     }
 
+    public function allArchived(Request $request)
+    {
+        $is_active = 1;
+        $hospital_id = getAuthUser('hospital')->hospital_id;
+        $request->request->add(['hospital_id' => $hospital_id]);
+        $request->request->add(['is_hospital' => 1]);
+        $falcons = $this->falcon_ctrl->all($request)['data']['falcons'] ?? [];
+        return view('frontsite.pages.falconSystem.hospital.allArchived', compact('is_active', 'falcons'));
+    }
+
     public function editHospitalFalcon(Request $request, $id)
     {
         $is_active = 1;
@@ -173,6 +183,16 @@ class FalconSystemController extends Controller
             return back()->with('error', 'غير موجود');
         }
         return view('frontsite.pages.falconSystem.hospital.edit', compact('is_active', 'falcon', 'helper_utilities'));
+    }
+    public function archiveHospitalFalcon(Request $request, $id)
+    {
+        $is_active = 1;
+        $falcon = $this->falcon_ctrl->show($id)['data']['falcon'] ?? null;
+        $helper_utilities = $this->utility_ctrl->allOptions()['data']['options']->groupBy('type');
+        if (!$falcon) {
+            return back()->with('error', 'غير موجود');
+        }
+        return view('frontsite.pages.falconSystem.hospital.archive', compact('is_active', 'falcon', 'helper_utilities'));
     }
 
     public function handleEditHospitalFalcon(Request $request, $id)
