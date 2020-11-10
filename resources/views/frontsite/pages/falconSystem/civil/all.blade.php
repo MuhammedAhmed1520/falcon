@@ -34,7 +34,8 @@
                             <th>فئة الصقر</th>
                             <th>نوع الصقر</th>
                             <th>بلد المنشأ</th>
-                            {{--<th><abbr>الحالة</abbr></th>--}}
+                            <th><abbr>الحالة</abbr></th>
+                            <th><abbr>رقم الطلب</abbr></th>
                             <th width="100"></th>
                         </tr>
                         </thead>
@@ -47,9 +48,16 @@
                                 <td>{{$falcon->P_FAL_SPECIES ?? ''}}</td>
                                 <td>{{$falcon->origin_country->label ?? ''}}</td>
                                 <td>{{$falcon->fal_type->label ?? ''}}</td>
-                                {{--<td>--}}
-                                {{--                                    <span class="tag is-dark">{{$order->status->title_ar ?? ''}}</span>--}}
-                                {{--</td>--}}
+                                <td>
+                                    @if($falcon->P_STATUS_MSG ?? '')
+                                        <span class="tag is-dark">{{$falcon->P_STATUS_MSG ?? ''}}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($falcon->P_OUT_REQUEST_NO ?? '')
+                                        <span class="tag is-dark">{{$falcon->P_OUT_REQUEST_NO ?? ''}}</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{route('falcon-editCivilFalcon',['id'=>$falcon->id])}}"
                                        class="button is-link">

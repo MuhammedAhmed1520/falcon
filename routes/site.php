@@ -68,6 +68,8 @@ Route::group([
                     Route::get('logoutHospital', 'FalconSystemController@logoutHospital')->name('logoutHospital');
 
                     Route::get('', 'FalconSystemController@hospitalIndex')->name('falcon-hospitalIndex');
+                    Route::get('allArchived', 'FalconSystemController@allArchived')->name('falcon-allArchived');
+                    Route::get('/archive/{id}', 'FalconSystemController@archiveHospitalFalcon')->name('falcon-archiveHospitalFalcon');
                     Route::get('/edit/{id}', 'FalconSystemController@editHospitalFalcon')->name('falcon-editHospitalFalcon');
                     Route::post('/edit/{id}', 'FalconSystemController@handleEditHospitalFalcon')->name('handle-hospital-edit-falcon');
 

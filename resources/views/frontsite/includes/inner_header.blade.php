@@ -109,6 +109,12 @@
                                             <h3>({{getAuthUser('hospital')->hospital->label ?? ''}})</h3>
                                         </span>
                                     </a>
+
+                                    <a href="{{route('falcon-allArchived')}}" class="navbar-item">
+                                        <span class="item_text has-text-centered">
+                                              الطلبات المؤرشفة
+                                        </span>
+                                    </a>
                                 @endif
                             @endif
                         </div>

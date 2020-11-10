@@ -38,12 +38,14 @@ class FalconSystemController extends Controller
     public function civilLogin()
     {
         $is_active = 1;
+        $this->logoutAll();
         return view('frontsite.pages.falconSystem.civil.login', compact('is_active'));
     }
 
     public function handleCivilLogin(Request $request)
     {
 
+        $this->logoutAll();
         $response = $this->auth_civil->login($request);
         if (!$response['status']) {
             return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
@@ -57,6 +59,7 @@ class FalconSystemController extends Controller
     public function civilRegister()
     {
         $is_active = 1;
+        $this->logoutAll();
         return view('frontsite.pages.falconSystem.civil.register', compact('is_active'));
     }
 
@@ -136,12 +139,13 @@ class FalconSystemController extends Controller
     public function hospitalLogin()
     {
         $is_active = 1;
+        $this->logoutAll();
         return view('frontsite.pages.falconSystem.hospital.login', compact('is_active'));
     }
 
     public function handleHospitalLogin(Request $request)
     {
-
+        $this->logoutAll();
         $response = $this->auth_hospital->login($request);
         if (!$response['status']) {
             return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
@@ -160,6 +164,16 @@ class FalconSystemController extends Controller
         return view('frontsite.pages.falconSystem.hospital.all', compact('is_active', 'falcons'));
     }
 
+    public function allArchived(Request $request)
+    {
+        $is_active = 1;
+        $hospital_id = getAuthUser('hospital')->hospital_id;
+        $request->request->add(['hospital_id' => $hospital_id]);
+        $request->request->add(['is_hospital' => 1]);
+        $falcons = $this->falcon_ctrl->all($request)['data']['falcons'] ?? [];
+        return view('frontsite.pages.falconSystem.hospital.allArchived', compact('is_active', 'falcons'));
+    }
+
     public function editHospitalFalcon(Request $request, $id)
     {
         $is_active = 1;
@@ -169,6 +183,16 @@ class FalconSystemController extends Controller
             return back()->with('error', 'غير موجود');
         }
         return view('frontsite.pages.falconSystem.hospital.edit', compact('is_active', 'falcon', 'helper_utilities'));
+    }
+    public function archiveHospitalFalcon(Request $request, $id)
+    {
+        $is_active = 1;
+        $falcon = $this->falcon_ctrl->show($id)['data']['falcon'] ?? null;
+        $helper_utilities = $this->utility_ctrl->allOptions()['data']['options']->groupBy('type');
+        if (!$falcon) {
+            return back()->with('error', 'غير موجود');
+        }
+        return view('frontsite.pages.falconSystem.hospital.archive', compact('is_active', 'falcon', 'helper_utilities'));
     }
 
     public function handleEditHospitalFalcon(Request $request, $id)
@@ -233,4 +257,16 @@ class FalconSystemController extends Controller
         return redirect()->route('falcon-civilLogin')->with('success', 'تم تغيير كلمة المرور بنجاح');
     }
 
+    public function logoutAll()
+    {
+        $user = getAuthUser('civil');
+        if ($user) {
+            logout('civil');
+        }
+        $user = getAuthUser('hospital');
+        if ($user) {
+            logout('hospital');
+        }
+
+    }
 }
