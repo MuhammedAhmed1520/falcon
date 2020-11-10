@@ -225,7 +225,7 @@ class FalconSystemController extends Controller
 
     public function handleResetPassword(Request $request, $token)
     {
-        $request->request->add(['token'=> $token]);
+        $request->request->add(['token' => $token]);
         $response = $this->user_ctrl->resetPassword($request);
         if (!$response['status']) {
             return back()->withErrors($response['data']['validation_errors'] ?? [])->withInput();
