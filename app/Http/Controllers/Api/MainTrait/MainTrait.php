@@ -47,6 +47,7 @@ trait MainTrait
             'P_O_ADDRESS' => 'required',
             'P_O_PASSPORT_NO' => 'required',
             'P_CIVIL_EXPIRY_DT' => 'required|date',
+            'password' => 'nullable|min:6|confirmed',
         ]);
     }
     public function forgetPasswordRequest(array $request_data)

@@ -142,7 +142,7 @@ class User
         $user->P_O_ADDRESS = $data['P_O_ADDRESS'] ?? null;
         $user->P_O_PASSPORT_NO = $data['P_O_PASSPORT_NO'] ?? null;
         $user->P_CIVIL_EXPIRY_DT = $data['P_CIVIL_EXPIRY_DT'] ?? null;
-
+        ($data['password'] ?? null) ? $user->password = bcrypt($data['password']) : null;
         $user->save();
         return return_msg(true,"Success");
     }
@@ -183,7 +183,7 @@ class User
         if (!$token){
             return return_msg(false, 'user is not found', [
                 'validation_errors' => [
-                    "token" => ["هذا المستخدم غير موجود"]
+                    "password" => ["هذا المستخدم غير موجود"]
                 ]
             ]);
         }
@@ -191,7 +191,7 @@ class User
         if (!$user) {
             return return_msg(false, 'user is not found', [
                 'validation_errors' => [
-                    "token" => ["هذا المستخدم غير موجود"]
+                    "password" => ["هذا المستخدم غير موجود"]
                 ]
             ]);
         }
