@@ -30,7 +30,8 @@
                     {{Form::open([
                         'method'=>'post',
                         'route'=>['handle-hospital-edit-falcon',$falcon->id],
-                        'id'=>'form'
+                        'id'=>'form',
+                        'files'=>true
 
                     ])}}
 
@@ -79,6 +80,20 @@
                                                     @if($errors->has('P_FAL_INJ_DATE'))
                                                         <span
                                                             class="tag color-red">{{$errors->first('P_FAL_INJ_DATE')}}</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="columns centered">
+                                                <div class="column is-12 is-4-desktop">
+                                                    <label for="file">
+                                                        شهادة تعريف الصقر
+                                                    </label>
+                                                    <input type="file" name="file" class="ui-input"
+                                                           value="{{old('file')}}"
+                                                           autocomplete="off">
+                                                    @if($errors->has('file'))
+                                                        <span
+                                                            class="tag color-red">{{$errors->first('file')}}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -424,6 +439,58 @@
                                                           class="tag color-red">{{$errors->first('P_FAL_INJ_HOSPITAL')}}</span>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column">
+                            <div class="box">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <div class="has-text-centered">
+                                                <h1> الملفات </h1>
+                                            </div>
+
+                                            {{--                                            <button class="btn btn-secondary mb-5" type="button" onclick="addRow()">--}}
+                                            {{--                                                <i class="icon icon-plus"></i>--}}
+                                            {{--                                            </button>--}}
+
+                                            <div id="row_files">
+                                                @foreach($falcon->file_details ?? [] as $k=>$file)
+                                                    <div class="columns centered" id="row_{{$file->id}}">
+                                                        <div class="column is-12 is-4-desktop">
+                                                            <b for="file_type_id" class="text-bold">
+                                                                نوع الملف <br>
+                                                            </b>
+                                                            {{$file->file_type->label ?? ''}}
+                                                        </div>
+
+                                                        <div class="column is-12 is-4-desktop">
+                                                            <b>
+                                                                الملف <br>
+                                                            </b>
+                                                            @if($file['file'] ?? null)
+                                                                <a href="{{$file['file']}}" target="_blank">عرض
+                                                                    الملف</a>
+                                                            @endif
+                                                        </div>
+                                                        {{--                                                        <div class="column is-12 is-4-desktop">--}}
+                                                        {{--                                                            <button class="btn btn-primary has-background-danger" type="button"--}}
+                                                        {{--                                                                    onclick="deleteRow('{{$file->id}}')">--}}
+                                                        {{--                                                                حذف--}}
+                                                        {{--                                                            </button>--}}
+                                                        {{--                                                        </div>--}}
+                                                    </div>
+                                                @endforeach
+
+
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

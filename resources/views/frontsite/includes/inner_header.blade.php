@@ -104,8 +104,9 @@
                                 @if(getAuthUser('hospital'))
 
                                     <a href="{{route('falcon-hospitalIndex')}}" class="navbar-item">
-                                        <span class="item_text">
-                                              طلبات المستشفي الحالية
+                                        <span class="item_text has-text-centered">
+                                              الطلبات
+                                            <h3>({{getAuthUser('hospital')->hospital->label ?? ''}})</h3>
                                         </span>
                                     </a>
                                 @endif

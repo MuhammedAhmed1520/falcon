@@ -255,7 +255,7 @@
                                                 <h1>بيانات الصقر </h1>
                                             </div>
                                             <div class="columns centered">
-                                                <div class="column is-12 is-4-desktop">
+                                                <div class="column is-12 is-4-desktop"  id="current_falcon" @if($falcon->P_REQUEST_TYP != 4) style="display: none" @endif>
                                                     <label for="P_CUR_PASS_FAL">
                                                         رقم جواز الصقر الحالي
                                                     </label>
@@ -304,7 +304,7 @@
                                                     <span id="P_FAL_TYPE"
                                                           class="tag color-red">{{$errors->first('P_FAL_TYPE')}}</span>
                                                 </div>
-                                                <div class="column is-12 is-4-desktop">
+                                                <div class="column is-12 is-4-desktop" id="falcon_other_type"  @if($falcon->P_FAL_TYPE != 9) style="display: none" @endif>
                                                     <label for="P_FAL_OTHER_TYPE"> اخري
 
                                                     </label>
@@ -578,7 +578,7 @@
 
                 P_CUR_PASS_FAL: {
                     required: (element) => {
-                        return $('select[name="P_REQUEST_TYP"] > option:selected').val() == 1;
+                        return $('select[name="P_REQUEST_TYP"] > option:selected').val() == 4;
                     }
                 },
                 P_FAL_SEX: {
@@ -598,7 +598,7 @@
                 },
                 P_FAL_OTHER_TYPE: {
                     required: (element) => {
-                        return $('select[name="P_REQUEST_TYP"] > option:selected').val() == 1;
+                        return $('select[name="P_REQUEST_TYP"] > option:selected').val() == 1 && $('select[name="P_FAL_TYPE"] > option:selected').val() == 9;
                     }
                 },
                 P_FAL_ORIGIN_COUNTRY: {
@@ -698,11 +698,21 @@
             let value = $("select[name=\"P_REQUEST_TYP\"] option:selected").val();
             console.log(value)
             if (value == 4) {
-
+                $('#current_falcon').show();
                 $('#new_owner').show();
             } else {
-
+                $('#current_falcon').hide();
                 $('#new_owner').hide()
+            }
+        });
+
+        $(`select[name="P_FAL_TYPE"]`).on('change', () => {
+            let value = $("select[name=\"P_FAL_TYPE\"] option:selected").val();
+            //P_FAL_TYPE == اخري
+            if (value == 9) {
+                $('#falcon_other_type').show();
+            } else {
+                $('#falcon_other_type').hide();
             }
         })
     </script>

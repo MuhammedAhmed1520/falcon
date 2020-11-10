@@ -13,6 +13,7 @@
                 <div class="column is-6 is-offset-3">
                     <div class="section-content has-text-centered">
                         <h3>عرض كافة الطلبات </h3>
+                        <h3>({{getAuthUser('hospital')->hospital->label ?? ''}})</h3>
                     </div>
                 </div>
             </div>
