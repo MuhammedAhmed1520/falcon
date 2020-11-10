@@ -36,7 +36,7 @@
                             <th>بلد المنشأ</th>
                             <th><abbr>الحالة</abbr></th>
                             <th><abbr>رقم الطلب</abbr></th>
-                            <th width="100"></th>
+                            <th width="180"></th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -59,6 +59,11 @@
                                     @endif
                                 </td>
                                 <td>
+                                    @if(true)
+                                        <a class="button is-success p-0" onclick="sendRow('{{$falcon->id}}')">
+                                            ارسال
+                                        </a>
+                                    @endif
                                     <a href="{{route('falcon-editCivilFalcon',['id'=>$falcon->id])}}"
                                        class="button is-link">
                                         تعديل
@@ -107,6 +112,40 @@
                             if (response.status) {
                                 $(`#row_${id}`).remove()
                                 // location.reload()
+                                // let oTable = $('#data_table').dataTable();
+                                // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
+                            }
+                        }
+                    })
+
+                }
+            })
+        }
+
+        function sendRow(id) {
+            Swal.fire({
+                title: 'اعادة ارسال البيانات',
+                text: 'هل انت متأكد ؟',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'ﻻ',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        {{--url: "{{route('civilDeleteFalcon')}}",--}}
+                        method: "post",
+                        data: {
+                            _token: '{{csrf_token()}}',
+                            id: id
+                        },
+                        success: function (response) {
+                            if (response.status) {
+                                location.reload()
                                 // let oTable = $('#data_table').dataTable();
                                 // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
                             }
