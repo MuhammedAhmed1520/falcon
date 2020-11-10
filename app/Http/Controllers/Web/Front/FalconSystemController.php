@@ -160,6 +160,7 @@ class FalconSystemController extends Controller
         $is_active = 1;
         $hospital_id = getAuthUser('hospital')->hospital_id;
         $request->request->add(['hospital_id' => $hospital_id]);
+        $request->request->add(['is_hospital' => 1]);
         $falcons = $this->falcon_ctrl->all($request)['data']['falcons'] ?? [];
         return view('frontsite.pages.falconSystem.hospital.all', compact('is_active', 'falcons'));
     }
@@ -169,7 +170,7 @@ class FalconSystemController extends Controller
         $is_active = 1;
         $hospital_id = getAuthUser('hospital')->hospital_id;
         $request->request->add(['hospital_id' => $hospital_id]);
-        $request->request->add(['is_hospital' => 1]);
+        $request->request->add(['is_hospital' => 0]);
         $falcons = $this->falcon_ctrl->all($request)['data']['falcons'] ?? [];
         return view('frontsite.pages.falconSystem.hospital.allArchived', compact('is_active', 'falcons'));
     }
