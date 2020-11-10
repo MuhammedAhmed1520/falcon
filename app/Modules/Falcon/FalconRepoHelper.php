@@ -4,8 +4,12 @@
 namespace App\Modules\Falcon;
 
 
+use App\Soap\Request\GetFalconCivilInfoRequest;
+use App\Soap\Request\GetFalconDataRequest;
 use App\Soap\Request\SubmitFalconAttachment;
 use App\Soap\Request\SubmitFalconRequest;
+use App\Soap\Response\GetFalconCivilInfoResponse;
+use App\Soap\Response\GetFalconDataResponse;
 use App\Soap\Response\SubmitFalconAttachmentResponse;
 use App\Soap\Response\SubmitFalconRequestResponse;
 use finfo;
@@ -18,6 +22,7 @@ trait FalconRepoHelper
     {
 
         $data['user_id'] = $data['user_id'] ?? auth('civil')->user()->id ?? null;
+
         if ($data['hospital_id'] ?? null)
         {
             $model->where('P_FAL_INJ_HOSPITAL',$data['hospital_id']);
@@ -26,7 +31,7 @@ trait FalconRepoHelper
 
         if (isset($data['is_hospital']))
         {
-            $model->where('is_hospital',$data['hospital_id']);
+            $model->where('is_hospital',$data['is_hospital']);
 
         }
 
@@ -175,6 +180,53 @@ trait FalconRepoHelper
         }
 
 
+
+    }
+
+    protected function getFalconDataSoap($falcon)
+    {
+        $this->soapWrapper->add('Falcon', function ($service) {
+            $service
+                ->wsdl(env('FALCON_SOAP'))
+                ->trace(true)
+                ->options(['user_agent' => 'PHPSoapClient'])
+                ->classmap([
+                    GetFalconDataRequest::class,
+                    GetFalconDataResponse::class,
+                ]);
+        });
+
+        $response = $this->soapWrapper->call('Falcon.getFalconData', [
+            new GetFalconDataRequest($falcon->P_O_CIVIL_ID,$falcon->P_FAL_PIT_NO
+            )
+        ]);
+        $json = json_encode($response);
+        $response = json_decode($json,TRUE);
+        return $response['return'] ?? null;
+//        dd($response);
+
+    }
+
+    protected function getFalconCivilInfoSoap($falcon)
+    {
+        $this->soapWrapper->add('Falcon', function ($service) {
+            $service
+                ->wsdl(env('FALCON_SOAP'))
+                ->trace(true)
+                ->options(['user_agent' => 'PHPSoapClient'])
+                ->classmap([
+                    GetFalconCivilInfoRequest::class,
+                    GetFalconCivilInfoResponse::class
+                ]);
+        });
+        $response = $this->soapWrapper->call('Falcon.getFalconCivilInfo', [
+            new GetFalconCivilInfoRequest($falcon->P_O_CIVIL_ID)
+        ]);
+
+        $json = json_encode($response);
+        $response = json_decode($json,TRUE);
+        return $response['return'] ?? null;
+//        dd($response);
 
     }
 

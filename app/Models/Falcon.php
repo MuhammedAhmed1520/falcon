@@ -16,7 +16,7 @@ class Falcon extends Model
         'P_FAL_CITES_NO', 'P_FAL_PIT_NO', 'P_FAL_RING_NO',
         'P_FAL_INJ_DATE', 'P_FAL_INJ_HOSPITAL', 'P_PAYMENT_ID',
         'P_AMOUNT', 'P_TRANS_ID', 'P_TRACK_ID', 'P_OUT_REQUEST_NO',
-        'P_STATUS_MSG','certificate_file', 'user_id',
+        'P_STATUS_MSG','certificate_file', 'user_id','paid_at'
     ];
 
     protected $appends = ['certificate_file_path'];
@@ -45,6 +45,10 @@ class Falcon extends Model
     public function hospital()
     {
         return $this->belongsTo(Option::class,'P_FAL_INJ_HOSPITAL');
+    }
+
+    public function paymentable(){
+        return $this->morphOne(Payment::class,'paymentable');
     }
 
     public function file_details()

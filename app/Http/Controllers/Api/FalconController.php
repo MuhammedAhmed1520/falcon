@@ -80,4 +80,14 @@ class FalconController extends Controller
         return $this->falconRepo->delete($request->id);
 
     }
+    public function getFalconData($id)
+    {
+        return $this->falconRepo->getFalconData($id);
+
+    }
+    public function getFalconCivilInfo($id)
+    {
+        return $this->falconRepo->getFalconCivilInfo($id);
+
+    }
 }

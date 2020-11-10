@@ -6,8 +6,8 @@ namespace App\Soap\Request;
 
 class GetFalconDataRequest
 {
-    private $P_O_CIVIL_ID;
-    private $P_FAL_PIT_NO;
+    private $CivilId;
+    private $FalPitNo;
 
     /**
      * GetFalconDataRequest constructor.
@@ -17,25 +17,26 @@ class GetFalconDataRequest
 
     public function __construct($P_O_CIVIL_ID, $P_FAL_PIT_NO)
     {
-        $this->P_O_CIVIL_ID = $P_O_CIVIL_ID;
-        $this->P_FAL_PIT_NO = $P_FAL_PIT_NO;
+        $this->CivilId = $P_O_CIVIL_ID;
+        $this->FalPitNo = $P_FAL_PIT_NO;
     }
 
     /**
      * @return mixed
      */
-    public function getPOCIVILID()
+    public function getCivilId()
     {
-        return $this->P_O_CIVIL_ID;
+        return $this->CivilId;
     }
 
     /**
      * @return mixed
      */
-    public function getPFALPITNO()
+    public function getFalPitNo()
     {
-        return $this->P_FAL_PIT_NO;
+        return $this->FalPitNo;
     }
+
 
 
 }
