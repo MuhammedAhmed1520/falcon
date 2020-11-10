@@ -12,6 +12,7 @@ trait FalconRepoHelper
 
     protected function filterFalcon(&$model,$data)
     {
+        $data = $data['user_id'] ?? auth('civil')->user()->id ?? null;
         if ($data['hospital_id'] ?? null)
         {
             $model->where('P_FAL_INJ_HOSPITAL',$data['hospital_id'])

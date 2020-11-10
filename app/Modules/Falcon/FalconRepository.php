@@ -137,22 +137,34 @@ class FalconRepository
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
-        if ($falcon->P_REQUEST_TYP == 1)
-        {
-            if (!isset($data['P_FAL_RING_NO'])){
+        if (!$falcon->P_FAL_PIT_NO){
 
-            }
-
+            return return_msg(false,'Not Found',[
+                "validation_errors"=>[
+                    "P_FAL_PIT_NO" => ['تم اضافة الطلب من قبل']
+                ]
+            ]);
         }
+
 
         $falcon->P_FAL_PIT_NO = $data['P_FAL_PIT_NO'] ?? null;
         $falcon->P_FAL_RING_NO = $data['P_FAL_RING_NO'] ?? null;
         $falcon->P_FAL_INJ_DATE = $data['P_FAL_INJ_DATE'] ?? null;
+
+        if ($data['file'] ?? null)
+        {
+            $uploaded_file = uploadFile($data['file'] ,'falcon');
+            $falcon->certificate_file = $uploaded_file['name'];
+
+        }
+
         $falcon->save();
         $falcon->refresh();
 
+        // Create File
+
         //// Send Order
-        $this->sendSoapRequest($falcon);
+//        $this->sendSoapRequest($falcon);
 
 
         return return_msg(true,'Success',compact('falcon'));
