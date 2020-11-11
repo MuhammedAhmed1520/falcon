@@ -250,7 +250,6 @@ class FalconRepository
         if ($falcon->P_OUT_REQUEST_NO){
             return return_msg(false,'Not Found');
         }
-
         $this->sendSoapRequest($falcon);
         return return_msg(true,"Success");
 
