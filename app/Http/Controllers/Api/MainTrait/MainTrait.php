@@ -99,7 +99,7 @@ trait MainTrait
     {
         return validator($request_data, [
             'name' => 'nullable|min:1|string',
-            'username' => 'required|unique:users,username',
+            'username' => 'required|unique:admins,username',
             'password' => 'required|min:6',
             'mobile' => 'nullable|digits:8',
             'role_id' => 'required|exists:roles,id',
@@ -110,7 +110,7 @@ trait MainTrait
     {
         return validator($request_data, [
             'name' => 'nullable|min:1|string',
-            'username' => 'nullable|unique:users,id,' . $request_data['id'],
+            'username' => 'nullable|unique:admins,id,' . $request_data['id'],
             'password' => 'nullable|min:6',
             'mobile' => 'nullable|digits:8',
             'role_id' => 'required|exists:roles,id',
