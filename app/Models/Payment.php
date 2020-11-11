@@ -20,7 +20,7 @@ class Payment extends Model
     }
 
     public function getKnetDataAttribute(){
-        return $this->knet()->get();
+        return $this->knet()->first();
     }
 
     public function paymentable(){
