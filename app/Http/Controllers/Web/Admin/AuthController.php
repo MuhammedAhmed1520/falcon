@@ -41,11 +41,6 @@ class AuthController extends Controller
         if (!$response['status']) {
             return back()->withErrors($response['data']['errors'])->withInput();
         }
-//        return $response;
-//        $admin = $response['data']['user'];
-//        if ($admin) {
-//            auth()->login($admin);
-//        }
         return redirect()->route('getDashboardView');
     }
 
