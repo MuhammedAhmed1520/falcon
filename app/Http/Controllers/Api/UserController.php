@@ -75,7 +75,7 @@ class UserController extends Controller
         $data['id'] = $id;
 //        dd($data);
         // validate request
-        $validation = $this->UpdateUserRequest($data);
+        $validation = $this->UpdateUserCivilRequest($data);
         if ($validation->fails()) {
             return return_msg(false, 'validation errors', [
                 'validation_errors' => $validation->getMessageBag()->getMessages()

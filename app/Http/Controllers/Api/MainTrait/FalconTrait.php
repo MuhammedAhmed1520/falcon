@@ -104,4 +104,19 @@ trait FalconTrait
         ]);
     }
 
+    public function validateGetFalconCivilRequest(array $request_data)
+    {
+        return validator($request_data, [
+
+            'P_O_CIVIL_ID' => 'required',
+        ]);
+    }
+    public function validateGetFalconDataRequest(array $request_data)
+    {
+        return validator($request_data, [
+            'P_O_CIVIL_ID' => 'required',
+            'P_FAL_PIT_NO' => 'required',
+        ]);
+    }
+
 }
