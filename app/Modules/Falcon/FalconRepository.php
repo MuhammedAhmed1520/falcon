@@ -247,8 +247,7 @@ class FalconRepository
 
     public function pay($data)
     {
-
-        $falcon = $this->falconModel->where('P_OUT_REQUEST_NO',$data['P_OUT_REQUEST_NO'] ?? null)->first();
+        $falcon = $this->falconModel->where('P_FAL_PIT_NO',$data['P_FAL_PIT_NO'] ?? null)->first();
         if (!$falcon){
             return return_msg(false,'Not Found');
         }

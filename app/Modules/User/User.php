@@ -108,8 +108,8 @@ class User
             $data['password'] = bcrypt($data['password']);
         }
 
-        $user->mobile = $data['mobile'] ?? null;
-        $user->save();
+//        $user-> = $data['mobile'] ?? null;
+        $user->update($data);
         //Update this User
         // $this->repository->update($user, $data);
         return return_msg(true, 'User Successfully Updated');
