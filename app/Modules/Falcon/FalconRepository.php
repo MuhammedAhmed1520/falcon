@@ -97,7 +97,12 @@ class FalconRepository
         $this->filterFalcon($falcons,$data);
 
         $falcons = $falcons->get();
-        return return_msg(true,'Success',compact('falcons'));
+        $online_falcons = [];
+        if ($data['P_O_CIVIL_ID'] ?? null){
+            $online_falcons = $this->getFalconCivilInfo($data['P_O_CIVIL_ID'])['data']['response'];
+        }
+
+        return return_msg(true,'Success',compact('falcons','online_falcons'));
     }
 
     public function delete($id)
@@ -208,6 +213,9 @@ class FalconRepository
     {
         // Call Soap
         $response = $this->getFalconCivilInfoSoap($P_O_CIVIL_ID);
+        if (!is_array($response) ){
+            $response ? $response = [$response]: $response = [];
+        }
 
         return return_msg(true,"Success",compact('response'));
 
@@ -246,7 +254,7 @@ class FalconRepository
         }
 
         // Get Amount
-        $response = $this->getFalconData($falcon->id)['data']['data'] ?? null;
+        $response = $this->getFalconData($falcon)['data']['data'] ?? null;
         if (!$response){
             return return_msg(false,'Not Found');
         }
@@ -314,11 +322,8 @@ class FalconRepository
             return return_msg(true,"success",compact('response'));
 
 
-
         }catch (\Exception $exception){
-
             return return_msg(false,"Server Error",compact('response'));
-
         }
     }
 
