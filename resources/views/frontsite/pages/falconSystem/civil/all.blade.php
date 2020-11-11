@@ -14,7 +14,7 @@
                     <div class="section-content has-text-centered">
                         <h3>عرض كافة الطلبات </h3>
                         <a href="{{route('falcon-addCivilFalcon')}}" class="btn btn-secondary">اضافة صقر</a>
-{{--                        <a href="{{route('falcon-searchCivilFalcon')}}" class="btn p-5 button is-danger">بحث الطلبات</a>--}}
+                        {{--                        <a href="{{route('falcon-searchCivilFalcon')}}" class="btn p-5 button is-danger">بحث الطلبات</a>--}}
                     </div>
                 </div>
             </div>
@@ -31,6 +31,7 @@
                         <thead>
                         <tr>
                             <th><abbr>رقم الطلب</abbr></th>
+                            <th>رقم الشريحة</th>
                             <th><abbr>رقم جواز الصقر الحالى</abbr></th>
                             <th>فئة الصقر</th>
                             <th>نوع الصقر</th>
@@ -50,6 +51,7 @@
                                     @endif
                                 </td>
                                 <td>{{$falcon->P_CUR_PASS_FAL ?? ''}}</td>
+                                <td>{{$falcon->P_FAL_PIT_NO ?? ''}}</td>
                                 <td>{{$falcon->P_FAL_SPECIES ?? ''}}</td>
                                 <td>{{$falcon->fal_type->label ?? ''}}</td>
                                 <td>{{$falcon->origin_country->label ?? ''}}</td>
@@ -68,12 +70,28 @@
                                        class="button is-link">
                                         تعديل
                                     </a>
-{{--                                    <a href="{{route('falcon-getCivilLoss',['id'=>$falcon->id])}}"--}}
+                                    <a class="button is-danger p-0" onclick="deleteRow('{{$falcon->id}}')">
+                                        <i class="icon icon-trash" style="margin-top: 5px"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        @foreach($online_falcons as $online_falcon)
+                            <tr>
+                                <td>{{$online_falcon['requestNo'] ?? ''}}</td>
+                                <td>{{$online_falcon['pitNo'] ?? ''}}</td>
+                                <td></td>
+                                <td>{{$online_falcon['falType'] ?? ''}}</td>
+                                <td>{{$online_falcon['falType'] ?? ''}}</td>
+                                <td>{{$online_falcon['falOriginCountry'] ?? ''}}</td>
+                                <td></td>
+                                <td>
+{{--                                    <a href="{{route('falcon-getCivilLoss',['P_O_CIVIL_ID'=>$P_O_CIVIL_ID,'pitNo'=>$online_falcon['pitNo']])}}"--}}
 {{--                                       class="button is-link">--}}
 {{--                                        فقدان--}}
 {{--                                    </a>--}}
-                                    <a class="button is-danger p-0" onclick="deleteRow('{{$falcon->id}}')">
-                                        <i class="icon icon-trash" style="margin-top: 5px"></i>
+                                    <a class="button is-warning p-0" onclick="payment('{{$online_falcon['pitNo']}}')">
+                                        الدفع
                                     </a>
                                 </td>
                             </tr>
@@ -153,6 +171,46 @@
                                 // let oTable = $('#data_table').dataTable();
                                 // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
                             }
+                        }
+                    })
+
+                }
+            })
+        }
+
+        function payment(P_FAL_PIT_NO) {
+            Swal.fire({
+                title: 'دفع الرسوم',
+                text: 'هل انت متأكد ؟',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'ﻻ',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{route('civilPayment')}}",
+                        method: "post",
+                        data: {
+                            _token: '{{csrf_token()}}',
+                            P_FAL_PIT_NO: P_FAL_PIT_NO
+                        },
+                        success: function (response) {
+                            if (response.status) {
+                                location.href = response.data.link
+                                // location.reload()
+                                // let oTable = $('#data_table').dataTable();
+                                // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
+                            }
+                            Swal.fire({
+                                icon: 'danger',
+                                title: 'حدث خطأ',
+                                text: response.msg
+                            })
                         }
                     })
 

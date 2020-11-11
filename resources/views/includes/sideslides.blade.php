@@ -88,40 +88,38 @@
                             </a>
                         </li>
 
-{{--                        <li>--}}
-{{--                            <a id="_3" href="#">--}}
-{{--                                <i class="la la-cogs fa-2x"></i>--}}
-{{--                                <span>{{__('sidebar.general_settings')}}</span>--}}
-{{--                            </a>--}}
-{{--                            <ul>--}}
-{{--                                <li id="_31" data-vertical="true"><a href="#">{{__('sidebar.roles')}}</a>--}}
-{{--                                    <ul>--}}
-{{--                                        --}}{{--                                        @can('create-role')--}}
-{{--                                        <li>--}}
-{{--                                            <a href="{{route('addRoles')}}">{{__('sidebar.add_role')}}</a>--}}
-{{--                                        </li>--}}
-{{--                                        --}}{{--                                        @endcan--}}
-{{--                                        <li>--}}
-{{--                                            <a href="{{route('allRoles')}}">{{__('sidebar.all_roles')}}</a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
-{{--                                <li id="_32" data-vertical="true"><a href="#">{{__('sidebar.users')}}</a>--}}
-{{--                                    <ul>--}}
-{{--                                        --}}{{--                                        @can('create-user')--}}
-{{--                                        <li>--}}
-{{--                                            <a href="{{route('addUsers')}}">{{__('sidebar.add_user')}}</a>--}}
-{{--                                        </li>--}}
-{{--                                        --}}{{--                                        @endcan--}}
-{{--                                        <li>--}}
-{{--                                            <a href="{{route('allUsers')}}">{{__('sidebar.all_users')}}</a>--}}
-{{--                                        </li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
-{{--                                --}}{{--                                <li id="_33" data-vertical="true"><a--}}
-{{--                                --}}{{--                                        href="{{route('getConfigView')}}">{{__('sidebar.config')}}</a>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
+                        <li>
+                            <a id="_3" href="#">
+                                <i class="la la-cogs fa-2x"></i>
+                                <span>{{__('sidebar.general_settings')}}</span>
+                            </a>
+                            <ul>
+                                <li id="_31" data-vertical="true"><a href="#">{{__('sidebar.roles')}}</a>
+                                    <ul>
+                                        @can('create-role')
+                                            <li>
+                                                <a href="{{route('addRoles')}}">{{__('sidebar.add_role')}}</a>
+                                            </li>
+                                        @endcan
+                                        <li>
+                                            <a href="{{route('allRoles')}}">{{__('sidebar.all_roles')}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li id="_32" data-vertical="true"><a href="#">{{__('sidebar.users')}}</a>
+                                    <ul>
+                                        @can('create-user')
+                                            <li>
+                                                <a href="{{route('addUsers')}}">{{__('sidebar.add_user')}}</a>
+                                            </li>
+                                        @endcan
+                                        <li>
+                                            <a href="{{route('allUsers')}}">{{__('sidebar.all_users')}}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                     </ul><!-- .my-menu -->
 
                 </div>

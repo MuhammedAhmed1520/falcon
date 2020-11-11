@@ -11,64 +11,12 @@ class RoleController extends Controller
 {
 
     private $role;
-    private $utility;
 
     public function __construct()
     {
         $this->role = new RoleCTRL();
-        $this->utility = new UtilityController();
     }
 
-    protected function getRedirectRoute()
-    {
-        return [
-            [
-                'route_name' => 'getDashboardView',
-                'title_ar' => 'الصفحة الرئيسية',
-                'title_en' => 'Dashboard',
-            ],
-            [
-                'route_name' => 'allViolations',
-                'title_ar' => 'قسم المخالفات / عرض جميع المخالفات',
-                'title_en' => 'Violation / Show All Violations',
-            ],
-            [
-                'route_name' => 'allOfficers',
-                'title_ar' => 'قسم المخالفات / عرض جميع الضباط',
-                'title_en' => 'Violation / Show All Officers',
-            ],
-            [
-                'route_name' => 'allTenders',
-                'title_ar' => 'قسم الممارسات / عرض جميع الممارسات',
-                'title_en' => 'Tenders / Show All Tenders',
-            ],
-            [
-                'route_name' => 'allCompanies',
-                'title_ar' => 'قسم الممارسات / عرض جميع الشركات',
-                'title_en' => 'Tenders / Show All Companies',
-            ],
-            [
-                'route_name' => 'allCertificate',
-                'title_ar' => 'قسم شهادات عدم وجود محاضر بمخالفات بيئية',
-                'title_en' => 'All Certificates Of None Violation',
-            ],
-            [
-                'route_name' => 'getSearchOrdersView',
-                'title_ar' => 'قسم الاعتماد البيئي / عرض جميع الطلبات الواردة',
-                'title_en' => 'Office Agent / All Orders',
-            ],
-            [
-                'route_name' => 'getOfficesView',
-                'title_ar' => 'قسم الاعتماد البيئي / عرض جميع حسابات الشركات - المستثمرين',
-                'title_en' => 'Office Agent / All Companies',
-            ],
-            [
-                'route_name' => 'allVisits',
-                'title_ar' => 'تصريح زيارة محمية الجهراء',
-                'title_en' => 'تصريح زيارة محمية الجهراء',
-            ],
-        ];
-    }
 
     public function index()
     {
@@ -86,10 +34,9 @@ class RoleController extends Controller
     public function create()
     {
         $page_title = 'Create Roles';
-        $permissions = $this->utility->getPermission()['data']['permissions'] ?? [];
-        $redirect_routes = $this->getRedirectRoute();
+        $permissions = $this->role->getPermission()['data']['permissions'] ?? [];
 
-        return view('pages.settings.roles.add.index', compact('page_title', 'permissions', 'redirect_routes'));
+        return view('pages.settings.roles.add.index', compact('page_title', 'permissions'));
     }
 
 
@@ -122,8 +69,7 @@ class RoleController extends Controller
         $page_title = 'Edit Roles';
         $response = $this->role->show($id);
         $role = null;
-        $permissions = $this->utility->getPermission()['data']['permissions'] ?? [];
-        $redirect_routes = $this->getRedirectRoute();
+        $permissions = $this->role->getPermission()['data']['permissions'] ?? [];
 
         if (!$response['status']) {
             return back()->with('danger', __('violation.error'));
@@ -133,7 +79,7 @@ class RoleController extends Controller
         $role = $role->makeHidden('permissions');
         $role->permission_ids = $role->permissions->pluck('id') ?? [];
 
-        return view('pages.settings.roles.edit.index', compact('page_title', 'role', 'permissions', 'redirect_routes'));
+        return view('pages.settings.roles.edit.index', compact('page_title', 'role', 'permissions'));
 
     }
 

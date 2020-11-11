@@ -47,7 +47,7 @@ Route::group(['prefix' => 'falcon', 'namespace' => 'Api'], function () {
     Route::post('/deleteFile', 'FalconController@deleteFileDetail')->name('deleteFileDetail');
     Route::post('/delete', 'FalconController@delete')->name('civilDeleteFalcon');
     Route::post('/updateHospital', 'FalconController@updateHospital');
-    Route::post('/pay', 'FalconController@pay');
+    Route::post('/pay', 'FalconController@pay')->name('civilPayment');
     Route::post('/sendData', 'FalconController@sendData')->name('civilResendData');
 });
 Route::group(['prefix' => 'utility', 'namespace' => 'Api'], function () {

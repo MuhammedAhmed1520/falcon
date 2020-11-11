@@ -79,8 +79,14 @@ class FalconSystemController extends Controller
     public function civilIndex(Request $request)
     {
         $is_active = 1;
-        $falcons = $this->falcon_ctrl->all($request)['data']['falcons'] ?? [];
-        return view('frontsite.pages.falconSystem.civil.all', compact('is_active', 'falcons'));
+        $P_O_CIVIL_ID = getAuthUser('civil')->P_O_CIVIL_ID ?? null;
+//        $P_O_CIVIL_ID = 291022202031;
+        $request->request->add(['P_O_CIVIL_ID' => $P_O_CIVIL_ID]);
+        $response = $this->falcon_ctrl->all($request)['data'] ?? [];
+        $falcons = $response['falcons'] ?? [];
+        $online_falcons = $response['online_falcons'] ?? [];
+//        return $response;
+        return view('frontsite.pages.falconSystem.civil.all', compact('is_active', 'falcons', 'P_O_CIVIL_ID', 'online_falcons'));
     }
 
     public function getCivilProfile()
@@ -185,6 +191,7 @@ class FalconSystemController extends Controller
         }
         return view('frontsite.pages.falconSystem.hospital.edit', compact('is_active', 'falcon', 'helper_utilities'));
     }
+
     public function archiveHospitalFalcon(Request $request, $id)
     {
         $is_active = 1;
@@ -238,9 +245,12 @@ class FalconSystemController extends Controller
         $is_active = 1;
         return view('frontsite.pages.falconSystem.civil.resetPassword', compact('is_active'));
     }
-    public function getCivilLoss(Request $request)
+
+    public function getCivilLoss(Request $request, $P_O_CIVIL_ID, $pitNo)
     {
         $is_active = 1;
+        $request->request->all(['P_O_CIVIL_ID' => $P_O_CIVIL_ID, 'P_FAL_PIT_NO' => $pitNo]);
+        return $this->falcon_ctrl->getFalconData($request);
         return view('frontsite.pages.falconSystem.civil.loss', compact('is_active'));
     }
 

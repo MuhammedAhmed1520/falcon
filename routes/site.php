@@ -48,7 +48,7 @@ Route::group([
                     Route::get('/edit/{id}', 'FalconSystemController@editCivilFalcon')->name('falcon-editCivilFalcon');
                     Route::post('/edit/{id}', 'FalconSystemController@handleEditCivilFalcon')->name('handle-edit-falcon');
 
-                    Route::get('/loss', 'FalconSystemController@getCivilLoss')->name('falcon-getCivilLoss');
+                    Route::get('/loss/{P_O_CIVIL_ID}/{pitNo}', 'FalconSystemController@getCivilLoss')->name('falcon-getCivilLoss');
                     Route::get('/profile', 'FalconSystemController@getCivilProfile')->name('falcon-getCivilProfile');
                     Route::post('/profile', 'FalconSystemController@handleUpdateCivilProfile')->name('handle-update-info-civil');
 
