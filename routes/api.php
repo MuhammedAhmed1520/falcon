@@ -18,6 +18,13 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('knet/{token}','Api\PaymentController@pay');
+Route::get('handle-response','Api\PaymentController@handleResponse');
+Route::post('handle-response','Api\PaymentController@handleResponse');
+
+Route::get('handle-response-tender','Api\PaymentController@handleResponseTender');
+Route::post('handle-response-tender','Api\PaymentController@handleResponseTender');
+
 Route::group(['prefix' => 'user', 'namespace' => 'Auth'], function () {
 
     Route::post('/register', 'AuthController@register');
@@ -34,10 +41,14 @@ Route::group(['prefix' => 'falcon', 'namespace' => 'Api'], function () {
     Route::post('/create', 'FalconController@create');
     Route::post('/update', 'FalconController@update');
     Route::get('/find/{id}', 'FalconController@show');
+    Route::get('/getFalconData/{id}', 'FalconController@getFalconData');
+    Route::get('/getFalconCivilInfo/{id}', 'FalconController@getFalconCivilInfo');
     Route::get('/all', 'FalconController@all');
     Route::post('/deleteFile', 'FalconController@deleteFileDetail')->name('deleteFileDetail');
     Route::post('/delete', 'FalconController@delete')->name('civilDeleteFalcon');
     Route::post('/updateHospital', 'FalconController@updateHospital');
+    Route::post('/pay', 'FalconController@pay');
+    Route::post('/sendData', 'FalconController@sendData')->name('civilResendData');
 });
 Route::group(['prefix' => 'utility', 'namespace' => 'Api'], function () {
 

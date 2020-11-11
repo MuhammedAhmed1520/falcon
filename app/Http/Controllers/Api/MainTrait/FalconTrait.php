@@ -82,6 +82,7 @@ trait FalconTrait
             'id' => 'required',
         ]);
     }
+
     public function validateFalconUpdateHospitalRequest(array $request_data)
     {
         return validator($request_data, [
@@ -92,6 +93,14 @@ trait FalconTrait
             'file' => 'required|file',
 
             'id' => 'required',
+        ]);
+    }
+
+    public function validateFalconPayRequest(array $request_data)
+    {
+        return validator($request_data, [
+
+            'P_OUT_REQUEST_NO' => 'required',
         ]);
     }
 

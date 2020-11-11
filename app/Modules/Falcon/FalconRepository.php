@@ -6,7 +6,9 @@ namespace App\Modules\Falcon;
 
 use App\Models\Falcon;
 use App\Models\FalconFileDetail;
+use App\Modules\Payment\Payment;
 use Artisaninweb\SoapWrapper\SoapWrapper;
+use Illuminate\Support\Facades\DB;
 
 class FalconRepository
 {
@@ -119,6 +121,7 @@ class FalconRepository
 
 
     }
+
     public function deleteFileDetail($id)
     {
         $file_details = FalconFileDetail::find($id);
@@ -140,9 +143,9 @@ class FalconRepository
 
     }
 
-
     public function updateHospital($data)
     {
+
         $hospital = auth('hospital')->user();
         $falcon = $this->falconModel->where('id',$data['id'] ?? null);
 
@@ -151,7 +154,7 @@ class FalconRepository
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
-        if ($falcon->P_FAL_PIT_NO){
+        if (!$falcon->is_hospital){
 
             return return_msg(false,'Not Found',[
                 "validation_errors"=>[
@@ -164,6 +167,7 @@ class FalconRepository
         $falcon->P_FAL_PIT_NO = $data['P_FAL_PIT_NO'] ?? null;
         $falcon->P_FAL_RING_NO = $data['P_FAL_RING_NO'] ?? null;
         $falcon->P_FAL_INJ_DATE = $data['P_FAL_INJ_DATE'] ?? null;
+        $falcon->is_hospital = 0;
 
         if ($data['file'] ?? null)
         {
@@ -172,16 +176,120 @@ class FalconRepository
 
         }
 
+
         $falcon->save();
         $falcon->refresh();
 
-        // Create File
-
         //// Send Order
-//        $this->sendSoapRequest($falcon);
+        $this->sendSoapRequest($falcon);
+
 
 
         return return_msg(true,'Success',compact('falcon'));
+    }
+
+    public function getFalconData($id)
+    {
+        $user = auth('civil')->user();
+        $hospital = auth('hospital')->user();
+        $falcon = $this->falconModel->where('id',$id);
+
+//        $user ? $falcon = $falcon->where('user_id',$user->id):null;
+//        $hospital ? $falcon = $falcon->where('P_FAL_INJ_HOSPITAL',$hospital->hospital_id):null;
+
+        $falcon = $falcon->first();
+
+        if (!$falcon){
+            return return_msg(false,'Not Found');
+        }
+        // Call Soap
+        $data = $this->getFalconDataSoap($falcon);
+
+        return return_msg(true,"Success",compact('data'));
+
+
+
+    }
+    public function getFalconCivilInfo($id)
+    {
+        $user = auth('civil')->user();
+        $hospital = auth('hospital')->user();
+        $falcon = $this->falconModel->where('id',$id);
+
+//        $user ? $falcon = $falcon->where('user_id',$user->id):null;
+//        $hospital ? $falcon = $falcon->where('P_FAL_INJ_HOSPITAL',$hospital->hospital_id):null;
+
+        $falcon = $falcon->first();
+
+        if (!$falcon){
+            return return_msg(false,'Not Found');
+        }
+        // Call Soap
+        $response = $this->getFalconCivilInfoSoap($falcon);
+
+        return return_msg(true,"Success",compact('response'));
+
+
+
+    }
+
+    public function sendData($id)
+    {
+        $user = auth('civil')->user();
+        $hospital = auth('hospital')->user();
+        $falcon = $this->falconModel->where('id',$id);
+
+//        $user ? $falcon = $falcon->where('user_id',$user->id):null;
+//        $hospital ? $falcon = $falcon->where('P_FAL_INJ_HOSPITAL',$hospital->hospital_id):null;
+
+        $falcon = $falcon->first();
+
+        if (!$falcon){
+            return return_msg(false,'Not Found');
+        }
+        if ($falcon->P_OUT_REQUEST_NO){
+            return return_msg(false,'Not Found');
+        }
+
+        $this->sendSoapRequest($falcon);
+        return return_msg(true,"Success");
+
+    }
+
+    public function pay($data)
+    {
+        $falcon = $this->falconModel->where('P_OUT_REQUEST_NO',$data['P_OUT_REQUEST_NO'] ?? null)->first();
+        if (!$falcon){
+            return return_msg(false,'Not Found');
+        }
+        // Get Amount
+        $response = $this->getFalconData($falcon->id)['data']['data'] ?? null;
+        if (!$response){
+            return return_msg(false,'Not Found');
+        }
+//        dd($response);
+//        if (!($response['amount'] ?? null)){
+//            return return_msg(false,'Not Found',[
+//                "validation_errors" => ["P_OUT_REQUEST_NO" => ['لا يمكن دفع الطلب']]
+//            ]);
+//        }
+
+        $paymentPresenter = new Payment();
+        $pData['name'] = $falcon->P_O_A_NAME;
+        $pData['email'] = $falcon->P_O_MAIL;
+        $pData['phone'] = $falcon->P_O_MOBILE;
+        $pData['cost'] = 5;
+        $pData['paymentable_type'] = $this->falconModel->getMorphClass();
+        $pData['paymentable_id'] = $falcon->id;
+
+        $payment =  $paymentPresenter->create($pData,$buyer['payment_type_id'] ?? 2);
+
+        if($payment['status'] ?? null){
+            $payment_link = $payment['data']['pay']['link'];
+            return return_msg(true,"Success",compact('payment_link'));
+        }
+
+        return return_msg(false,'Not Found');
     }
 
 }

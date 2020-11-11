@@ -59,7 +59,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if(true)
+                                    @if(!$falcon->P_OUT_REQUEST_NO && $falcon->P_FAL_PIT_NO)
                                         <a class="button is-success p-0" onclick="sendRow('{{$falcon->id}}')">
                                             ارسال
                                         </a>
@@ -137,7 +137,7 @@
             }).then(function (result) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        {{--url: "{{route('civilDeleteFalcon')}}",--}}
+                        url: "{{route('civilResendData')}}",
                         method: "post",
                         data: {
                             _token: '{{csrf_token()}}',
