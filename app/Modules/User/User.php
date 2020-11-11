@@ -45,7 +45,8 @@ class User
             $users = $users->where('P_O_A_NAME' ,'like',"%".$data['query']."%")
                 ->orWhere('P_O_MOBILE','like',"%".$data['query']."%")
                 ->orWhere('P_O_CIVIL_ID','like',"%".$data['query']."%")
-                ->orWhere('P_O_PASSPORT_NO','like',"%".$data['query']."%");
+                ->orWhere('P_O_PASSPORT_NO','like',"%".$data['query']."%")
+                ->orWhere('email','like',"%".$data['query']."%");
         }
         $users = $users->get();
 
