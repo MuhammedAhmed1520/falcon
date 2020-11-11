@@ -54,7 +54,7 @@ trait MainTrait
             'P_O_A_NAME' => 'required|string',
             'P_O_MOBILE' => 'required|numeric|digits:8',
             'email' => 'required|email|unique:users,id' . $request_data['id'],
-            'P_O_CIVIL_ID' => 'required|numeric|digits:12|unique:users,P_O_CIVIL_ID,id'.$request_data['id'],
+            'P_O_CIVIL_ID' => 'required|numeric|digits:12|unique:users,id'.$request_data['id'],
             'P_O_ADDRESS' => 'required',
             'P_O_PASSPORT_NO' => 'required',
             'P_CIVIL_EXPIRY_DT' => 'required|date',
