@@ -165,7 +165,7 @@
                                                     </label>
                                                     <input type="text" name="P_NW_CIVIL_ID" class="ui-input"
                                                            value="{{$falcon->P_NW_CIVIL_ID}}"
-                                                           autocomplete="off"> )
+                                                           autocomplete="off">
                                                     <span id="P_NW_CIVIL_ID"
                                                           class="tag color-red">{{$errors->first('P_NW_CIVIL_ID')}}</span>
                                                 </div>
@@ -188,7 +188,7 @@
                                                            autocomplete="off">
                                                     <span id="P_NW_ADDRESS"
                                                           class="tag color-red">{{$errors->first('P_NW_ADDRESS')}}</span>
-                                                    endif
+
                                                 </div>
                                             </div>
                                             <div class="columns centered">
