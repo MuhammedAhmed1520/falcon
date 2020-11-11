@@ -29,6 +29,7 @@ class UserHospital
     //Create New User
     public function create(array $data)
     {
+        dd($data);
         $data['password'] = bcrypt($data['password']);
         $user = $this->repository->create($this->userModel,$data);
         return return_msg(true, 'User Successfully Added', compact('user'));

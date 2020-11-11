@@ -82,6 +82,24 @@
                                 </a>
                             </li>
                         @endcan
+{{--                            <li id="_32" data-vertical="true"><a href="#">جميع مستخدمين المستشفيات</a>--}}
+{{--                                <ul>--}}
+{{--                                    @can('create-user-hospital')--}}
+{{--                                        <li>--}}
+{{--                                            <a href="{{route('addUsersHospital')}}">اضافة مستخدم</a>--}}
+{{--                                        </li>--}}
+{{--                                    @endcan--}}
+{{--                                        @can('all-user-hospital')--}}
+
+{{--                                        <li>--}}
+{{--                                        <a href="{{route('allUsersHospital')}}">عرض جميع مستخدمين المستشفيات</a>--}}
+
+{{--                                        </li>--}}
+{{--                                        @endcan--}}
+
+{{--                                </ul>--}}
+{{--                            </li>--}}
+
                         @can('show-all-falcon')
                             <li>
                                 <a id="_4" href="{{route('getAllFalconsCivilians')}}">

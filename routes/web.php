@@ -120,6 +120,19 @@ Route::group([
                 Route::delete('delete-user', 'UserController@delete')->name('handleDeleteUser');
 //
             });
+            Route::group([
+                'prefix' => 'hospitals',
+//                'middleware' => 'can:main-settings'
+            ], function () {
+//
+                Route::get('all-users-hospital', 'UserHospitalController@index')->name('allUsersHospital')->middleware('can:all-user-hospital');
+                Route::get('add-user-hospital', 'UserHospitalController@create')->name('addUsersHospital')->middleware('can:create-user-hospital');
+                Route::post('add-user-hospital', 'UserHospitalController@store')->name('handleAddUserHospital')->middleware('can:create-user-hospital');
+                Route::get('edit-user-hospital/{id}', 'UserHospitalController@edit')->name('editUserHospital')->middleware('can:show-user-hospital');
+                Route::put('edit-user-hospital/{id}', 'UserHospitalController@update')->name('handleEditUserHospital')->middleware('can:edit-user-hospital');
+                Route::delete('delete-user-hospital', 'UserHospitalController@delete')->name('handleDeleteUserHospital')->middleware('can:delete-user-hospital');
+//
+            });
 //
             /**
              * user module routes
