@@ -80,14 +80,28 @@ class FalconController extends Controller
         return $this->falconRepo->delete($request->id);
 
     }
-    public function getFalconData($id)
+    public function getFalconData(Request $request)
     {
-        return $this->falconRepo->getFalconData($id);
+        $validation = $this->validateGetFalconDataRequest($request->all());
+        if ($validation->fails()){
+            return return_msg(false,"validation Errors",[
+                "validation_errors" => $validation->getMessageBag()->getMessages(),
+            ]);
+        }
+
+        return $this->falconRepo->getFalconData($request->all());
 
     }
-    public function getFalconCivilInfo($id)
+    public function getFalconCivilInfo(Request $request)
     {
-        return $this->falconRepo->getFalconCivilInfo($id);
+
+        $validation = $this->validateGetFalconCivilRequest($request->all());
+        if ($validation->fails()){
+            return return_msg(false,"validation Errors",[
+                "validation_errors" => $validation->getMessageBag()->getMessages(),
+            ]);
+        }
+        return $this->falconRepo->getFalconCivilInfo($request->P_O_CIVIL_ID);
 
     }
     public function sendData(Request $request)

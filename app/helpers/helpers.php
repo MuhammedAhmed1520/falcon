@@ -1,6 +1,7 @@
 <?php
 
 use App\Mail\MailSender;
+use App\Models\Falcon;
 use App\Models\OfficeAgentPayment;
 use App\Models\TenderBuyer;
 use App\Models\TenderCompanySubscription;
@@ -303,21 +304,8 @@ function getPaymentRelated($item)
 
     $payment_type = $item->paymentable_type;
     switch ($payment_type) {
-        case Violation::class:
-            $title = $item->paymentable->serial ?? '';
-            break;
-        case TenderBuyer::class:
-            $title = ($item->paymentable->company->name ?? '') . "||" . ($item->paymentable->tender->number ?? '');
-            break;
-        case TenderCompanySubscription::class:
-            $title = $item->paymentable->company->name ?? '';
-            break;
-        case ViolationCertificate::class:
-            $title = $item->paymentable->company_name ?? '';
-            break;
-        case OfficeAgentPayment::class:
-            $title = $item->paymentable->office_agent->office_name_ar ??
-                $item->paymentable->office_agent->office_name_en ?? $item->name;
+        case Falcon::class:
+            $title = $item->paymentable->P_O_A_NAME ?? '';
             break;
         default :
             $title = $item->name;

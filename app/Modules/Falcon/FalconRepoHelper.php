@@ -194,7 +194,7 @@ trait FalconRepoHelper
 
     }
 
-    protected function getFalconDataSoap($falcon)
+    protected function getFalconDataSoap($P_O_CIVIL_ID,$P_FAL_PIT_NO)
     {
         $this->soapWrapper->add('Falcon', function ($service) {
             $service
@@ -208,7 +208,7 @@ trait FalconRepoHelper
         });
 
         $response = $this->soapWrapper->call('Falcon.getFalconData', [
-            new GetFalconDataRequest($falcon->P_O_CIVIL_ID,$falcon->P_FAL_PIT_NO
+            new GetFalconDataRequest($P_O_CIVIL_ID,$P_FAL_PIT_NO
             )
         ]);
         $json = json_encode($response);
@@ -218,7 +218,7 @@ trait FalconRepoHelper
 
     }
 
-    protected function getFalconCivilInfoSoap($falcon)
+    protected function getFalconCivilInfoSoap($P_O_CIVIL_ID)
     {
         $this->soapWrapper->add('Falcon', function ($service) {
             $service
@@ -231,7 +231,7 @@ trait FalconRepoHelper
                 ]);
         });
         $response = $this->soapWrapper->call('Falcon.getFalconCivilInfo', [
-            new GetFalconCivilInfoRequest((float)$falcon->P_O_CIVIL_ID),
+            new GetFalconCivilInfoRequest((float)$P_O_CIVIL_ID),
         ]);
         $json = json_encode($response);
         $response = json_decode($json,TRUE);

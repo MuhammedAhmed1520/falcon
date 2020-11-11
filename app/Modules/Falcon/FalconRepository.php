@@ -192,22 +192,11 @@ class FalconRepository
         return return_msg(true,'Success',compact('falcon'));
     }
 
-    public function getFalconData($id)
+    public function getFalconData($data)
     {
-        $user = auth('civil')->user();
-        $hospital = auth('hospital')->user();
-        $falcon = $this->falconModel->where('id',$id);
 
-//        $user ? $falcon = $falcon->where('user_id',$user->id):null;
-//        $hospital ? $falcon = $falcon->where('P_FAL_INJ_HOSPITAL',$hospital->hospital_id):null;
-
-        $falcon = $falcon->first();
-
-        if (!$falcon){
-            return return_msg(false,'Not Found');
-        }
         // Call Soap
-        $data = $this->getFalconDataSoap($falcon);
+        $data = $this->getFalconDataSoap($data['P_O_CIVIL_ID'] ?? null,$data['P_FAL_PIT_NO'] ?? null);
 
         return return_msg(true,"Success",compact('data'));
 
@@ -215,22 +204,10 @@ class FalconRepository
 
     }
 
-    public function getFalconCivilInfo($id)
+    public function getFalconCivilInfo($P_O_CIVIL_ID)
     {
-        $user = auth('civil')->user();
-        $hospital = auth('hospital')->user();
-        $falcon = $this->falconModel->where('id',$id);
-
-//        $user ? $falcon = $falcon->where('user_id',$user->id):null;
-//        $hospital ? $falcon = $falcon->where('P_FAL_INJ_HOSPITAL',$hospital->hospital_id):null;
-
-        $falcon = $falcon->first();
-
-        if (!$falcon){
-            return return_msg(false,'Not Found');
-        }
         // Call Soap
-        $response = $this->getFalconCivilInfoSoap($falcon);
+        $response = $this->getFalconCivilInfoSoap($P_O_CIVIL_ID);
 
         return return_msg(true,"Success",compact('response'));
 

@@ -41,8 +41,8 @@ Route::group(['prefix' => 'falcon', 'namespace' => 'Api'], function () {
     Route::post('/create', 'FalconController@create');
     Route::post('/update', 'FalconController@update');
     Route::get('/find/{id}', 'FalconController@show');
-    Route::get('/getFalconData/{id}', 'FalconController@getFalconData');
-    Route::get('/getFalconCivilInfo/{id}', 'FalconController@getFalconCivilInfo');
+    Route::post('/getFalconData', 'FalconController@getFalconData');
+    Route::post('/getFalconCivilInfo', 'FalconController@getFalconCivilInfo');
     Route::get('/all', 'FalconController@all');
     Route::post('/deleteFile', 'FalconController@deleteFileDetail')->name('deleteFileDetail');
     Route::post('/delete', 'FalconController@delete')->name('civilDeleteFalcon');

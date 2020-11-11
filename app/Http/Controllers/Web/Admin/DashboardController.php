@@ -27,7 +27,7 @@ class DashboardController extends Controller
         $payments = Payment::orderBy('id', 'desc')->get();
         $payments = $this->filter($payments, $request->all());
         $payments = $payments->sortByDesc(function ($item){
-            return $item['payed_at'];
+            return $item['paid_at'];
         });
         return view('pages.settings.payments.all.index', compact('page_title', 'payments', 'paymentable_types'));
     }

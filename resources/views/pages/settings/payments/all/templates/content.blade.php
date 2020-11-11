@@ -2,25 +2,25 @@
     <div class="row divHeader">
         <div class="col-md-12 text-center">
             <img src="{{asset('assets/images/logo.png')}}"  width="120" height="120" class="mt-4 pull-right float-right"
-                 alt=""> 
+                 alt="">
             <img src="{{asset('assets/images/new_kuwait.png')}}"  width="120" height="120" class="mt-4 pull-left float-left"
-                 alt=""> 
+                 alt="">
             <h1 class="m-4">
                 <b class="report_header"> الهيئة العامة للبيئة - تقارير  {{__('sidebar.payment')}}  </b> <br>
                 <span class="fs25">{{__('sidebar.payment_register')}}</span>
-            </h1> 
-        </div> 
+            </h1>
+        </div>
         <div class="col-12 d-none d-print text-center mt-3 mb-4  ">
             <div class="text-center">
                 @if(request()->start_date && request()->end_date)
                     <span class="fs15">الفترة   : </span>
                     <span>من {{request()->start_date}} الى {{request()->end_date}} </span>
                     <br>
-                @endif 
+                @endif
                     <span class="fs15">اجمالى المبالغ : </span>
-                    (<span>{{$payments->sum('cost') ?? 0}}</span>), 
+                    (<span>{{$payments->sum('cost') ?? 0}}</span>),
                     <span class="fs15"> عدد الصفوف   : </span>
-                    (<span>{{count($payments ?? []) ?? 0}}</span>), 
+                    (<span>{{count($payments ?? []) ?? 0}}</span>),
                 @if(request()->amount)
                     <span class="fs15">{{__('violation.amount')}} : </span>
                     (<span id="amount_text">{{request()->amount}}</span>),
@@ -135,13 +135,13 @@
                                 {{$payment->cost}}
                             </td>
                             <td width="120px" onclick="showPayment({{$payment}})">
-                                {{--{{$payment->paymentable->payed_at ?? ''}}--}}
-                                @if($payment->paymentable->payed_at ?? null)
-                                    {{Carbon\Carbon::parse(($payment->paymentable->payed_at ?? ''))->format('Y-m-d')}}
+                                {{--{{$payment->paymentable->paid_at ?? ''}}--}}
+                                @if($payment->paymentable->paid_at ?? null)
+                                    {{Carbon\Carbon::parse(($payment->paymentable->paid_at ?? ''))->format('Y-m-d')}}
                                     <br/>
-                                    {{Carbon\Carbon::parse(($payment->paymentable->payed_at ?? ''))->format('H:i')}}
+                                    {{Carbon\Carbon::parse(($payment->paymentable->paid_at ?? ''))->format('H:i')}}
                                 @endif
-                                {{--{{ $payment->status == 0 ? $payment->updated_at : $payment->paymentable->payed_at }}--}}
+                                {{--{{ $payment->status == 0 ? $payment->updated_at : $payment->paymentable->paid_at }}--}}
 
                             </td>
                             <td onclick="showPayment({{$payment}})">

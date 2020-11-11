@@ -42,8 +42,10 @@ class User
         // dd($data);
         if ($data['query'] ?? null){
             // dd($data);
-            $users = $users->where('name' ,'like',"%".$data['query']."%")
-                ->orWhere('username','like',"%".$data['query']."%");
+            $users = $users->where('P_O_A_NAME' ,'like',"%".$data['query']."%")
+                ->orWhere('P_O_MOBILE','like',"%".$data['query']."%")
+                ->orWhere('P_O_CIVIL_ID','like',"%".$data['query']."%")
+                ->orWhere('P_O_PASSPORT_NO','like',"%".$data['query']."%");
         }
         $users = $users->get();
 
