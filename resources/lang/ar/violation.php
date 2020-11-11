@@ -162,5 +162,5 @@ return [
     'OfficeAgentPayment' => 'الوكلاء المعتمدون',
     'print' => 'طباعة',
 
-
+    'Falcon' => 'رسوم الصقر',
 ];

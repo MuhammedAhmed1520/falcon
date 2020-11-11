@@ -68,6 +68,9 @@ Route::group([
             ], function () {
 //
                 Route::get('all-civilians', 'CivilController@getCivilians')->name('getCivilians');
+                Route::get('orders-civilians/{id}', 'CivilController@showOrdersCivilian')->name('showOrdersCivilian');
+                Route::get('edit-civilians/{id}', 'CivilController@editCivilian')->name('editCivilian');
+                Route::put('edit-civilians/{id}', 'CivilController@handleEditCivilian')->name('handleEditCivilian');
 //
             });
             /**
