@@ -82,13 +82,21 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('show-all-falcon')
+                            <li>
+                                <a id="_4" href="{{route('getAllFalconsCivilians')}}">
+                                    <i class="la la-outdent fa-2x"></i>
+                                    <span>{{__('sidebar.all_orders')}}</span>
+                                </a>
+                            </li>
+                        @endcan
                         @can('payments')
-                        <li>
-                            <a id="_2" href="{{route('getPaymentsView')}}">
-                                <i class="la la-money fa-2x"></i>
-                                <span>{{__('sidebar.all_payments')}}</span>
-                            </a>
-                        </li>
+                            <li>
+                                <a id="_4" href="{{route('getPaymentsView')}}">
+                                    <i class="la la-money fa-2x"></i>
+                                    <span>{{__('sidebar.all_payments')}}</span>
+                                </a>
+                            </li>
                         @endcan
 
                         <li>
