@@ -85,7 +85,7 @@ Route::group([
                 Route::get('add-role', 'RoleController@create')->name('addRoles');//->middleware('can:create-role');
                 Route::post('add-role', 'RoleController@store')->name('handleAddRole');//->middleware('can:create-role');
                 Route::get('edit-role/{id}', 'RoleController@edit')->name('editRole');//->middleware('can:edit-role');
-                Route::get('get-role-users/{id}', 'RoleController@getRoleUsers');//->name('getRoleUsers');
+                Route::get('get-role-users/{id}', 'RoleController@getRoleUsers')->name('getRoleUsers');
                 Route::put('edit-role/{id}', 'RoleController@update')->name('handleEditRole');//->middleware('can:edit-role');
                 Route::delete('delete-role', 'RoleController@delete')->name('handleDeleteRole');//->middleware('can:delete-role');
 //
