@@ -64,15 +64,27 @@ Route::group([
              */
             Route::group([
                 'prefix' => 'civilians',
-//                'middleware' => 'can:main-settings'
             ], function () {
 //
-                Route::get('all-civilians', 'CivilController@getCivilians')->name('getCivilians')->middleware('all-civilians');
-                Route::get('orders-civilians/{id}', 'CivilController@showOrdersCivilian')->name('showOrdersCivilian')->middleware('show-civil');
-                Route::get('edit-civilians/{id}', 'CivilController@editCivilian')->name('editCivilian')->middleware('edit-civil');
-                Route::put('edit-civilians/{id}', 'CivilController@handleEditCivilian')->name('handleEditCivilian')->middleware('show-civil-order');
+                Route::get('all-civilians', 'CivilController@getCivilians')->name('getCivilians')->middleware('can:all-civilians');
+                Route::get('orders-civilians/{id}', 'CivilController@showOrdersCivilian')->name('showOrdersCivilian')->middleware('can:show-civil');
+                Route::get('edit-civilians/{id}', 'CivilController@editCivilian')->name('editCivilian')->middleware('can:edit-civil');
+                Route::put('edit-civilians/{id}', 'CivilController@handleEditCivilian')->name('handleEditCivilian')->middleware('can:show-civil-order');
 //
             });
+
+            /**
+             * roles module routes
+             */
+            Route::group([
+                'prefix' => 'orders',
+            ], function () {
+//
+                Route::get('all-falcons', 'FalconController@getAllFalconsCivilians')->name('getAllFalconsCivilians')->middleware('can:show-all-falcon');
+                Route::get('edit-falcons/{id}', 'FalconController@getEditFalconsCivilians')->name('getEditFalconsCivilians')->middleware('can:show-all-falcon');
+//
+            });
+
             /**
              * roles module routes
              */
