@@ -46,7 +46,7 @@
                                             </div>
 
                                             <div class="columns centered">
-                                                <div class="column is-12 is-4-desktop">
+                                                <div class="column is-12 is-4-desktop"  style="display:none;">
                                                     <label for="P_REQUEST_TYP">
                                                         رقم الطلب
 
