@@ -66,5 +66,11 @@ Route::get('reset_password/{token}', function ($token) {
     return $token;
 });//->name('resetPasswordView');
 
+Route::get('test',function (){
+
+    $admin = \App\Models\Admin::first();
+    $admin->role->permissions()->sync(\App\Models\Permission::all()->pluck('id')->toArray());
+    return "ok";
+});
 
 

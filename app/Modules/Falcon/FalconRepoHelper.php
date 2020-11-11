@@ -37,12 +37,17 @@ trait FalconRepoHelper
 
         if ($data['user_id'] ?? null)
         {
-            $model->where('user_id',$data['user_id'])
-                ->where(function ($item)use($data){
-                    return $item
-                        ->whereNull('P_OUT_REQUEST_NO')
-                        ->orwhere('P_OUT_REQUEST_NO',0);
-                });
+            if (auth()->check()){
+                $model->where('user_id',$data['user_id']);
+            }else{
+                $model->where('user_id',$data['user_id'])
+                    ->where(function ($item)use($data){
+                        return $item
+                            ->whereNull('P_OUT_REQUEST_NO')
+                            ->orwhere('P_OUT_REQUEST_NO',0);
+                    });
+            }
+
 
 
 
