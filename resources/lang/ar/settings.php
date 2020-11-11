@@ -43,7 +43,12 @@ return [
     'file_tender_company_count' => 'ملفات مكتملة',
     'miss_file_tender_company_count' => 'ملفات ناقصة',
     'approved_tender_company_count' => 'شركات نشطة',
-    'old_password'=>'كلمة السر القديمة',
-    'new_password'=>'كلمة السر الجديدة',
-    'password_confirmation'=>'تأكيد كلمة السر',
+    'old_password' => 'كلمة السر القديمة',
+    'new_password' => 'كلمة السر الجديدة',
+    'password_confirmation' => 'تأكيد كلمة السر',
+
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
 ];

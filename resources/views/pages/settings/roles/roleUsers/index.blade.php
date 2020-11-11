@@ -1,0 +1,159 @@
+@extends('layouts.masterIE')
+
+@section('styles')
+    <!-- end of plugin styles -->
+    {{Html::style('assets/css/scroller.bootstrap.min.css')}}
+    {{Html::style('assets/css/colReorder.bootstrap.min.css')}}
+    {{Html::style('assets/css/dataTables.bootstrap.css')}}
+    {{Html::style('assets/css/dataTables.bootstrap.css')}}
+    {{Html::style('assets/css/responsive.dataTables.min.css')}}
+    {{Html::style('assets/css/tables.css')}}
+@endsection
+
+@section('content')
+    <div class="skeleton-nav--center">
+        <div class="container-fluid">
+            <div class="row">
+                @include('pages.settings.roles.roleUsers.templates.header')
+                @include('pages.settings.roles.roleUsers.templates.content')
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+    {{Html::script('assets/js/datatable/jquery.dataTables.js')}}
+    {{Html::script('assets/js/datatable/dataTables.tableTools.js')}}
+    {{Html::script('assets/js/datatable/dataTables.colReorder.js')}}
+    {{Html::script('assets/js/datatable/dataTables.bootstrap.js')}}
+    {{Html::script('assets/js/datatable/dataTables.buttons.min.js')}}
+    {{Html::script('assets/js/datatable/jquery.dataTables.min.js')}}
+    {{Html::script('assets/js/datatable/dataTables.responsive.min.js')}}
+    {{Html::script('assets/js/datatable/dataTables.rowReorder.min.js')}}
+    {{Html::script('assets/js/datatable/buttons.colVis.min.js')}}
+    {{Html::script('assets/js/datatable/buttons.html5.min.js')}}
+    {{Html::script('assets/js/datatable/buttons.bootstrap.min.js')}}
+    {{Html::script('assets/js/datatable/buttons.print.min.js')}}
+    {{Html::script('assets/js/datatable/dataTables.scroller.min.js')}}
+
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('#_3').trigger("click");
+
+            }, 60);
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            let table = $('#data_table');
+            /* Fixed header extension: http://datatables.net/extensions/keytable/ */
+            var oTable = table.dataTable({
+                "paging": false,
+                "sort": false,
+                "print": true,
+                dom: 'rBfrtip',
+                "order": [
+                    [0, 'asc']
+                ],
+                "lengthMenu": [
+                    [5, 15, 20, -1],
+                    [5, 15, 20, "All"] // change per page values here
+                ],
+                "pageLength": 5, // set the initial value,
+                "buttons": [
+                    {
+                        extend: 'print',
+                        text: '<i class="la la-print"></i>',
+                        className: 'btn btn-primary',
+                        customize: function (win) {
+                            $(win.document.body)
+                                .css('direction', 'rtl');
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('direction', 'rtl');
+                            $(win.document.body).find('h1').text('');
+
+                        }
+                    }
+                ]
+            });
+            let oTableColReorder = new $.fn.dataTable.ColReorder(oTable);
+            let tableWrapper = $('#data_table_wrapper');
+
+        })
+
+        function remove(id) {
+            let allow = confirm("{{__('violation.are_sure')}}");
+            if (allow) {
+                $.ajax({
+                    url: "{{route('handleDeleteRole')}}",
+                    method: "delete",
+                    data: {
+                        _token: '{{csrf_token()}}',
+                        id: id
+                    },
+                    success: function (response) {
+                        if (response.status) {
+                            $(`#role_${id}`).remove()
+                            // location.reload()
+                            return;
+                        }
+
+                        iziToast.error({
+                            title: '{{__('violation.error')}}',
+                            message: response.msg,
+                            position: '{{app()->getLocale() == 'ar' ? 'bottomLeft': 'bottomRight'}}',
+                        });
+                    }
+                })
+            }
+            {{--Swal.fire({--}}
+            {{--    type: 'warning',--}}
+            {{--    title: '{{__('violation.are_sure')}}',--}}
+            {{--    inputAttributes: {--}}
+            {{--        autocapitalize: 'off'--}}
+            {{--    },--}}
+            {{--    showCancelButton: true,--}}
+            {{--    confirmButtonText: '{{__('violation.yes')}}',--}}
+            {{--    cancelButtonText: '{{__('violation.no')}}',--}}
+            {{--    showLoaderOnConfirm: true,--}}
+            {{--    preConfirm: function (allow) {--}}
+            {{--        if (allow) {--}}
+            {{--            $.ajax({--}}
+            {{--                url: "{{route('handleDeleteRole')}}",--}}
+            {{--                method: "delete",--}}
+            {{--                data: {--}}
+            {{--                    _token: '{{csrf_token()}}',--}}
+            {{--                    id: id--}}
+            {{--                },--}}
+            {{--                success: function (response) {--}}
+            {{--                    if (response.status) {--}}
+            {{--                        $(`#role_${id}`).remove()--}}
+            {{--                        // location.reload()--}}
+            {{--                        return;--}}
+            {{--                    }--}}
+
+            {{--                    iziToast.error({--}}
+            {{--                        title: '{{__('violation.error')}}',--}}
+            {{--                        message: response.msg,--}}
+            {{--                        position: '{{app()->getLocale() == 'ar' ? 'bottomLeft': 'bottomRight'}}',--}}
+            {{--                    });--}}
+            {{--                }--}}
+            {{--            })--}}
+            {{--        }--}}
+            {{--    },--}}
+            {{--    allowOutsideClick: function() {!Swal.isLoading()}--}}
+            {{--}).then(function (result) {--}}
+            {{--    if (result.value) {--}}
+            {{--        // Swal.fire({--}}
+            {{--        //     title: `${result.value.login}'s avatar`,--}}
+            {{--        //     imageUrl: result.value.avatar_url--}}
+            {{--        // })--}}
+            {{--    }--}}
+            {{--})--}}
+        }
+    </script>
+@endsection
