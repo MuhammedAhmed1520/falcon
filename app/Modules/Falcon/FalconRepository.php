@@ -210,7 +210,6 @@ class FalconRepository
 
 
     }
-
     public function getFalconCivilInfo($id)
     {
         $user = auth('civil')->user();
@@ -268,6 +267,12 @@ class FalconRepository
         if (!$response){
             return return_msg(false,'Not Found');
         }
+        if (!($response['amount'] ?? null)){
+            return return_msg(false,'Not Found',[
+                "validation_errors" => ["P_OUT_REQUEST_NO" => ['لا يمكن دفع الطلب']]
+            ]);
+        }
+
         $paymentPresenter = new Payment();
         $pData['name'] = $falcon->P_O_A_NAME;
         $pData['email'] = $falcon->P_O_MAIL;
@@ -278,7 +283,7 @@ class FalconRepository
 
         $payment =  $paymentPresenter->create($pData,$buyer['payment_type_id'] ?? 2);
 
-        if($payment['status']){
+        if($payment['status'] ?? null){
             $payment_link = $payment['data']['pay']['link'];
             return return_msg(true,"Success",compact('payment_link'));
         }

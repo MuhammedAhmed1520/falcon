@@ -82,11 +82,25 @@ trait FalconTrait
             'id' => 'required',
         ]);
     }
+
     public function validateFalconUpdateHospitalRequest(array $request_data)
     {
         return validator($request_data, [
 
             'P_FAL_PIT_NO' => 'required',
+            'P_FAL_RING_NO' => 'required_if:P_REQUEST_TYP,1',
+            'P_FAL_INJ_DATE' => 'required_if:P_REQUEST_TYP,1',
+            'file' => 'required|file',
+
+            'id' => 'required',
+        ]);
+    }
+
+    public function validateFalconPayRequest(array $request_data)
+    {
+        return validator($request_data, [
+
+            'P_OUT_REQUEST_NO' => 'required',
             'P_FAL_RING_NO' => 'required_if:P_REQUEST_TYP,1',
             'P_FAL_INJ_DATE' => 'required_if:P_REQUEST_TYP,1',
             'file' => 'required|file',

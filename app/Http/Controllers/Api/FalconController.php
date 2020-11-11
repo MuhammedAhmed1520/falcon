@@ -90,4 +90,21 @@ class FalconController extends Controller
         return $this->falconRepo->getFalconCivilInfo($id);
 
     }
+    public function sendData(Request $request)
+    {
+        return $this->falconRepo->sendData($request->id);
+
+    }
+
+    public function pay($data)
+    {
+
+        $validation = $this->validateFalconPayRequest($data);
+        if ($validation->fails()){
+            return return_msg(false,"validation Errors",[
+                "validation_errors" => $validation->getMessageBag()->getMessages(),
+            ]);
+        }
+        return $this->falconRepo->pay($data);
+    }
 }
