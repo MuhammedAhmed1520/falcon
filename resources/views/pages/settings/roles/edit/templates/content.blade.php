@@ -27,21 +27,6 @@
                         </label>
                       </span>
                     </div>
-                    <div class="col-md-4">
-                        <b>
-                            <star>*</star> {{__('violation.redirect_to')}}
-                        </b><br>
-                        <select class="form-control" name="route_name">
-                            @foreach($redirect_routes as $redirect_route)
-                                <option
-                                    @if($role->route_name == $redirect_route['route_name']) selected @endif
-                                value="{{$redirect_route['route_name']}}">{{app()->getLocale() == 'ar' ? $redirect_route['title_ar']: $redirect_route['title_en']}}</option>
-                            @endforeach
-                        </select>
-                        @if($errors->has('route_name'))
-                            <span class="text-danger">({{$errors->first('route_name')}})</span>
-                        @endif
-                    </div>
 
                     <div class="col-md-12">
                         <nav>

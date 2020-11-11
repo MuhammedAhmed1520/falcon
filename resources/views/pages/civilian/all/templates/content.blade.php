@@ -47,14 +47,18 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{route('editCivilian',['id'=>$user->id])}}"
-                                   class="btn btn-warning btn-sm m-0">
-                                    <i class="la la-edit"></i>
-                                </a>
-                                <a href="{{route('showOrdersCivilian',['id'=>$user->id])}}"
-                                   class="btn btn-primary btn-sm m-0">
-                                    <i class="la la-eye"></i>
-                                </a>
+                                @can('show-civil')
+                                    <a href="{{route('editCivilian',['id'=>$user->id])}}"
+                                       class="btn btn-warning btn-sm m-0">
+                                        <i class="la la-edit"></i>
+                                    </a>
+                                @endcan
+                                @can('show-civil-order')
+                                    <a href="{{route('showOrdersCivilian',['id'=>$user->id])}}"
+                                       class="btn btn-primary btn-sm m-0">
+                                        <i class="la la-eye"></i>
+                                    </a>
+                                @endcan
                             </div>
                         </td>
                     </tr>

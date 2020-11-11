@@ -74,19 +74,22 @@
                                 <span>{{__('sidebar.dashboard')}}</span>
                             </a>
                         </li>
-
-                        <li>
-                            <a id="_2" href="{{route('getCivilians')}}">
-                                <i class="la la-user-secret fa-2x"></i>
-                                <span>{{__('sidebar.all_civilian')}}</span>
-                            </a>
-                        </li>
+                        @can('all-civilians')
+                            <li>
+                                <a id="_2" href="{{route('getCivilians')}}">
+                                    <i class="la la-user-secret fa-2x"></i>
+                                    <span>{{__('sidebar.all_civilian')}}</span>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('payments')
                         <li>
                             <a id="_2" href="{{route('getPaymentsView')}}">
                                 <i class="la la-money fa-2x"></i>
                                 <span>{{__('sidebar.all_payments')}}</span>
                             </a>
                         </li>
+                        @endcan
 
                         <li>
                             <a id="_3" href="#">

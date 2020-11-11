@@ -56,7 +56,7 @@ Route::group([
         ], function () {
             Route::get('', 'DashboardController@getDashboard');
             Route::get('home', 'DashboardController@getDashboard')->name('getDashboardView');
-            Route::get('getPayments', 'DashboardController@getPayments')->name('getPaymentsView');//->middleware('can:payments');
+            Route::get('getPayments', 'DashboardController@getPayments')->name('getPaymentsView')->middleware('can:payments');
 
 
             /**
@@ -67,10 +67,10 @@ Route::group([
 //                'middleware' => 'can:main-settings'
             ], function () {
 //
-                Route::get('all-civilians', 'CivilController@getCivilians')->name('getCivilians');
-                Route::get('orders-civilians/{id}', 'CivilController@showOrdersCivilian')->name('showOrdersCivilian');
-                Route::get('edit-civilians/{id}', 'CivilController@editCivilian')->name('editCivilian');
-                Route::put('edit-civilians/{id}', 'CivilController@handleEditCivilian')->name('handleEditCivilian');
+                Route::get('all-civilians', 'CivilController@getCivilians')->name('getCivilians')->middleware('all-civilians');
+                Route::get('orders-civilians/{id}', 'CivilController@showOrdersCivilian')->name('showOrdersCivilian')->middleware('show-civil');
+                Route::get('edit-civilians/{id}', 'CivilController@editCivilian')->name('editCivilian')->middleware('edit-civil');
+                Route::put('edit-civilians/{id}', 'CivilController@handleEditCivilian')->name('handleEditCivilian')->middleware('show-civil-order');
 //
             });
             /**
@@ -78,16 +78,16 @@ Route::group([
              */
             Route::group([
                 'prefix' => 'roles',
-//                'middleware' => 'can:main-settings'
+                'middleware' => 'can:main-settings'
             ], function () {
 //
                 Route::get('all-roles', 'RoleController@index')->name('allRoles');
-                Route::get('add-role', 'RoleController@create')->name('addRoles');//->middleware('can:create-role');
-                Route::post('add-role', 'RoleController@store')->name('handleAddRole');//->middleware('can:create-role');
-                Route::get('edit-role/{id}', 'RoleController@edit')->name('editRole');//->middleware('can:edit-role');
+                Route::get('add-role', 'RoleController@create')->name('addRoles')->middleware('can:create-role');
+                Route::post('add-role', 'RoleController@store')->name('handleAddRole')->middleware('can:create-role');
+                Route::get('edit-role/{id}', 'RoleController@edit')->name('editRole')->middleware('can:edit-role');
                 Route::get('get-role-users/{id}', 'RoleController@getRoleUsers')->name('getRoleUsers');
-                Route::put('edit-role/{id}', 'RoleController@update')->name('handleEditRole');//->middleware('can:edit-role');
-                Route::delete('delete-role', 'RoleController@delete')->name('handleDeleteRole');//->middleware('can:delete-role');
+                Route::put('edit-role/{id}', 'RoleController@update')->name('handleEditRole')->middleware('can:edit-role');
+                Route::delete('delete-role', 'RoleController@delete')->name('handleDeleteRole')->middleware('can:delete-role');
 //
             });
 //
@@ -101,11 +101,11 @@ Route::group([
             ], function () {
 //
                 Route::get('all-users', 'UserController@index')->name('allUsers');
-                Route::get('add-user', 'UserController@create')->name('addUsers');//->middleware('can:create-user');
-//                Route::post('add-user', 'UserController@store')->name('handleAddUser')->middleware('can:create-user');
-//                Route::get('edit-user/{id}', 'UserController@edit')->name('editUser');
-//                Route::put('edit-user/{id}', 'UserController@update')->name('handleEditUser');
-//                Route::delete('delete-user', 'UserController@delete')->name('handleDeleteUser');
+                Route::get('add-user', 'UserController@create')->name('addUsers')->middleware('can:create-user');
+                Route::post('add-user', 'UserController@store')->name('handleAddUser')->middleware('can:create-user');
+                Route::get('edit-user/{id}', 'UserController@edit')->name('editUser');
+                Route::put('edit-user/{id}', 'UserController@update')->name('handleEditUser');
+                Route::delete('delete-user', 'UserController@delete')->name('handleDeleteUser');
 //
             });
 //

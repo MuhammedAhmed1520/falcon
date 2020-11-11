@@ -1,8 +1,10 @@
 <div class="container-fluid">
-    {{Form::open([
-    'route'=>['handleEditCivilian',$user->id],
-        'method'=>'put'
-    ])}}
+    @can('edit-civil')
+        {{Form::open([
+        'route'=>['handleEditCivilian',$user->id],
+            'method'=>'put'
+        ])}}
+    @endcan
     <div class="row">
         <div class="col-md-12 p-2">
             <fieldset>
@@ -78,13 +80,15 @@
                 </div>
             </fieldset>
         </div>
-
-        <div class="col-md-12 text-center mt-2 mb-5">
-            <button class="btn btn-primary">
-                {{__('violation.update')}}
-            </button>
-        </div>
-
+        @can('edit-civil')
+            <div class="col-md-12 text-center mt-2 mb-5">
+                <button class="btn btn-primary">
+                    {{__('violation.update')}}
+                </button>
+            </div>
+        @endcan
     </div>
-    {{Form::close()}}
+    @can('edit-civil')
+        {{Form::close()}}
+    @endcan
 </div>

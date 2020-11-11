@@ -1,4 +1,4 @@
-@extends('layouts.masterIE')
+@extends('layouts.master')
 
 @section('styles')
 

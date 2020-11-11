@@ -26,9 +26,9 @@
                         <td>
                             <div class="btn-group">
                                 @can('edit-role')
-                                <a href="{{route('getRoleUsers',['id'=>$role->id])}}" class="btn btn-success btn-sm m-0">
-                                    <i class="la la-eye"></i>
-                                </a>
+{{--                                <a href="{{route('getRoleUsers',['id'=>$role->id])}}" class="btn btn-success btn-sm m-0">--}}
+{{--                                    <i class="la la-eye"></i>--}}
+{{--                                </a>--}}
                                 <a href="{{route('editRole',['id'=>$role->id])}}" class="btn btn-info btn-sm m-0">
                                     <i class="la la-edit"></i>
                                 </a>
