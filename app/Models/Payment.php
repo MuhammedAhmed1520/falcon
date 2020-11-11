@@ -13,7 +13,7 @@ class Payment extends Model
         ,'callback'
     ];
     protected $hidden = ['knet'];
-    protected $appends =['knet_data','type','payed_at','user'];
+    protected $appends =['knet_data','type','payed_at'];
 
     public function knet(){
         return $this->hasOne(KnetPayment::class,'pay_id');
