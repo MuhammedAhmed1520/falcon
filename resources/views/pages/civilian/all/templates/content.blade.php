@@ -47,12 +47,14 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                {{--                                <a href="{{route('editUser',['id'=>$user->id])}}" class="btn btn-info btn-sm m-0">--}}
-                                {{--                                    <i class="la la-edit"></i>--}}
-                                {{--                                </a>--}}
-                                {{--                                <button class="btn btn-danger btn-sm m-0" onclick="removeUser('{{$user->id}}')">--}}
-                                {{--                                    <i class="la la-remove"></i>--}}
-                                {{--                                </button>--}}
+                                <a href="{{route('editCivilian',['id'=>$user->id])}}"
+                                   class="btn btn-warning btn-sm m-0">
+                                    <i class="la la-edit"></i>
+                                </a>
+                                <a href="{{route('showOrdersCivilian',['id'=>$user->id])}}"
+                                   class="btn btn-primary btn-sm m-0">
+                                    <i class="la la-eye"></i>
+                                </a>
                             </div>
                         </td>
                     </tr>
