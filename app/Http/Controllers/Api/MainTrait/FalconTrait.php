@@ -100,7 +100,7 @@ trait FalconTrait
     {
         return validator($request_data, [
 
-            'P_OUT_REQUEST_NO' => 'required',
+            'P_FAL_PIT_NO' => 'required',
         ]);
     }
 
