@@ -78,8 +78,9 @@ class Payment
             return return_msg(true,"Payment Updated Successfully",compact('callBackLink'));
         }
 
+        $knet = $this->prepareData($data);
         //Save Knet Response
-        $pay->knet()->updateOrCreate(['pay_id'=>$pay['id']],$this->prepareData($data));
+        $pay->knet()->updateOrCreate(['pay_id'=>$pay['id']],$knet);
 
         if($status){
             // Update status
@@ -91,6 +92,7 @@ class Payment
             $payed->paid_at = Carbon::now()->format('Y-m-d H:i:s');
             $payed->save();
 
+            $this->updateMorph($pay,$knet);
 //            $this->updateMorph($pay);
 
 //            $mailData['to'] = $pay['email'];

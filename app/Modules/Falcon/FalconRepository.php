@@ -249,19 +249,17 @@ class FalconRepository
     {
         $falcon = $this->falconModel->where('P_FAL_PIT_NO',$data['P_FAL_PIT_NO'] ?? null)->first();
         if (!$falcon){
-            return return_msg(false,'Not Found');
+            return return_msg(false,'لا توجد بيانات');
         }
 
         // Get Amount
         $response = $this->getFalconData($falcon)['data']['data'] ?? null;
         if (!$response){
-            return return_msg(false,'Not Found');
+            return return_msg(false,'لا توجد بيانات');
         }
 
         if (!($response['amount'] ?? null)){
-            return return_msg(false,'Not Found',[
-                "validation_errors" => ["P_OUT_REQUEST_NO" => [$response['statusMsg'] ?? 'لا يمكن دفع الطلب']]
-            ]);
+            return return_msg(false,$response['statusMsg'] ?? 'لا يمكن دفع الطلب');
         }
 
         $paymentPresenter = new Payment();

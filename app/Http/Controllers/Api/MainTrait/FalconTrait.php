@@ -99,7 +99,6 @@ trait FalconTrait
     public function validateFalconPayRequest(array $request_data)
     {
         return validator($request_data, [
-
             'P_FAL_PIT_NO' => 'required',
         ]);
     }
