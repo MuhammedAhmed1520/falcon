@@ -46,8 +46,8 @@
                             <tr id="row_{{$falcon->id}}">
                                 <td>{{$falcon->P_CUR_PASS_FAL ?? ''}}</td>
                                 <td>{{$falcon->P_FAL_SPECIES ?? ''}}</td>
-                                <td>{{$falcon->origin_country->label ?? ''}}</td>
                                 <td>{{$falcon->fal_type->label ?? ''}}</td>
+                                <td>{{$falcon->origin_country->label ?? ''}}</td>
                                 <td>
                                     @if($falcon->P_STATUS_MSG ?? '')
                                         <span class="tag is-dark">{{$falcon->P_STATUS_MSG ?? ''}}</span>
