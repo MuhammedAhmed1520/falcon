@@ -14,7 +14,7 @@
                     <div class="section-content has-text-centered">
                         <h3>عرض كافة الطلبات </h3>
                         <a href="{{route('falcon-addCivilFalcon')}}" class="btn btn-secondary">اضافة صقر</a>
-                        <a href="{{route('falcon-searchCivilFalcon')}}" class="btn p-5 button is-danger">بحث الطلبات</a>
+{{--                        <a href="{{route('falcon-searchCivilFalcon')}}" class="btn p-5 button is-danger">بحث الطلبات</a>--}}
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                             <th>نوع الصقر</th>
                             <th>بلد المنشأ</th>
                             <th><abbr>الحالة</abbr></th>
-                            <th width="180"></th>
+                            <th width="250"></th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -68,6 +68,10 @@
                                        class="button is-link">
                                         تعديل
                                     </a>
+{{--                                    <a href="{{route('falcon-getCivilLoss',['id'=>$falcon->id])}}"--}}
+{{--                                       class="button is-link">--}}
+{{--                                        فقدان--}}
+{{--                                    </a>--}}
                                     <a class="button is-danger p-0" onclick="deleteRow('{{$falcon->id}}')">
                                         <i class="icon icon-trash" style="margin-top: 5px"></i>
                                     </a>
