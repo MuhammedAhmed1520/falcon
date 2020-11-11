@@ -18,7 +18,7 @@ class Role extends Model
 
     public function users()
     {
-        return $this->hasMany(User::class, 'role_id');
+        return $this->hasMany(Admin::class, 'role_id');
     }
 
     public function checkFullPermissions()
