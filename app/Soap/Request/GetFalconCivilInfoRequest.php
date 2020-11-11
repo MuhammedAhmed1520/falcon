@@ -18,9 +18,6 @@ class GetFalconCivilInfoRequest
     }
 
 
-    /**
-     * @return mixed
-     */
     public function getCivilId()
     {
         return $this->CivilId;

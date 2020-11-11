@@ -5,6 +5,23 @@ namespace App\Http\Controllers\Api\MainTrait;
 
 trait MainTrait
 {
+    //Valid Create Request Of Role
+    public function CreateRoleRequest(array $request_data)
+    {
+        return validator($request_data, [
+            'title' => 'required|string|unique:roles,title',
+            'permissions.*' => 'nullable|numeric|exists:permissions,id'
+        ]);
+    }
+
+    //Valid Update Request Of Role
+    public function UpdateRoleRequest(array $request_data)
+    {
+        return validator($request_data, [
+            'title' => 'required|string|unique:roles,title,' . $request_data['id'],
+            'permissions.*' => 'nullable|numeric|exists:permissions,id'
+        ]);
+    }
 
 
 
@@ -12,10 +29,11 @@ trait MainTrait
     {
         return validator($request_data, [
             'name' => 'required|min:3|string',
-            'username' => 'required|unique:users,username',
+//            'username' => 'required|unique:users,username',
             'password' => 'required|min:6',
             'mobile' => 'nullable|digits:8',
-            'email' => 'nullable|email',
+            'email' =>  'required|email|unique:users,email',
+            'hospital_id' =>  'required|numeric',
         ]);
     }
 
@@ -23,10 +41,10 @@ trait MainTrait
     {
         return validator($request_data, [
             'name' => 'nullable|min:3|string',
-            'username' => 'nullable|unique:users,id,' . $request_data['id'],
+            'email' => 'required|unique:users,id,' . $request_data['id'],
             'password' => 'nullable|min:6',
             'mobile' => 'nullable|digits:8',
-            'email' => 'nullable|email',
+            'hospital_id' =>  'required|numeric',
 
         ]);
     }
@@ -62,6 +80,27 @@ trait MainTrait
         return validator($request_data, [
             'token' => 'required',
             'password' => 'required|confirmed|min:6',
+        ]);
+    }
+    public function CreateAdminRequest(array $request_data)
+    {
+        return validator($request_data, [
+            'name' => 'nullable|min:1|string',
+            'username' => 'required|unique:users,username',
+            'password' => 'required|min:6',
+            'mobile' => 'nullable|digits:8',
+            'role_id' => 'required|exists:roles,id',
+        ]);
+    }
+
+    public function UpdateAdminRequest(array $request_data)
+    {
+        return validator($request_data, [
+            'name' => 'nullable|min:1|string',
+            'username' => 'nullable|unique:users,id,' . $request_data['id'],
+            'password' => 'nullable|min:6',
+            'mobile' => 'nullable|digits:8',
+            'role_id' => 'required|exists:roles,id',
         ]);
     }
 

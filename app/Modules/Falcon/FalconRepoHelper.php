@@ -37,9 +37,19 @@ trait FalconRepoHelper
 
         if ($data['user_id'] ?? null)
         {
-            $model->where('user_id',$data['user_id'])
-                ->whereNull('P_OUT_REQUEST_NO')
-                ->whereNotNull('P_FAL_PIT_NO');
+            if (auth()->check()){
+                $model->where('user_id',$data['user_id']);
+            }else{
+                $model->where('user_id',$data['user_id'])
+                    ->where(function ($item)use($data){
+                        return $item
+                            ->whereNull('P_OUT_REQUEST_NO')
+                            ->orwhere('P_OUT_REQUEST_NO',0);
+                    });
+            }
+
+
+
 
         }
 
@@ -97,12 +107,11 @@ trait FalconRepoHelper
             ]);
             $json = json_encode($response);
             $response = json_decode($json,TRUE);
-
             $falcon->P_OUT_REQUEST_NO = $response['return']['requestNo'] ?? null;
             $falcon->P_STATUS_MSG = $response['return']['statusMsg'] ?? null;
             $falcon->save();
 
-            !$falcon->P_OUT_REQUEST_NO ? : $this->uploadAttachments($falcon);
+            !$falcon->P_OUT_REQUEST_NO ?: $this->uploadAttachments($falcon);
 
 
 
@@ -222,13 +231,12 @@ trait FalconRepoHelper
                 ]);
         });
         $response = $this->soapWrapper->call('Falcon.getFalconCivilInfo', [
-            new GetFalconCivilInfoRequest($falcon->P_O_CIVIL_ID)
+            new GetFalconCivilInfoRequest((float)$falcon->P_O_CIVIL_ID),
         ]);
-
         $json = json_encode($response);
         $response = json_decode($json,TRUE);
+
         return $response['return'] ?? null;
-//        dd($response);
 
     }
 

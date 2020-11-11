@@ -7,6 +7,10 @@ namespace App\Modules\Falcon;
 use App\Models\Falcon;
 use App\Models\FalconFileDetail;
 use App\Modules\Payment\Payment;
+use App\Soap\Request\SubmitFalconAttachment;
+use App\Soap\Request\SubmitFalconRequest;
+use App\Soap\Response\SubmitFalconAttachmentResponse;
+use App\Soap\Response\SubmitFalconRequestResponse;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 use Illuminate\Support\Facades\DB;
 
@@ -210,6 +214,7 @@ class FalconRepository
 
 
     }
+
     public function getFalconCivilInfo($id)
     {
         $user = auth('civil')->user();
@@ -250,7 +255,6 @@ class FalconRepository
         if ($falcon->P_OUT_REQUEST_NO){
             return return_msg(false,'Not Found');
         }
-
         $this->sendSoapRequest($falcon);
         return return_msg(true,"Success");
 
@@ -258,21 +262,23 @@ class FalconRepository
 
     public function pay($data)
     {
+
         $falcon = $this->falconModel->where('P_OUT_REQUEST_NO',$data['P_OUT_REQUEST_NO'] ?? null)->first();
         if (!$falcon){
             return return_msg(false,'Not Found');
         }
+
         // Get Amount
         $response = $this->getFalconData($falcon->id)['data']['data'] ?? null;
         if (!$response){
             return return_msg(false,'Not Found');
         }
-//        dd($response);
-//        if (!($response['amount'] ?? null)){
-//            return return_msg(false,'Not Found',[
-//                "validation_errors" => ["P_OUT_REQUEST_NO" => ['لا يمكن دفع الطلب']]
-//            ]);
-//        }
+
+        if (!($response['amount'] ?? null)){
+            return return_msg(false,'Not Found',[
+                "validation_errors" => ["P_OUT_REQUEST_NO" => [$response['statusMsg'] ?? 'لا يمكن دفع الطلب']]
+            ]);
+        }
 
         $paymentPresenter = new Payment();
         $pData['name'] = $falcon->P_O_A_NAME;
@@ -290,6 +296,53 @@ class FalconRepository
         }
 
         return return_msg(false,'Not Found');
+    }
+
+    public function sendSoap($data)
+    {
+        try {
+
+            $this->soapWrapper->add('Falcon', function ($service) {
+                $service
+                    ->wsdl(env('FALCON_SOAP'))
+                    ->trace(true)
+                    ->options(['user_agent' => 'PHPSoapClient'])
+                    ->classmap([
+                        SubmitFalconRequest::class,
+                        SubmitFalconRequestResponse::class,
+                    ]);
+            });
+
+            $response = $this->soapWrapper->call('Falcon.submitFalconRequest', [
+                new SubmitFalconRequest($data['P_REQUEST_TYP'] ?? null, $data['P_O_CIVIL_ID'] ?? null,
+                    $data['P_O_A_NAME'] ?? null, $data['P_O_ADDRESS'] ?? null,
+                    $data['P_O_MOBILE'] ?? null, $data['P_O_PASSPORT_NO'] ?? null,
+                    $data['P_CIVIL_EXPIRY_DT'] ?? null, $data['P_O_MAIL'] ?? null,
+                    $data['P_NW_CIVIL_ID'] ?? null, $data['P_NW_A_NAME'] ?? null,
+                    $data['P_NW_ADDRESS'] ?? null, $data['P_NW_MOBILE'] ?? null,
+                    $data['P_NW_PASSPORT_NO'] ?? null, $data['P_NW_CIVIL_EXPIRY'] ?? null,
+                    $data['P_CUR_PASS_FAL'] ?? null, $data['P_NW_O_MAIL'] ?? null,
+                    $data['P_FAL_SEX'] ?? null, $data['P_FAL_SPECIES'] ?? null,
+                    $data['P_FAL_TYPE'] ?? null, $data['P_FAL_OTHER_TYPE'] ?? null,
+                    $data['P_FAL_ORIGIN_COUNTRY'] ?? null, $data['P_FAL_CITES_NO'] ?? null,
+                    $data['P_FAL_PIT_NO'] ?? null, $data['P_FAL_RING_NO'] ?? null,
+                    $data['P_FAL_INJ_DATE'] ?? null, $data['P_FAL_INJ_HOSPITAL'] ?? null,
+                    $data['P_PAYMENT_ID'] ?? null, $data['P_AMOUNT'] ?? null,
+                    $data['P_TRANS_ID'] ?? null, $data['P_TRACK_ID'] ?? null
+                )
+            ]);
+            $json = json_encode($response);
+            $response = json_decode($json,TRUE);
+
+            return return_msg(true,"success",compact('response'));
+
+
+
+        }catch (\Exception $exception){
+
+            return return_msg(false,"Server Error",compact('response'));
+
+        }
     }
 
 }
