@@ -96,15 +96,15 @@ class FalconController extends Controller
 
     }
 
-    public function pay($data)
+    public function pay(Request $request)
     {
 
-        $validation = $this->validateFalconPayRequest($data);
+        $validation = $this->validateFalconPayRequest($request->all());
         if ($validation->fails()){
             return return_msg(false,"validation Errors",[
                 "validation_errors" => $validation->getMessageBag()->getMessages(),
             ]);
         }
-        return $this->falconRepo->pay($data);
+        return $this->falconRepo->pay($request->all());
     }
 }

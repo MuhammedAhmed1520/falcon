@@ -35,7 +35,7 @@ class KnetGateway{
         $this->ReqTranportalPassword = "password=".$transportalPassword;
         $this->ReqTrackId = "trackid=".$this->TranTrackid;
         $this->ReqCurrency = "currencycode=414";
-        $this->errorUrl=url('/api/knet-wait');
+        $this->errorUrl=$responseUrl;
         $this->responseUrl = $responseUrl;
         $this->ReqResponseUrl="responseURL=".$this->responseUrl;
         $this->ReqErrorUrl = "errorURL=".$this->errorUrl;

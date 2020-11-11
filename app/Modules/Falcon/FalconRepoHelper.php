@@ -37,7 +37,9 @@ trait FalconRepoHelper
 
         if ($data['user_id'] ?? null)
         {
-            $model->where('user_id',$data['user_id']);
+            $model->where('user_id',$data['user_id'])
+                ->whereNull('P_OUT_REQUEST_NO')
+                ->whereNotNull('P_FAL_PIT_NO');
 
         }
 

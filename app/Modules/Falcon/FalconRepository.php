@@ -267,17 +267,18 @@ class FalconRepository
         if (!$response){
             return return_msg(false,'Not Found');
         }
-        if (!($response['amount'] ?? null)){
-            return return_msg(false,'Not Found',[
-                "validation_errors" => ["P_OUT_REQUEST_NO" => ['لا يمكن دفع الطلب']]
-            ]);
-        }
+//        dd($response);
+//        if (!($response['amount'] ?? null)){
+//            return return_msg(false,'Not Found',[
+//                "validation_errors" => ["P_OUT_REQUEST_NO" => ['لا يمكن دفع الطلب']]
+//            ]);
+//        }
 
         $paymentPresenter = new Payment();
         $pData['name'] = $falcon->P_O_A_NAME;
         $pData['email'] = $falcon->P_O_MAIL;
         $pData['phone'] = $falcon->P_O_MOBILE;
-        $pData['cost'] = $response['amount'];
+        $pData['cost'] = 5;
         $pData['paymentable_type'] = $this->falconModel->getMorphClass();
         $pData['paymentable_id'] = $falcon->id;
 

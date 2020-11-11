@@ -113,7 +113,6 @@ class PaymentController extends Controller
             return view('payment.knet-error',compact('data'));
         }
         if($data['result'] == "CAPTURED"){
-            // dd("dd");
 //             Update Payment Status
             $response = $this->paymentPresenter->updateStatus($data['udf1'],$data,true);
             if ($response['status']){
