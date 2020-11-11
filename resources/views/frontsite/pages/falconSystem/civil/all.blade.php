@@ -30,12 +30,12 @@
                     <table class="table" id="myTable">
                         <thead>
                         <tr>
+                            <th><abbr>رقم الطلب</abbr></th>
                             <th><abbr>رقم جواز الصقر الحالى</abbr></th>
                             <th>فئة الصقر</th>
                             <th>نوع الصقر</th>
                             <th>بلد المنشأ</th>
                             <th><abbr>الحالة</abbr></th>
-                            <th><abbr>رقم الطلب</abbr></th>
                             <th width="180"></th>
                         </tr>
                         </thead>
@@ -44,6 +44,11 @@
 
                         @foreach($falcons as $falcon)
                             <tr id="row_{{$falcon->id}}">
+                                <td>
+                                    @if($falcon->P_OUT_REQUEST_NO ?? '')
+                                        <span class="tag is-dark">{{$falcon->P_OUT_REQUEST_NO ?? ''}}</span>
+                                    @endif
+                                </td>
                                 <td>{{$falcon->P_CUR_PASS_FAL ?? ''}}</td>
                                 <td>{{$falcon->P_FAL_SPECIES ?? ''}}</td>
                                 <td>{{$falcon->fal_type->label ?? ''}}</td>
@@ -51,11 +56,6 @@
                                 <td>
                                     @if($falcon->P_STATUS_MSG ?? '')
                                         <span class="tag is-dark">{{$falcon->P_STATUS_MSG ?? ''}}</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($falcon->P_OUT_REQUEST_NO ?? '')
-                                        <span class="tag is-dark">{{$falcon->P_OUT_REQUEST_NO ?? ''}}</span>
                                     @endif
                                 </td>
                                 <td>
