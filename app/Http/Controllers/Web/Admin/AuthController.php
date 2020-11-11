@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web\Admin;
 
+use App\Http\Controllers\Auth\AuthAdminController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->authentication = new AuthCtrl;
+        $this->authentication = new AuthAdminController();
     } // end constructor
 
     /**
@@ -36,22 +37,26 @@ class AuthController extends Controller
      */
     public function handleLogin(Request $request)
     {
-        dd($request->all());
         $response = $this->authentication->login($request);
         if (!$response['status']) {
             return back()->withErrors($response['data']['errors'])->withInput();
         }
-        $open_menu = 2;
-        return redirect()->route('getDashboardView')->with('open_menu', $open_menu);
+//        return $response;
+//        $admin = $response['data']['user'];
+//        if ($admin) {
+//            auth()->login($admin);
+//        }
+        return redirect()->route('getDashboardView');
     }
 
     public function handleLogout()
     {
-        auth()->user()->logs()->create([
-            "type" => 'logout'
-        ]);
+        $user = auth()->user();
 
-        auth()->logout();
+        if ($user) {
+            auth()->logout();
+        }
+
         return redirect()->route('getLoginView');
     }
 }

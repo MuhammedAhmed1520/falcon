@@ -45,7 +45,7 @@ Route::group([
      * auth routes
      */
     Route::group([
-//        'middleware' => 'auth'
+        'middleware' => 'auth'
     ], function () {
 
         /**

@@ -79,8 +79,8 @@ class FalconSystemController extends Controller
     public function civilIndex(Request $request)
     {
         $is_active = 1;
-//        $P_O_CIVIL_ID = getAuthUser('civil')->P_O_CIVIL_ID ?? null;
-        $P_O_CIVIL_ID = 291022202031;
+        $P_O_CIVIL_ID = getAuthUser('civil')->P_O_CIVIL_ID ?? null;
+//        $P_O_CIVIL_ID = 291022202031;
         $request->request->add(['P_O_CIVIL_ID' => $P_O_CIVIL_ID]);
         $response = $this->falcon_ctrl->all($request)['data'] ?? [];
         $falcons = $response['falcons'] ?? [];

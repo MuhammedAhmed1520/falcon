@@ -70,9 +70,6 @@
                                        class="button is-link">
                                         تعديل
                                     </a>
-                                    <a class="button is-warning p-0" onclick="payment('{{$falcon->P_FAL_PIT_NO}}')">
-                                        الدفع
-                                    </a>
                                     <a class="button is-danger p-0" onclick="deleteRow('{{$falcon->id}}')">
                                         <i class="icon icon-trash" style="margin-top: 5px"></i>
                                     </a>
@@ -89,9 +86,12 @@
                                 <td>{{$online_falcon['falOriginCountry'] ?? ''}}</td>
                                 <td></td>
                                 <td>
-                                    <a href="{{route('falcon-getCivilLoss',['P_O_CIVIL_ID'=>$P_O_CIVIL_ID,'pitNo'=>$online_falcon['pitNo']])}}"
-                                       class="button is-link">
-                                        فقدان
+{{--                                    <a href="{{route('falcon-getCivilLoss',['P_O_CIVIL_ID'=>$P_O_CIVIL_ID,'pitNo'=>$online_falcon['pitNo']])}}"--}}
+{{--                                       class="button is-link">--}}
+{{--                                        فقدان--}}
+{{--                                    </a>--}}
+                                    <a class="button is-warning p-0" onclick="payment('{{$online_falcon['pitNo']}}')">
+                                        الدفع
                                     </a>
                                 </td>
                             </tr>
@@ -206,6 +206,11 @@
                                 // let oTable = $('#data_table').dataTable();
                                 // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
                             }
+                            Swal.fire({
+                                icon: 'danger',
+                                title: 'حدث خطأ',
+                                text: response.msg
+                            })
                         }
                     })
 
