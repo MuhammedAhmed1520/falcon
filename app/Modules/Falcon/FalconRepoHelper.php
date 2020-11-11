@@ -35,6 +35,22 @@ trait FalconRepoHelper
 
         }
 
+        if ($data['query'] ?? null)
+        {
+            $model->where(function ($item)use($data){
+               return $item
+                   ->where('P_O_PASSPORT_NO','like',"%".$data['query']."%")
+                   ->orWhere('P_CIVIL_EXPIRY_DT','like',"%".$data['query']."%")
+                   ->orWhere('P_O_MAIL','like',"%".$data['query']."%")
+                   ->orWhere('P_O_A_NAME','like',"%".$data['query']."%")
+                   ->orWhere('P_O_CIVIL_ID','like',"%".$data['query']."%")
+                   ->orWhere('P_OUT_REQUEST_NO','like',"%".$data['query']."%")
+                   ->orWhere('P_STATUS_MSG','like',"%".$data['query']."%")
+                   ->orWhere('P_FAL_PIT_NO','like',"%".$data['query']."%");
+            });
+
+        }
+
         if ($data['user_id'] ?? null)
         {
             if (auth()->check()){
