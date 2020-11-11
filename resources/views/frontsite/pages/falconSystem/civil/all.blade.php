@@ -86,10 +86,10 @@
                                 <td>{{$online_falcon['falOriginCountry'] ?? ''}}</td>
                                 <td></td>
                                 <td>
-{{--                                    <a href="{{route('falcon-getCivilLoss',['P_O_CIVIL_ID'=>$P_O_CIVIL_ID,'pitNo'=>$online_falcon['pitNo']])}}"--}}
-{{--                                       class="button is-link">--}}
-{{--                                        فقدان--}}
-{{--                                    </a>--}}
+                                    {{--                                    <a href="{{route('falcon-getCivilLoss',['P_O_CIVIL_ID'=>$P_O_CIVIL_ID,'pitNo'=>$online_falcon['pitNo']])}}"--}}
+                                    {{--                                       class="button is-link">--}}
+                                    {{--                                        فقدان--}}
+                                    {{--                                    </a>--}}
                                     <a class="button is-warning p-0" onclick="payment('{{$online_falcon['pitNo']}}')">
                                         الدفع
                                     </a>
@@ -201,7 +201,7 @@
                         },
                         success: function (response) {
                             if (response.status) {
-                                location.href = response.data.link
+                                location.href = response.data.payment_link
                                 // location.reload()
                                 // let oTable = $('#data_table').dataTable();
                                 // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))

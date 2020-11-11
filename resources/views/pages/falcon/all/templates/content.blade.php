@@ -51,8 +51,8 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                @can('show-civil')
-                                    <a href="{{route('editCivilian',['id'=>$falcon->id])}}"
+                                @can('show-falcon')
+                                    <a href="{{route('getEditFalconsCivilians',['id'=>$falcon->id])}}"
                                        class="btn btn-warning btn-sm m-0">
                                         <i class="la la-edit"></i>
                                     </a>

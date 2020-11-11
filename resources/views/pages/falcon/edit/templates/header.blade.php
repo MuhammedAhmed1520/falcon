@@ -8,13 +8,14 @@
     </div>
     <h3>
         <strong>
-            {{__('sidebar.all_civilian')}}
+            {{__('sidebar.edit_order')}}
         </strong>
     </h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">{{__('violation.home')}}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{__('sidebar.all_civilian')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('sidebar.all_orders')}}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{__('sidebar.edit_order')}}</li>
         </ol>
     </nav>
 </div>

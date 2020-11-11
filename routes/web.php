@@ -81,7 +81,8 @@ Route::group([
             ], function () {
 //
                 Route::get('all-falcons', 'FalconController@getAllFalconsCivilians')->name('getAllFalconsCivilians')->middleware('can:show-all-falcon');
-                Route::get('edit-falcons/{id}', 'FalconController@getEditFalconsCivilians')->name('getEditFalconsCivilians')->middleware('can:show-all-falcon');
+                Route::get('edit-falcons/{id}', 'FalconController@getEditFalconsCivilians')->name('getEditFalconsCivilians')->middleware('can:show-falcon');
+                Route::post('edit-falcons/{id}', 'FalconController@handleEditFalconsCivilians')->name('handleEditFalconsCivilians')->middleware('can:edit-falcon');
 //
             });
 
