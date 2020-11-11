@@ -238,6 +238,11 @@ class FalconSystemController extends Controller
         $is_active = 1;
         return view('frontsite.pages.falconSystem.civil.resetPassword', compact('is_active'));
     }
+    public function getCivilLoss(Request $request)
+    {
+        $is_active = 1;
+        return view('frontsite.pages.falconSystem.civil.loss', compact('is_active'));
+    }
 
     public function handleForgetPassword(Request $request)
     {
