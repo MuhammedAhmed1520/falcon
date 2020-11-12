@@ -39,12 +39,16 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{route('editUser',['id'=>$user->id])}}" class="btn btn-info btn-sm m-0">
+                                @can('show-user-hospital')
+                                <a href="{{route('editUserHospital',['id'=>$user->id])}}" class="btn btn-info btn-sm m-0">
                                     <i class="la la-edit"></i>
                                 </a>
+                                @endcan
+                                @can('delete-user-hospital')
                                 <button class="btn btn-danger btn-sm m-0" onclick="removeUser('{{$user->id}}')">
                                     <i class="la la-remove"></i>
                                 </button>
+                                @endcan
                             </div>
                         </td>
                     </tr>

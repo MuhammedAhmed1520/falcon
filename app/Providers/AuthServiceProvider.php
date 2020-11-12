@@ -53,8 +53,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-user-hospital', function ($user) {
             return $user->hasAccess('create-user-hospital');
         });
-        Gate::define('Show-user-hospital', function ($user) {
-            return $user->hasAccess('Show-user-hospital');
+        Gate::define('show-user-hospital', function ($user) {
+            return $user->hasAccess('show-user-hospital');
         });
         Gate::define('edit-user-hospital', function ($user) {
             return $user->hasAccess('edit-user-hospital');

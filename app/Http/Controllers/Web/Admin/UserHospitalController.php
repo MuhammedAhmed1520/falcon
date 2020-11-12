@@ -51,7 +51,7 @@ class UserHospitalController extends Controller
         }
 
 
-        return redirect()->route('allUsers')->with('success', __('violation.add_success'));
+        return redirect()->route('allUsersHospital')->with('success', __('violation.add_success'));
     }
 
     public function edit(Request $request, $id)
@@ -72,8 +72,9 @@ class UserHospitalController extends Controller
 
     public function update(Request $request, $id)
     {
+//        dd($request->all());
         $response = $this->user->update($request, $id);
-
+//        return  $response;
         if (!$response['status']) {
             return back()->with('danger', __('violation.error'));
         }

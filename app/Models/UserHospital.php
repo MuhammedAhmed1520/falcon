@@ -17,7 +17,7 @@ class UserHospital extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'password', 'mobile', 'email'
+        'name', 'password', 'mobile', 'email','hospital_id'
     ];
     /**
      * The attributes that should be hidden for arrays.

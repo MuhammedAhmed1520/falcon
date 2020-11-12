@@ -20,7 +20,7 @@
     <script>
         $(document).ready(function () {
             setTimeout(function () {
-                $('#_3').trigger("click");
+                // $('#_3').trigger("click");
 
             }, 60);
         });

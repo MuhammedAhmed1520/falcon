@@ -29,7 +29,6 @@ class UserHospital
     //Create New User
     public function create(array $data)
     {
-        dd($data);
         $data['password'] = bcrypt($data['password']);
         $user = $this->repository->create($this->userModel,$data);
         return return_msg(true, 'User Successfully Added', compact('user'));
@@ -94,9 +93,9 @@ class UserHospital
         }else{
             $data['password'] = bcrypt($data['password']);
         }
-
-        $user->mobile = $data['mobile'] ?? null;
-        $user->save();
+        $user->update($data);
+//        $user->mobile = $data['mobile'] ?? null;
+//        $user->save();
         //Update this User
         // $this->repository->update($user, $data);
         return return_msg(true, 'User Successfully Updated');

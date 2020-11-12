@@ -32,7 +32,7 @@ trait MainTrait
 //            'username' => 'required|unique:users,username',
             'password' => 'required|min:6',
             'mobile' => 'nullable|digits:8',
-            'email' =>  'required|email|unique:users,email',
+            'email' =>  'required|email|unique:users_hospital,email',
             'hospital_id' =>  'required|numeric',
         ]);
     }
@@ -41,7 +41,7 @@ trait MainTrait
     {
         return validator($request_data, [
             'name' => 'nullable|min:3|string',
-            'email' => 'required|unique:users,email,' . $request_data['id'],
+            'email' => 'required|unique:users_hospital,email,' . $request_data['id'],
             'password' => 'nullable|min:6',
             'mobile' => 'nullable|digits:8',
             'hospital_id' =>  'required|numeric',

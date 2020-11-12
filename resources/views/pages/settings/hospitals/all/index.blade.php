@@ -37,12 +37,12 @@
     {{Html::script('assets/js/datatable/dataTables.scroller.min.js')}}
 
     <script>
-        $(document).ready(function () {
-            setTimeout(function () {
-                $('#_3').trigger("click");
-
-            }, 60);
-        });
+        // $(document).ready(function () {
+        //     setTimeout(function () {
+        //         $('#_3').trigger("click");
+        //
+        //     }, 60);
+        // });
     </script>
     <script>
         $(document).ready(function () {
