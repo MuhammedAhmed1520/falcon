@@ -49,6 +49,7 @@ Route::group(['prefix' => 'falcon', 'namespace' => 'Api'], function () {
     Route::post('/updateHospital', 'FalconController@updateHospital');
     Route::post('/pay', 'FalconController@pay')->name('civilPayment');
     Route::post('/sendData', 'FalconController@sendData')->name('civilResendData');
+    Route::post('/sendGeneral', 'FalconController@sendSoap')->name('sendGeneralRequest');
 });
 Route::group(['prefix' => 'utility', 'namespace' => 'Api'], function () {
 
