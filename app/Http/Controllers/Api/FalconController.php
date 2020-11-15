@@ -113,7 +113,6 @@ class FalconController extends Controller
     public function sendSoap(Request $request)
     {
         return $this->falconRepo->sendSoap($request->all());
-
     }
 
     public function pay(Request $request)
