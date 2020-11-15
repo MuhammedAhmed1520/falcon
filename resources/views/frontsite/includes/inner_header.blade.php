@@ -88,11 +88,11 @@
                                         </span>
                                     </a>
 
-                                    <a href="{{route('falcon-searchCivilFalcon')}}" class="navbar-item">
-                                        <span class="item_text">
-                                              بحث الطلبات
-                                        </span>
-                                    </a>
+{{--                                    <a href="{{route('falcon-searchCivilFalcon')}}" class="navbar-item">--}}
+{{--                                        <span class="item_text">--}}
+{{--                                              بحث الطلبات--}}
+{{--                                        </span>--}}
+{{--                                    </a>--}}
 
 
                                     <a href="{{route('falcon-getCivilProfile')}}" class="navbar-item">

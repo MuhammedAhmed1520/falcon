@@ -32,12 +32,11 @@
                         <tr>
                             <th><abbr>رقم الطلب</abbr></th>
                             <th>رقم الشريحة</th>
-                            <th><abbr>رقم جواز الصقر الحالى</abbr></th>
                             <th>فئة الصقر</th>
                             <th>نوع الصقر</th>
                             <th>بلد المنشأ</th>
                             <th><abbr>الحالة</abbr></th>
-                            <th width="250"></th>
+                            <th width="350"></th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -51,7 +50,6 @@
                                     @endif
                                 </td>
                                 <td>{{$falcon->P_CUR_PASS_FAL ?? ''}}</td>
-                                <td>{{$falcon->P_FAL_PIT_NO ?? ''}}</td>
                                 <td>{{$falcon->P_FAL_SPECIES ?? ''}}</td>
                                 <td>{{$falcon->fal_type->label ?? ''}}</td>
                                 <td>{{$falcon->origin_country->label ?? ''}}</td>
@@ -80,18 +78,36 @@
                             <tr>
                                 <td>{{$online_falcon['requestNo'] ?? ''}}</td>
                                 <td>{{$online_falcon['pitNo'] ?? ''}}</td>
-                                <td></td>
-                                <td>{{$online_falcon['falType'] ?? ''}}</td>
+                                <td>{{$online_falcon['falSpecies'] ?? ''}}</td>
                                 <td>{{$online_falcon['falType'] ?? ''}}</td>
                                 <td>{{$online_falcon['falOriginCountry'] ?? ''}}</td>
-                                <td></td>
                                 <td>
-                                    {{--                                    <a href="{{route('falcon-getCivilLoss',['P_O_CIVIL_ID'=>$P_O_CIVIL_ID,'pitNo'=>$online_falcon['pitNo']])}}"--}}
-                                    {{--                                       class="button is-link">--}}
-                                    {{--                                        فقدان--}}
-                                    {{--                                    </a>--}}
-                                    <a class="button is-warning p-0" onclick="payment('{{$online_falcon['pitNo']}}')">
+                                    @if($online_falcon['submitStatus'] ?? '')
+                                        <span class="tag is-dark">{{$online_falcon['submitStatus'] ?? ''}}</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{route('falcon-getNewOwner',['P_O_CIVIL_ID'=>$P_O_CIVIL_ID,'pitNo'=>$online_falcon['pitNo'],'P_REQUEST_TYP'=>4])}}"
+                                       class="button is-link">
+                                        نقل ملكية
+                                    </a>
+                                    <a href="{{route('falcon-getCivilLoss',['P_O_CIVIL_ID'=>$P_O_CIVIL_ID,'pitNo'=>$online_falcon['pitNo'],'P_REQUEST_TYP'=>2])}}"
+                                       class="button is-link">
+                                        فقدان الجواز
+                                    </a>
+                                    {{--                                    @if($online_falcon['submitStatus'] == '')--}}
+                                    <a class="button is-warning p-0"
+                                       onclick="payment('{{$online_falcon['pitNo']}}')">
                                         الدفع
+                                    </a>
+                                    {{--                                    @endif--}}
+                                    <a class="button is-warning p-0"
+                                       onclick="sendGeneralRequest('{{$P_O_CIVIL_ID}}','{{$online_falcon['pitNo']}}','3')">
+                                        تجديد وثيقة منتهية
+                                    </a>
+                                    <a class="button is-warning p-0"
+                                       onclick="sendGeneralRequest('{{$P_O_CIVIL_ID}}','{{$online_falcon['pitNo']}}','5')">
+                                        اتلاف جواز عند موت الصقر
                                     </a>
                                 </td>
                             </tr>
@@ -181,6 +197,46 @@
         function payment(P_FAL_PIT_NO) {
             Swal.fire({
                 title: 'دفع الرسوم',
+                text: 'هل انت متأكد ؟',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'ﻻ',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{route('civilPayment')}}",
+                        method: "post",
+                        data: {
+                            _token: '{{csrf_token()}}',
+                            P_FAL_PIT_NO: P_FAL_PIT_NO
+                        },
+                        success: function (response) {
+                            if (response.status) {
+                                location.href = response.data.payment_link
+                                // location.reload()
+                                // let oTable = $('#data_table').dataTable();
+                                // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
+                            }
+                            Swal.fire({
+                                icon: 'danger',
+                                title: 'حدث خطأ',
+                                text: response.msg
+                            })
+                        }
+                    })
+
+                }
+            })
+        }
+
+        function sendGeneralRequest(P_O_CIVIL_ID, P_FAL_PIT_NO, P_REQUEST_TYP) {
+            Swal.fire({
+                title: 'نتبيه',
                 text: 'هل انت متأكد ؟',
                 icon: 'warning',
                 showCancelButton: true,
