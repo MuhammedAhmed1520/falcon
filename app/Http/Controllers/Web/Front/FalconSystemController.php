@@ -85,7 +85,7 @@ class FalconSystemController extends Controller
         $response = $this->falcon_ctrl->all($request)['data'] ?? [];
         $falcons = $response['falcons'] ?? [];
         $online_falcons = $response['online_falcons'] ?? [];
-//        return $response;
+//        return $online_falcons;
         return view('frontsite.pages.falconSystem.civil.all', compact('is_active', 'falcons', 'P_O_CIVIL_ID', 'online_falcons'));
     }
 
@@ -246,13 +246,44 @@ class FalconSystemController extends Controller
         return view('frontsite.pages.falconSystem.civil.resetPassword', compact('is_active'));
     }
 
-    public function getCivilLoss(Request $request, $P_O_CIVIL_ID, $pitNo)
+    public function getNewOwner(Request $request, $P_REQUEST_TYP, $P_O_CIVIL_ID, $pitNo)
     {
         $is_active = 1;
-        $request->request->all(['P_O_CIVIL_ID' => $P_O_CIVIL_ID, 'P_FAL_PIT_NO' => $pitNo]);
-        return $this->falcon_ctrl->getFalconData($request);
-        return view('frontsite.pages.falconSystem.civil.loss', compact('is_active'));
+        $request->request->add(['P_O_CIVIL_ID' => $P_O_CIVIL_ID, 'P_FAL_PIT_NO' => $pitNo, 'P_REQUEST_TYP' => $P_REQUEST_TYP]);
+        $data = $this->falcon_ctrl->getFalconData($request)['data'];
+
+        return view('frontsite.pages.falconSystem.civil.new_owner', compact('is_active', 'data'));
     }
+
+    public function handleGetNewOwner(Request $request)
+    {
+        $response = $this->falcon_ctrl->sendSoap($request);
+        if (!$response['status']) {
+
+            return back()->with('error', 'حدث خطأ غير متوقع');
+        }
+        return back()->with('success', 'تمت العملية بنجاح');
+    }
+
+    public function getCivilLoss(Request $request, $P_REQUEST_TYP, $P_O_CIVIL_ID, $pitNo)
+    {
+        $is_active = 1;
+        $request->request->add(['P_O_CIVIL_ID' => $P_O_CIVIL_ID, 'P_FAL_PIT_NO' => $pitNo, 'P_REQUEST_TYP' => $P_REQUEST_TYP]);
+        $data = $this->falcon_ctrl->getFalconData($request)['data'];
+
+        return view('frontsite.pages.falconSystem.civil.loss', compact('is_active', 'data'));
+    }
+
+    public function handleCivilLossRequest(Request $request)
+    {
+        $response = $this->falcon_ctrl->sendSoap($request);
+        if (!$response['status']) {
+
+            return back()->with('error', 'حدث خطأ غير متوقع');
+        }
+        return back()->with('success', 'تمت العملية بنجاح');
+    }
+
 
     public function handleForgetPassword(Request $request)
     {
