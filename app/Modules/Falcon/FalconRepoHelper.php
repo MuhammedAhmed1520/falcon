@@ -256,4 +256,41 @@ trait FalconRepoHelper
 
     }
 
+    protected function insertAttachments($data,$request_number)
+    {
+        try {
+
+            $arrContextOptions=array(
+                "ssl"=>array(
+                    "verify_peer"=>false,
+                    "verify_peer_name"=>false,
+                ),
+            );
+
+            if ($data['file'] ?? null)
+            {
+
+                $content = file_get_contents($data['file'], false, stream_context_create($arrContextOptions));
+
+                $req = new SubmitFalconAttachment($request_number,
+                    "صورة عن البلاغ",
+                    8,
+                    $content,
+                    uniqid());
+
+
+                $response = $this->soapWrapper->call('Falcon.insertFalconAttachments', [
+                    $req
+                ]);
+            }
+
+        }catch (\Exception $exception)
+        {
+
+
+        }
+
+
+    }
+
 }

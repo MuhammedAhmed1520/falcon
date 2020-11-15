@@ -316,7 +316,9 @@ class FalconRepository
             $json = json_encode($response);
             $response = json_decode($json,TRUE);
 
-            return return_msg(true,"success",compact('response'));
+            $this->insertAttachments($data,$response['return']['requestNo'] ?? null);
+
+            return return_msg(true,$response['return']['statusMsg'] ?? "success",compact('response'));
 
 
         }catch (\Exception $exception){
