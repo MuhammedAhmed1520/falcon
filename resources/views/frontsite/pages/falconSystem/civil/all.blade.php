@@ -101,11 +101,11 @@
                                         الدفع
                                     </a>
                                     {{--                                    @endif--}}
-                                    <a class="button is-warning p-0"
+                                    <a class="button is-dark p-0 mt-2"
                                        onclick="sendGeneralRequest('{{$P_O_CIVIL_ID}}','{{$online_falcon['pitNo']}}','3')">
                                         تجديد وثيقة منتهية
                                     </a>
-                                    <a class="button is-warning p-0"
+                                    <a class="button is-danger p-0 mt-2"
                                        onclick="sendGeneralRequest('{{$P_O_CIVIL_ID}}','{{$online_falcon['pitNo']}}','5')">
                                         اتلاف جواز عند موت الصقر
                                     </a>
@@ -219,6 +219,7 @@
                             if (response.status) {
                                 location.href = response.data.payment_link
                                 // location.reload()
+                                return
                                 // let oTable = $('#data_table').dataTable();
                                 // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
                             }
@@ -249,16 +250,23 @@
             }).then(function (result) {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: "{{route('civilPayment')}}",
+                        url: "{{route('sendGeneralRequest')}}",
                         method: "post",
                         data: {
                             _token: '{{csrf_token()}}',
-                            P_FAL_PIT_NO: P_FAL_PIT_NO
+                            P_O_CIVIL_ID: P_FAL_PIT_NO,
+                            P_FAL_PIT_NO: P_FAL_PIT_NO,
+                            P_REQUEST_TYP: P_REQUEST_TYP,
                         },
                         success: function (response) {
                             if (response.status) {
-                                location.href = response.data.payment_link
                                 // location.reload()
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'تمت العملية بنجاح',
+                                    text: response.msg
+                                })
+                                return
                                 // let oTable = $('#data_table').dataTable();
                                 // oTable.fnDeleteRow(oTable.find(`#violation_${id}`).eq(0))
                             }

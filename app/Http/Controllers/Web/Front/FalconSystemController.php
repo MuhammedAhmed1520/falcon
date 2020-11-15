@@ -257,8 +257,14 @@ class FalconSystemController extends Controller
 
     public function handleGetNewOwner(Request $request)
     {
-        return $request->all();
+        $response = $this->falcon_ctrl->sendSoap($request);
+        if (!$response['status']) {
+
+            return back()->with('error', 'حدث خطأ غير متوقع');
+        }
+        return back()->with('success', 'تمت العملية بنجاح');
     }
+
     public function getCivilLoss(Request $request, $P_REQUEST_TYP, $P_O_CIVIL_ID, $pitNo)
     {
         $is_active = 1;
@@ -270,7 +276,12 @@ class FalconSystemController extends Controller
 
     public function handleCivilLossRequest(Request $request)
     {
-        return $request->all();
+        $response = $this->falcon_ctrl->sendSoap($request);
+        if (!$response['status']) {
+
+            return back()->with('error', 'حدث خطأ غير متوقع');
+        }
+        return back()->with('success', 'تمت العملية بنجاح');
     }
 
 
