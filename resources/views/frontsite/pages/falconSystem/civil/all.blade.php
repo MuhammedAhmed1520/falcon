@@ -95,7 +95,7 @@
                                        class="button is-link">
                                         فقدان الجواز
                                     </a>
-                                    @if(($online_falcon['MESSAGE_ID'] ?? null) == 'MSG_M090')
+                                    @if(($online_falcon['msgCode'] ?? null) == 'MSG_M090')
                                         <a class="button is-warning p-0"
                                            onclick="payment('{{$online_falcon['pitNo']}}')">
                                             الدفع
