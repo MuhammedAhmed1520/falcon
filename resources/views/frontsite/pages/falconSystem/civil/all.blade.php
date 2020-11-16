@@ -79,8 +79,8 @@
                                 <td>{{$online_falcon['requestNo'] ?? ''}}</td>
                                 <td>{{$online_falcon['pitNo'] ?? ''}}</td>
                                 <td>{{$online_falcon['falSpecies'] ?? ''}}</td>
-                                <td>{{$online_falcon['falType'] ?? ''}}{{getDataByKey('lookup3' , $online_falcon['falType'] ?? '0') ?? ''}}</td>
-                                <td>{{$online_falcon['falOriginCountry'] ?? ''}}{{getDataByKey('lookup4', $online_falcon['falOriginCountry'] ?? '0') ?? ''}}</td>
+                                <td>{{getDataByKey('lookup3' , $online_falcon['falType'] ?? '0') ?? ''}}</td>
+                                <td>{{getDataByKey('lookup4', $online_falcon['falOriginCountry'] ?? '0') ?? ''}}</td>
                                 <td>
                                     @if($online_falcon['submitStatus'] ?? '')
                                         <span class="tag is-dark">{{$online_falcon['submitStatus'] ?? ''}}</span>
