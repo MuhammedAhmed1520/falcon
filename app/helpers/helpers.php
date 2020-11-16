@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 use App\Mail\MailSender;
 use App\Models\Falcon;
@@ -502,4 +502,15 @@ function getStaticData()
             ],
         ],
     ];
+}
+
+function getDataByKey($key, $code)
+{
+    try {
+        $data = getStaticData();
+        return collect($data[$key])->where('code', $code)->first()['label'] ?? '';
+
+    } catch (\Exception $exception) {
+        return '';
+    }
 }

@@ -6,29 +6,6 @@
       0 => 'Aacotroneo\\Saml2\\Saml2ServiceProvider',
     ),
   ),
-  'adldap2/adldap2-laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Adldap\\Laravel\\AdldapServiceProvider',
-      1 => 'Adldap\\Laravel\\AdldapAuthServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Adldap' => 'Adldap\\Laravel\\Facades\\Adldap',
-    ),
-  ),
-  'artisaninweb/laravel-soap' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Artisaninweb\\SoapWrapper\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'SoapWrapper' => 'Artisaninweb\\SoapWrapper\\Facade',
-    ),
-  ),
   'beyondcode/laravel-dump-server' => 
   array (
     'providers' => 
@@ -79,17 +56,6 @@
       0 => 'Illuminate\\Notifications\\SlackChannelServiceProvider',
     ),
   ),
-  'laravel/socialite' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Socialite\\SocialiteServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Socialite' => 'Laravel\\Socialite\\Facades\\Socialite',
-    ),
-  ),
   'laravel/tinker' => 
   array (
     'providers' => 
@@ -114,17 +80,6 @@
     'providers' => 
     array (
       0 => 'Matthewbdaly\\LaravelAzureStorage\\AzureStorageServiceProvider',
-    ),
-  ),
-  'metrogistics/laravel-azure-ad-oauth' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Metrogistics\\AzureSocialite\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'AzureUser' => 'Metrogistics\\AzureSocialite\\AzureUserFacade',
     ),
   ),
   'mews/captcha' => 

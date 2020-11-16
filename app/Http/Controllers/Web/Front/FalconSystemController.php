@@ -82,10 +82,17 @@ class FalconSystemController extends Controller
         $P_O_CIVIL_ID = getAuthUser('civil')->P_O_CIVIL_ID ?? null;
 //        $P_O_CIVIL_ID = 291022202031;
         $request->request->add(['P_O_CIVIL_ID' => $P_O_CIVIL_ID]);
-        $response = $this->falcon_ctrl->all($request)['data'] ?? [];
-        $falcons = $response['falcons'] ?? [];
-        $online_falcons = $response['online_falcons'] ?? [];
-//        return $online_falcons;
+//        $response = $this->falcon_ctrl->all($request)['data'] ?? [];
+//        $falcons = $response['falcons'] ?? [];
+//        $online_falcons = $response['online_falcons'] ?? [];
+        $online_falcons = [
+            'requestNo' => '21312312',
+            'pitNo' => '434245',
+            'falSpecies' => 'test',
+            'falType' => '2',
+            'falOriginCountry' => '3',
+            'submitStatus' => 'NONE',
+        ];
         return view('frontsite.pages.falconSystem.civil.all', compact('is_active', 'falcons', 'P_O_CIVIL_ID', 'online_falcons'));
     }
 

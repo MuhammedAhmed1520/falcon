@@ -79,8 +79,8 @@
                                 <td>{{$online_falcon['requestNo'] ?? ''}}</td>
                                 <td>{{$online_falcon['pitNo'] ?? ''}}</td>
                                 <td>{{$online_falcon['falSpecies'] ?? ''}}</td>
-                                <td>{{$online_falcon['falType'] ?? ''}}</td>
-                                <td>{{$online_falcon['falOriginCountry'] ?? ''}}</td>
+                                <td>{{$online_falcon['falType'] ?? ''}}{{getDataByKey('lookup3' , $online_falcon['falType'] ?? '0') ?? ''}}</td>
+                                <td>{{$online_falcon['falOriginCountry'] ?? ''}}{{getDataByKey('lookup4', $online_falcon['falOriginCountry'] ?? '0') ?? ''}}</td>
                                 <td>
                                     @if($online_falcon['submitStatus'] ?? '')
                                         <span class="tag is-dark">{{$online_falcon['submitStatus'] ?? ''}}</span>
@@ -95,12 +95,12 @@
                                        class="button is-link">
                                         فقدان الجواز
                                     </a>
-                                    {{--                                    @if($online_falcon['submitStatus'] == '')--}}
-                                    <a class="button is-warning p-0"
-                                       onclick="payment('{{$online_falcon['pitNo']}}')">
-                                        الدفع
-                                    </a>
-                                    {{--                                    @endif--}}
+                                    @if(($online_falcon['MESSAGE_ID'] ?? null) == 'MSG_M090')
+                                        <a class="button is-warning p-0"
+                                           onclick="payment('{{$online_falcon['pitNo']}}')">
+                                            الدفع
+                                        </a>
+                                    @endif
                                     <a class="button is-dark p-0 mt-2"
                                        onclick="sendGeneralRequest('{{$P_O_CIVIL_ID}}','{{$online_falcon['pitNo']}}','3')">
                                         تجديد وثيقة منتهية
